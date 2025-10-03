@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, Loader2 } from "lucide-react";
 import heroImage from "@/assets/hero-construction.jpg";
+import { useCalendly } from "@/hooks/useCalendly";
 
 export const Hero = () => {
+  const { isLoaded, isLoading, openCalendly } = useCalendly();
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -10,10 +13,8 @@ export const Hero = () => {
     }
   };
 
-  const openCalendly = () => {
-    if (window.Calendly) {
-      window.Calendly.showPopupWidget('https://calendly.com/d/cn3g-p2f-g3q/elfreyzz-ltd-consultation');
-    }
+  const handleCalendlyClick = () => {
+    openCalendly('https://calendly.com/d/cn3g-p2f-g3q/elfreyzz-ltd-consultation');
   };
 
   return (
@@ -33,11 +34,16 @@ export const Hero = () => {
             <div className="flex flex-wrap gap-3">
               <Button 
                 size="lg"
-                onClick={openCalendly}
+                onClick={handleCalendlyClick}
+                disabled={isLoading}
                 className="bg-gradient-primary hover:shadow-lift transition-smooth gap-2"
               >
-                <Phone className="h-5 w-5" />
-                Book a Free Consultation
+                {isLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : (
+                  <Phone className="h-5 w-5" />
+                )}
+                {isLoading ? "Loading..." : "Book a Free Consultation"}
               </Button>
               
               <Button 

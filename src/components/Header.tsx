@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun, Calendar } from "lucide-react";
+import { Menu, X, Moon, Sun, Calendar, Loader2 } from "lucide-react";
+import { useCalendly } from "@/hooks/useCalendly";
 
 interface HeaderProps {
   onThemeToggle: () => void;
@@ -10,6 +11,7 @@ interface HeaderProps {
 export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const { isLoaded, isLoading, openCalendly } = useCalendly();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,10 +42,8 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
     }
   };
 
-  const openCalendly = () => {
-    if (window.Calendly) {
-      window.Calendly.showPopupWidget('https://calendly.com/d/cn3g-p2f-g3q/elfreyzz-ltd-consultation');
-    }
+  const handleCalendlyClick = () => {
+    openCalendly('https://calendly.com/d/cn3g-p2f-g3q/elfreyzz-ltd-consultation');
   };
 
   const navItems = [
@@ -104,11 +104,16 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
             </Button>
 
             <Button
-              onClick={openCalendly}
+              onClick={handleCalendlyClick}
+              disabled={isLoading}
               className="hidden md:inline-flex bg-gradient-primary hover:shadow-lift transition-smooth gap-2"
             >
-              <Calendar className="h-4 w-4" />
-              Book a Call
+              {isLoading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Calendar className="h-4 w-4" />
+              )}
+              {isLoading ? "Loading..." : "Book a Call"}
             </Button>
 
             <Button
