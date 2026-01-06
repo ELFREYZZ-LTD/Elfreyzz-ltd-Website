@@ -66,20 +66,20 @@ export const CostEstimator = () => {
   };
 
   return (
-    <section id="estimation" ref={sectionRef} className="reveal py-16 lg:py-24">
+    <section id="estimation" ref={sectionRef} className="reveal py-12 sm:py-16 lg:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-3">Cost Estimation (Quick Calculator)</h2>
-        <p className="text-muted-foreground text-lg mb-8">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3">Cost Estimation (Quick Calculator)</h2>
+        <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8">
           Use this interactive tool for a rough budget estimate. This is indicative only and not a formal quote.
         </p>
 
-        <div className="grid lg:grid-cols-[320px_1fr] gap-6">
-          {/* Calculator Panel */}
-          <div className="bg-card rounded-xl p-6 shadow-soft space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-4 sm:gap-6">
+          {/* Calculator Panel - Shows first on mobile */}
+          <div className="bg-card rounded-xl p-5 sm:p-6 shadow-soft space-y-5 sm:space-y-6 order-first">
             <div className="space-y-2">
-              <Label htmlFor="projectType">Project type</Label>
+              <Label htmlFor="projectType" className="text-sm sm:text-base">Project type</Label>
               <Select value={projectType} onValueChange={setProjectType}>
-                <SelectTrigger id="projectType">
+                <SelectTrigger id="projectType" className="min-h-[44px]">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -93,7 +93,7 @@ export const CostEstimator = () => {
             </div>
 
             <div className="space-y-3">
-              <Label htmlFor="size">{getSizeLabel()}</Label>
+              <Label htmlFor="size" className="text-sm sm:text-base">{getSizeLabel()}</Label>
               <Slider
                 id="size"
                 min={0.1}
@@ -110,9 +110,9 @@ export const CostEstimator = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="complexity">Complexity</Label>
+              <Label htmlFor="complexity" className="text-sm sm:text-base">Complexity</Label>
               <Select value={complexity} onValueChange={setComplexity}>
-                <SelectTrigger id="complexity">
+                <SelectTrigger id="complexity" className="min-h-[44px]">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -124,7 +124,7 @@ export const CostEstimator = () => {
             </div>
 
             <div className="pt-4 border-t border-border">
-              <div className="text-3xl font-bold text-gradient-primary mb-2">
+              <div className="text-2xl sm:text-3xl font-bold text-gradient-primary mb-2">
                 {new Intl.NumberFormat("en-KE", {
                   style: "currency",
                   currency: "KES",
@@ -138,13 +138,13 @@ export const CostEstimator = () => {
           </div>
 
           {/* Info Panel */}
-          <div className="bg-card rounded-xl p-6 shadow-soft space-y-4">
-            <h3 className="font-bold text-xl">How it works</h3>
-            <p className="text-muted-foreground">
+          <div className="bg-card rounded-xl p-5 sm:p-6 shadow-soft space-y-4">
+            <h3 className="font-bold text-lg sm:text-xl">How it works</h3>
+            <p className="text-muted-foreground text-sm sm:text-base">
               We use base rates per project type multiplied by scale and complexity to provide a quick estimate.
             </p>
 
-            <div className="bg-muted/30 rounded-lg p-4 space-y-2">
+            <div className="bg-muted/30 rounded-lg p-3 sm:p-4 space-y-2">
               <strong className="text-sm">Base rates (sample):</strong>
               <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
                 <li>Roads: KES 8M/km</li>
@@ -155,7 +155,7 @@ export const CostEstimator = () => {
               </ul>
             </div>
 
-            <Button onClick={scrollToContact} className="bg-gradient-primary w-full sm:w-auto">
+            <Button onClick={scrollToContact} className="bg-gradient-primary w-full min-h-[44px]">
               Request Formal Quote
             </Button>
           </div>

@@ -66,26 +66,26 @@ export const Services = () => {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className="reveal py-16 lg:py-24">
+    <section id="services" ref={sectionRef} className="reveal py-12 sm:py-16 lg:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-3">Services</h2>
-        <p className="text-muted-foreground text-lg mb-8 max-w-3xl">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3">Services</h2>
+        <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8 max-w-3xl">
           Comprehensive civil infrastructure services delivered with technical excellence and robust project management.
         </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
           {services.map((service, index) => (
             <article
               key={index}
-              className="group bg-card rounded-xl p-5 shadow-soft hover:shadow-lift transition-smooth hover:-translate-y-1.5 cursor-pointer focus-within:ring-2 focus-within:ring-primary/50"
+              className="group bg-card rounded-xl p-4 sm:p-5 shadow-soft hover:shadow-lift transition-smooth hover:-translate-y-1.5 cursor-pointer focus-within:ring-2 focus-within:ring-primary/50"
               tabIndex={0}
             >
-              <div className="flex gap-4 items-start">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start text-center sm:text-left">
                 <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center text-white flex-shrink-0 shadow-soft group-hover:shadow-glow transition-smooth">
                   <i className={`fa-solid ${service.icon} text-lg`} aria-hidden="true"></i>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-base mb-1.5">{service.title}</h3>
+                  <h3 className="font-bold text-base mb-1 sm:mb-1.5">{service.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
                 </div>
               </div>

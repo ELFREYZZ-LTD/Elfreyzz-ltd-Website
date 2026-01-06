@@ -86,51 +86,54 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="reveal py-16 lg:py-24">
+    <section id="contact" ref={sectionRef} className="reveal py-12 sm:py-16 lg:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-3">Contact & Bookings</h2>
-        <p className="text-muted-foreground text-lg mb-8">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3">Contact & Bookings</h2>
+        <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8">
           Reach out or schedule a call directly via Calendly.
         </p>
 
-        <div className="grid lg:grid-cols-[1fr_420px] gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-4 sm:gap-6">
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="bg-card rounded-xl p-6 shadow-soft space-y-4">
+          <form onSubmit={handleSubmit} className="bg-card rounded-xl p-5 sm:p-6 shadow-soft space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Full name</Label>
+              <Label htmlFor="name" className="text-sm sm:text-base">Full name</Label>
               <Input
                 id="name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
+                className="min-h-[44px] text-base"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-sm sm:text-base">Email</Label>
               <Input
                 id="email"
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
+                className="min-h-[44px] text-base"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone">Phone</Label>
+              <Label htmlFor="phone" className="text-sm sm:text-base">Phone</Label>
               <Input
                 id="phone"
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="min-h-[44px] text-base"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="projectTypeForm">Project type</Label>
+              <Label htmlFor="projectTypeForm" className="text-sm sm:text-base">Project type</Label>
               <Select value={formData.projectType} onValueChange={(value) => setFormData({ ...formData, projectType: value })}>
-                <SelectTrigger id="projectTypeForm">
+                <SelectTrigger id="projectTypeForm" className="min-h-[44px]">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -145,30 +148,31 @@ export const Contact = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">Message / Project details</Label>
+              <Label htmlFor="message" className="text-sm sm:text-base">Message / Project details</Label>
               <Textarea
                 id="message"
-                rows={5}
+                rows={4}
                 placeholder="Brief project details"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="text-base resize-none"
               />
             </div>
 
-            <Button type="submit" disabled={isSubmitting} className="bg-gradient-primary">
+            <Button type="submit" disabled={isSubmitting} className="bg-gradient-primary w-full sm:w-auto min-h-[44px]">
               {isSubmitting ? "Sending..." : "Send message"}
             </Button>
           </form>
 
           {/* Calendly & Office Info */}
           <div className="space-y-4">
-            <div className="bg-card rounded-xl p-5 shadow-soft">
-              <div className="font-bold mb-2">Book a meeting</div>
+            <div className="bg-card rounded-xl p-4 sm:p-5 shadow-soft">
+              <div className="font-bold text-base sm:text-lg mb-2">Book a meeting</div>
               <p className="text-sm text-muted-foreground mb-4">
                 Select a convenient time using our inline Calendly panel below.
               </p>
 
-              <div id="calendlyInline" className="min-h-[480px] rounded-lg overflow-hidden"></div>
+              <div id="calendlyInline" className="min-h-[380px] sm:min-h-[420px] lg:min-h-[480px] rounded-lg overflow-hidden"></div>
 
               <p className="text-xs text-muted-foreground mt-3">
                 Or{" "}
@@ -184,8 +188,8 @@ export const Contact = () => {
               </p>
             </div>
 
-            <div className="bg-card rounded-xl p-5 shadow-soft">
-              <div className="font-bold mb-2">Office</div>
+            <div className="bg-card rounded-xl p-4 sm:p-5 shadow-soft">
+              <div className="font-bold text-base sm:text-lg mb-2">Office</div>
               <p className="text-sm text-muted-foreground">
                 Nairobi, Kenya<br />
                 +254 700 000000<br />
