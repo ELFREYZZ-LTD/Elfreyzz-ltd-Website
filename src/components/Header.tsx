@@ -44,6 +44,7 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
 
   const handleCalendlyClick = () => {
     openCalendly('https://calendly.com/d/cn3g-p2f-g3q/elfreyzz-ltd-consultation');
+    setIsMobileMenuOpen(false);
   };
 
   const navItems = [
@@ -58,31 +59,31 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-gradient-glass border-b border-border/40 transition-smooth">
       <div className="container mx-auto px-4">
-        <div className="flex h-18 items-center justify-between">
+        <div className="flex h-16 sm:h-18 items-center justify-between">
           {/* Brand */}
           <button 
             onClick={() => scrollToSection("home")}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 sm:gap-3 group"
             aria-label="ELFREYZZ LTD Home"
           >
-            <div className="w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center shadow-soft group-hover:shadow-lift transition-smooth">
-              <svg viewBox="0 0 64 64" className="w-7 h-7" aria-hidden="true">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-primary flex items-center justify-center shadow-soft group-hover:shadow-lift transition-smooth">
+              <svg viewBox="0 0 64 64" className="w-5 h-5 sm:w-7 sm:h-7" aria-hidden="true">
                 <path d="M14 44 L28 20 L34 34 L50 12" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
             <div>
-              <div className="font-bold text-base leading-none">ELFREYZZ LTD</div>
-              <div className="text-[11px] text-muted-foreground">Civil & Infrastructure Construction</div>
+              <div className="font-bold text-sm sm:text-base leading-none">ELFREYZZ LTD</div>
+              <div className="text-[10px] sm:text-[11px] text-muted-foreground hidden xs:block">Civil & Infrastructure Construction</div>
             </div>
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-2" aria-label="Primary navigation">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Primary navigation">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-smooth hover:bg-muted/50 hover:-translate-y-0.5 ${
+                className={`px-2 xl:px-3 py-2 rounded-lg text-sm font-semibold transition-smooth hover:bg-muted/50 hover:-translate-y-0.5 ${
                   activeSection === item.id ? "bg-primary/10 text-primary" : "text-foreground"
                 }`}
               >
@@ -92,21 +93,21 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <Button
               variant="ghost"
               size="icon"
               onClick={onThemeToggle}
-              className="rounded-lg"
+              className="rounded-lg h-9 w-9 sm:h-10 sm:w-10"
               aria-label="Toggle theme"
             >
-              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
             </Button>
 
             <Button
               onClick={handleCalendlyClick}
               disabled={isLoading}
-              className="hidden md:inline-flex bg-gradient-primary hover:shadow-lift transition-smooth gap-2"
+              className="hidden lg:inline-flex bg-gradient-primary hover:shadow-lift transition-smooth gap-2"
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -119,7 +120,7 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden rounded-lg"
+              className="lg:hidden rounded-lg h-9 w-9 sm:h-10 sm:w-10"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -131,19 +132,33 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full right-4 mt-2 w-64 bg-card rounded-xl shadow-lift border border-border p-3 animate-in slide-in-from-top-2">
+        <div className="lg:hidden absolute top-full inset-x-4 sm:left-auto sm:right-4 sm:w-72 mt-2 bg-card rounded-xl shadow-lift border border-border p-3 animate-in slide-in-from-top-2">
           <nav className="flex flex-col gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-3 py-2 rounded-lg text-sm font-semibold text-left transition-smooth hover:bg-muted/50 ${
+                className={`px-3 py-3 sm:py-2 rounded-lg text-sm font-semibold text-left transition-smooth hover:bg-muted/50 min-h-[44px] flex items-center ${
                   activeSection === item.id ? "bg-primary/10 text-primary" : "text-foreground"
                 }`}
               >
                 {item.label}
               </button>
             ))}
+            
+            {/* Mobile Book a Call Button */}
+            <Button
+              onClick={handleCalendlyClick}
+              disabled={isLoading}
+              className="mt-2 w-full bg-gradient-primary hover:shadow-lift transition-smooth gap-2 min-h-[44px]"
+            >
+              {isLoading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Calendar className="h-4 w-4" />
+              )}
+              {isLoading ? "Loading..." : "Book a Call"}
+            </Button>
           </nav>
         </div>
       )}

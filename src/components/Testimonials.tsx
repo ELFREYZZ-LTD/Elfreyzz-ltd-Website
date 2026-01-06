@@ -44,21 +44,21 @@ export const Testimonials = () => {
   }, []);
 
   return (
-    <section id="past" ref={sectionRef} className="reveal py-16 lg:py-24 bg-muted/30">
+    <section id="past" ref={sectionRef} className="reveal py-12 sm:py-16 lg:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-3">Past Experiences & Testimonials</h2>
-        <p className="text-muted-foreground text-lg mb-8">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3">Past Experiences & Testimonials</h2>
+        <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8">
           Work samples and feedback from clients who trust us to deliver.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {testimonials.map((testimonial, index) => (
             <article
               key={index}
-              className="bg-card rounded-xl p-6 shadow-soft hover:shadow-lift transition-smooth focus-within:ring-2 focus-within:ring-primary/50"
+              className="bg-card rounded-xl p-5 sm:p-6 shadow-soft hover:shadow-lift transition-smooth focus-within:ring-2 focus-within:ring-primary/50"
               tabIndex={0}
             >
-              <blockquote className="text-muted-foreground italic mb-4 leading-relaxed">
+              <blockquote className="text-muted-foreground italic text-sm sm:text-base mb-4 leading-relaxed">
                 "{testimonial.quote}"
               </blockquote>
               <div className="flex items-center gap-3">
