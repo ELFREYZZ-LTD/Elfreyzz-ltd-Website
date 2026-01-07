@@ -194,3 +194,12 @@ All colors MUST be HSL.
     padding-right: 1rem;
   }
 }
+
+/* Calendly popup overlay fix */
+.calendly-overlay {
+  z-index: 9999 !important;
+}
+
+.calendly-popup {
+  z-index: 10000 !important;
+}
