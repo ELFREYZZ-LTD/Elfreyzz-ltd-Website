@@ -14,7 +14,7 @@ export const Hero = () => {
   };
 
   const handleCalendlyClick = () => {
-    openCalendly('https://calendly.com/d/cn3g-p2f-g3q/elfreyzz-ltd-consultation');
+    openCalendly('https://calendly.com/elfreyzzltd-info/30min');
   };
 
   return (
