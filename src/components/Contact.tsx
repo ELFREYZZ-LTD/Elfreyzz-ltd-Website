@@ -164,7 +164,7 @@ export const Contact = () => {
 
             <div className="bg-card rounded-xl p-4 sm:p-5 shadow-soft">
               <div className="font-bold text-base sm:text-lg mb-2">Office</div>
-              <p className="text-sm text-muted-foreground">​info@elfreyzzltd.com<br />
+              <p className="text-sm text-muted-foreground">​NAIROBI, KENYA<br />
                 ​Tel +254 714-544-535    
 
 
