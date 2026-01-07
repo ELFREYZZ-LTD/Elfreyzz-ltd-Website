@@ -44,6 +44,10 @@ export const useCalendly = () => {
     return () => {
       clearInterval(interval);
       clearTimeout(timeout);
+      // Cleanup: close popup on unmount
+      if (window.Calendly?.closePopupWidget) {
+        window.Calendly.closePopupWidget();
+      }
     };
   }, []);
 
@@ -66,7 +70,13 @@ export const useCalendly = () => {
     }
 
     try {
-      window.Calendly.showPopupWidget(url);
+      // Close any existing popup first
+      window.Calendly.closePopupWidget?.();
+      
+      // Small delay to ensure cleanup before opening
+      setTimeout(() => {
+        window.Calendly.showPopupWidget(url);
+      }, 50);
     } catch (error) {
       console.error("Calendly error:", error);
       window.open(url, "_blank", "noopener,noreferrer");
