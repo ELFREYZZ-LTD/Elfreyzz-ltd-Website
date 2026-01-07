@@ -34,19 +34,34 @@ export const Contact = () => {
     return () => observer.disconnect();
   }, []);
   useEffect(() => {
-    // Initialize Calendly inline widget
+    let initialized = false;
+    
     const initCalendly = () => {
-      if (window.Calendly && document.getElementById("calendlyInline")) {
+      const container = document.getElementById("calendlyInline");
+      
+      if (window.Calendly && container && !initialized) {
+        container.innerHTML = '';
+        
         window.Calendly.initInlineWidget({
           url: "https://calendly.com/elfreyzzltd-info/30min",
-          parentElement: document.getElementById("calendlyInline"),
+          parentElement: container,
           prefill: {},
           utm: {}
         });
+        
+        initialized = true;
       }
     };
+    
     const timer = setTimeout(initCalendly, 500);
-    return () => clearTimeout(timer);
+    
+    return () => {
+      clearTimeout(timer);
+      const container = document.getElementById("calendlyInline");
+      if (container) {
+        container.innerHTML = '';
+      }
+    };
   }, []);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
