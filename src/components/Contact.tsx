@@ -38,7 +38,7 @@ export const Contact = () => {
     const initCalendly = () => {
       if (window.Calendly && document.getElementById("calendlyInline")) {
         window.Calendly.initInlineWidget({
-          url: "https://calendly.com/d/cn3g-p2f-g3q/elfreyzz-ltd-consultation",
+          url: "https://calendly.com/elfreyzzltd-info/30min",
           parentElement: document.getElementById("calendlyInline"),
           prefill: {},
           utm: {}
@@ -155,7 +155,7 @@ export const Contact = () => {
 
               <p className="text-xs text-muted-foreground mt-3">
                 Or{" "}
-                <a href="https://calendly.com/d/cn3g-p2f-g3q/elfreyzz-ltd-consultation" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                <a href="https://calendly.com/elfreyzzltd-info/30min" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   open Calendly in a new tab
                 </a>
                 .
