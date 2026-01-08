@@ -166,7 +166,7 @@ export const Contact = () => {
                 Select a convenient time using our inline Calendly panel below.
               </p>
 
-              <div id="calendlyInline" className="min-h-[380px] sm:min-h-[420px] lg:min-h-[480px] rounded-lg overflow-hidden"></div>
+              <div id="calendlyInline" className="h-[500px] sm:h-[550px] lg:h-[600px] w-full rounded-lg overflow-hidden relative"></div>
 
               <p className="text-xs text-muted-foreground mt-3">
                 Or{" "}
