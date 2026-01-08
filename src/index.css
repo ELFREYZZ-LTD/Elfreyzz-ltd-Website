@@ -203,3 +203,12 @@ All colors MUST be HSL.
 .calendly-popup {
   z-index: 10000 !important;
 }
+
+/* Calendly inline widget fill container */
+#calendlyInline iframe {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
