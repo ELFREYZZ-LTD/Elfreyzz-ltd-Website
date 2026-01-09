@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -14,10 +16,9 @@ export const Contact = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const sectionRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -33,6 +34,7 @@ export const Contact = () => {
     }
     return () => observer.disconnect();
   }, []);
+
   useEffect(() => {
     let initialized = false;
     
@@ -63,9 +65,14 @@ export const Contact = () => {
       }
     };
   }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim()) {
+    
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    
+    if (!trimmedName || !trimmedEmail) {
       toast({
         title: "Validation Error",
         description: "Please fill in your name and email.",
@@ -73,14 +80,27 @@ export const Contact = () => {
       });
       return;
     }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          name: trimmedName,
+          email: trimmedEmail,
+          phone: formData.phone.trim() || null,
+          project_type: formData.projectType,
+          message: formData.message.trim() || null
+        });
+
+      if (error) throw error;
+
       toast({
         title: "Message Sent!",
         description: "Thank you! We will get back to you shortly."
       });
+      
       setFormData({
         name: "",
         email: "",
@@ -88,8 +108,16 @@ export const Contact = () => {
         projectType: "Access roads",
         message: ""
       });
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
   return <section id="contact" ref={sectionRef} className="reveal py-12 sm:py-16 lg:py-24">
       <div className="container mx-auto px-4">
