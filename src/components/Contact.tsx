@@ -96,6 +96,17 @@ export const Contact = () => {
 
       if (error) throw error;
 
+      // Send email notification
+      supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: trimmedName,
+          email: trimmedEmail,
+          phone: formData.phone.trim() || null,
+          projectType: formData.projectType,
+          message: formData.message.trim() || null
+        }
+      }).catch(err => console.error('Email notification error:', err));
+
       toast({
         title: "Message Sent!",
         description: "Thank you! We will get back to you shortly."
