@@ -2,15 +2,9 @@
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://elfreyzz-ltd.lovable.app
+**Live app**: https://elfreyzzltd.com
 
 ## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/64ea4d4a-6689-4831-a324-bf647df48cf5).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
