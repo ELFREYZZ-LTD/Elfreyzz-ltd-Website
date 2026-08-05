@@ -1,46 +1,21 @@
+# Harden Contact Submission Privacy
 
+## Verified current state
+- Row-level security is enabled on `contact_submissions`.
+- The only RLS policy permits anonymous inserts; no SELECT policy exists, so browser reads are already denied by RLS.
+- The table nevertheless grants broad privileges to `anon` and `authenticated`, which should be narrowed for defense in depth.
 
-## Create Contact Submissions Database Table
+## Implementation
+1. Apply a database migration that revokes all table privileges from `anon` and `authenticated`.
+2. Grant only `INSERT` to `anon`, matching the public contact form's required access.
+3. Keep full access for `service_role`, so trusted backend processes can access submissions.
+4. Preserve RLS and the existing anonymous INSERT policy; do not add any SELECT policy or admin UI.
 
-### Problem
-The contact form references a `contact_submissions` table that doesn't exist in the newly connected Supabase project, causing build errors.
+## Verification
+- Confirm the final grants expose only anonymous INSERT and no browser-role SELECT permission.
+- Confirm there is still no SELECT RLS policy for `anon` or `authenticated`.
+- Submit the public contact form and verify that storage and email notification still work.
+- Run the security scan again and resolve the reported finding based on the verified effective permissions.
 
-### Solution
-Create the `contact_submissions` table with the correct schema and RLS policy to allow anonymous form submissions.
-
-### Technical Details
-
-**Migration SQL:**
-```sql
-CREATE TABLE public.contact_submissions (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  name text NOT NULL,
-  email text NOT NULL,
-  phone text,
-  project_type text NOT NULL DEFAULT 'Access roads',
-  message text,
-  created_at timestamptz NOT NULL DEFAULT now()
-);
-
-ALTER TABLE public.contact_submissions ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Allow anonymous inserts"
-  ON public.contact_submissions
-  FOR INSERT
-  TO anon
-  WITH CHECK (true);
-```
-
-This creates a table matching the fields used in the contact form (name, email, phone, project type, message) and allows anyone to submit the form without needing to log in.
-
-| Column | Type | Notes |
-|--------|------|-------|
-| id | uuid | Auto-generated primary key |
-| name | text | Required |
-| email | text | Required |
-| phone | text | Optional |
-| project_type | text | Defaults to "Access roads" |
-| message | text | Optional |
-| created_at | timestamptz | Auto-set on insert |
-
-No code changes needed -- the existing `Contact.tsx` already references this table correctly.
+## Technical details
+The migration will use privilege revocation and narrowly scoped grants only. No frontend changes, authentication system, profiles table, or role system are needed for the selected backend-only access model.
