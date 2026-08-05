@@ -1,18 +1,65 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
+import { z } from "npm:zod@3.25.76";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
+const projectTypes = [
+  "Access roads",
+  "Sewer lines",
+  "Piped water",
+  "Structures",
+  "Engineering survey",
+  "Other",
+] as const;
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  email: z.string().trim().email().max(254),
+  phone: z.string().trim().max(30).nullable().optional(),
+  projectType: z.enum(projectTypes),
+  message: z.string().trim().max(2000).nullable().optional(),
+}).strict();
+
+const jsonResponse = (body: unknown, status: number) => new Response(
+  JSON.stringify(body),
+  { status, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+);
+
+const escapeHtml = (value: string) => value.replace(/[&<>'"]/g, (character) => ({
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  "'": "&#39;",
+  '"': "&quot;",
+}[character] ?? character));
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response("ok", { headers: corsHeaders });
+  }
+
+  if (req.method !== "POST") {
+    return jsonResponse({ error: "Method not allowed" }, 405);
   }
 
   try {
-    const { name, email, phone, projectType, message } = await req.json();
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return jsonResponse({ error: "Request body must be valid JSON" }, 400);
+    }
+
+    const parsed = contactSchema.safeParse(body);
+    if (!parsed.success) {
+      return jsonResponse({ error: "Invalid contact submission", fields: parsed.error.flatten().fieldErrors }, 400);
+    }
+
+    const { name, email, phone, projectType, message } = parsed.data;
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = phone ? escapeHtml(phone) : "Not provided";
+    const safeProjectType = escapeHtml(projectType);
+    const safeMessage = message ? escapeHtml(message).replace(/\n/g, "<br>") : "No message";
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
@@ -22,11 +69,11 @@ serve(async (req) => {
     const htmlBody = `
       <h2>New Contact Form Submission</h2>
       <table style="border-collapse:collapse;width:100%;max-width:600px;">
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Name</td><td style="padding:8px;border-bottom:1px solid #ddd;">${name}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Email</td><td style="padding:8px;border-bottom:1px solid #ddd;">${email}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Phone</td><td style="padding:8px;border-bottom:1px solid #ddd;">${phone || "Not provided"}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Project Type</td><td style="padding:8px;border-bottom:1px solid #ddd;">${projectType}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Message</td><td style="padding:8px;border-bottom:1px solid #ddd;">${message || "No message"}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Name</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeName}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Email</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeEmail}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Phone</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safePhone}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Project Type</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeProjectType}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Message</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeMessage}</td></tr>
       </table>
     `;
 
@@ -49,17 +96,12 @@ serve(async (req) => {
 
     if (!res.ok) {
       console.error("Resend error:", data);
-      throw new Error(data.message || "Failed to send email");
+      return jsonResponse({ error: "Email provider rejected the request" }, res.status);
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return jsonResponse({ success: true }, 200);
   } catch (error) {
     console.error("Error sending email:", error);
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    return jsonResponse({ error: "Unable to send contact notification" }, 500);
   }
 });

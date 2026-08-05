@@ -6,6 +6,24 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+const projectTypes = [
+  "Access roads",
+  "Sewer lines",
+  "Piped water",
+  "Structures",
+  "Engineering survey",
+  "Other"
+] as const;
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters.").max(100, "Name must be 100 characters or fewer."),
+  email: z.string().trim().email("Enter a valid email address.").max(254, "Email must be 254 characters or fewer."),
+  phone: z.string().trim().max(30, "Phone must be 30 characters or fewer."),
+  projectType: z.enum(projectTypes),
+  message: z.string().trim().max(2000, "Message must be 2,000 characters or fewer.")
+});
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -68,18 +86,18 @@ export const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const trimmedName = formData.name.trim();
-    const trimmedEmail = formData.email.trim();
-    
-    if (!trimmedName || !trimmedEmail) {
+
+    const parsed = contactSchema.safeParse(formData);
+    if (!parsed.success) {
       toast({
         title: "Validation Error",
-        description: "Please fill in your name and email.",
+        description: parsed.error.issues[0]?.message ?? "Please check the form and try again.",
         variant: "destructive"
       });
       return;
     }
+
+    const validated = parsed.data;
 
     setIsSubmitting(true);
 
@@ -87,11 +105,11 @@ export const Contact = () => {
       const { error } = await supabase
         .from('contact_submissions')
         .insert({
-          name: trimmedName,
-          email: trimmedEmail,
-          phone: formData.phone.trim() || null,
-          project_type: formData.projectType,
-          message: formData.message.trim() || null
+          name: validated.name,
+          email: validated.email,
+          phone: validated.phone || null,
+          project_type: validated.projectType,
+          message: validated.message || null
         });
 
       if (error) throw error;
@@ -99,11 +117,11 @@ export const Contact = () => {
       // Send email notification
       supabase.functions.invoke('send-contact-email', {
         body: {
-          name: trimmedName,
-          email: trimmedEmail,
-          phone: formData.phone.trim() || null,
-          projectType: formData.projectType,
-          message: formData.message.trim() || null
+          name: validated.name,
+          email: validated.email,
+          phone: validated.phone || null,
+          projectType: validated.projectType,
+          message: validated.message || null
         }
       }).catch(err => console.error('Email notification error:', err));
 
@@ -144,24 +162,24 @@ export const Contact = () => {
               <Label htmlFor="name" className="text-sm sm:text-base">Full name</Label>
               <Input id="name" value={formData.name} onChange={e => setFormData({
               ...formData,
-              name: e.target.value
-            })} required className="min-h-[44px] text-base" />
+               name: e.target.value
+             })} required minLength={2} maxLength={100} className="min-h-[44px] text-base" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="email" className="text-sm sm:text-base">Email</Label>
               <Input id="email" type="email" value={formData.email} onChange={e => setFormData({
               ...formData,
-              email: e.target.value
-            })} required className="min-h-[44px] text-base" />
+               email: e.target.value
+             })} required maxLength={254} className="min-h-[44px] text-base" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-sm sm:text-base">Phone</Label>
               <Input id="phone" type="tel" value={formData.phone} onChange={e => setFormData({
               ...formData,
-              phone: e.target.value
-            })} className="min-h-[44px] text-base" />
+               phone: e.target.value
+             })} maxLength={30} className="min-h-[44px] text-base" />
             </div>
 
             <div className="space-y-2">
@@ -188,8 +206,8 @@ export const Contact = () => {
               <Label htmlFor="message" className="text-sm sm:text-base">Message / Project details</Label>
               <Textarea id="message" rows={4} placeholder="Brief project details" value={formData.message} onChange={e => setFormData({
               ...formData,
-              message: e.target.value
-            })} className="text-base resize-none" />
+               message: e.target.value
+             })} maxLength={2000} className="text-base resize-none" />
             </div>
 
             <Button type="submit" disabled={isSubmitting} className="bg-gradient-primary w-full sm:w-auto min-h-[44px]">
