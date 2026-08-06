@@ -89,47 +89,54 @@ serve(async (req) => {
     const safeProjectType = escapeHtml(projectType);
     const safeMessage = message ? escapeHtml(message).replace(/\n/g, "<br>") : "No message";
 
-    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-    if (!RESEND_API_KEY) {
-      throw new Error("RESEND_API_KEY is not configured");
+    let emailed = false;
+    try {
+      const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+      if (!RESEND_API_KEY) {
+        throw new Error("RESEND_API_KEY is not configured");
+      }
+
+      const htmlBody = `
+        <h2>New Contact Form Submission</h2>
+        <table style="border-collapse:collapse;width:100%;max-width:600px;">
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Name</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeName}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Email</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeEmail}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Phone</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safePhone}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Project Type</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeProjectType}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Message</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeMessage}</td></tr>
+        </table>
+      `;
+
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+        },
+        body: JSON.stringify({
+          from: "Elfreyzz Contact Form <noreply@elfreyzzltd.com>",
+          to: ["eliud@elfreyzzltd.com"],
+          subject: `New enquiry from ${name} – ${projectType}`,
+          html: htmlBody,
+          reply_to: email,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error("Resend error:", data);
+      } else {
+        emailed = true;
+      }
+    } catch (emailError) {
+      console.error("Email notification error:", emailError);
     }
 
-    const htmlBody = `
-      <h2>New Contact Form Submission</h2>
-      <table style="border-collapse:collapse;width:100%;max-width:600px;">
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Name</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeName}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Email</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeEmail}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Phone</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safePhone}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Project Type</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeProjectType}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Message</td><td style="padding:8px;border-bottom:1px solid #ddd;">${safeMessage}</td></tr>
-      </table>
-    `;
-
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: "Elfreyzz Contact Form <noreply@elfreyzzltd.com>",
-        to: ["eliud@elfreyzzltd.com"],
-        subject: `New enquiry from ${name} – ${projectType}`,
-        html: htmlBody,
-        reply_to: email,
-      }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      console.error("Resend error:", data);
-      return jsonResponse({ error: "Email provider rejected the request" }, res.status);
-    }
-
-    return jsonResponse({ success: true }, 200);
+    return jsonResponse({ success: true, emailed }, 200);
   } catch (error) {
-    console.error("Error sending email:", error);
-    return jsonResponse({ error: "Unable to send contact notification" }, 500);
+    console.error("Error handling contact submission:", error);
+    return jsonResponse({ error: "Unable to process contact submission" }, 500);
   }
 });
+

@@ -102,20 +102,7 @@ export const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert({
-          name: validated.name,
-          email: validated.email,
-          phone: validated.phone || null,
-          project_type: validated.projectType,
-          message: validated.message || null
-        });
-
-      if (error) throw error;
-
-      // Send email notification
-      supabase.functions.invoke('send-contact-email', {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
         body: {
           name: validated.name,
           email: validated.email,
@@ -123,7 +110,10 @@ export const Contact = () => {
           projectType: validated.projectType,
           message: validated.message || null
         }
-      }).catch(err => console.error('Email notification error:', err));
+      });
+
+      if (error) throw error;
+
 
       toast({
         title: "Message Sent!",
