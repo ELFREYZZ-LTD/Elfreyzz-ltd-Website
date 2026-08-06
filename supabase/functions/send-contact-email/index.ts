@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
+import { createClient } from "npm:@supabase/supabase-js@2";
 import { z } from "npm:zod@3.25.76";
 
 const projectTypes = [
@@ -55,6 +56,33 @@ serve(async (req) => {
     }
 
     const { name, email, phone, projectType, message } = parsed.data;
+
+    const forwardedFor = req.headers.get("x-forwarded-for") ?? "";
+    const ipAddress = (forwardedFor.split(",")[0]?.trim() || req.headers.get("x-real-ip")?.trim() || "")
+      .slice(0, 100) || null;
+    const userAgent = (req.headers.get("user-agent")?.trim() || "").slice(0, 500) || null;
+
+    const supabase = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
+      { auth: { persistSession: false } },
+    );
+
+    const { error: insertError } = await supabase.from("contact_submissions").insert({
+      name,
+      email,
+      phone: phone || null,
+      project_type: projectType,
+      message: message || null,
+      ip_address: ipAddress,
+      user_agent: userAgent,
+    });
+
+    if (insertError) {
+      console.error("Insert error:", insertError);
+      return jsonResponse({ error: insertError.message || "Unable to save contact submission" }, 400);
+    }
+
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
     const safePhone = phone ? escapeHtml(phone) : "Not provided";
