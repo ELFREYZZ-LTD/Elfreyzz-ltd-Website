@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { PastProjects } from "@/components/PastProjects";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
 
@@ -42,6 +43,7 @@ const Home = () => {
       
       <main id="main" tabIndex={-1}>
         <Hero />
+        <PastProjects />
       </main>
 
       <Footer />
