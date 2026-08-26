@@ -36,9 +36,19 @@ export const Footer = () => {
     <footer className="border-t border-border py-8 sm:py-12 mt-8 sm:mt-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8">
-          {/* Brand Info */}
+
+          {/* Brand Info / Logo */}
           <div className="flex flex-col gap-3">
-            <h3 className="font-bold text-base">ELFREYZZ LTD</h3>
+            <button
+              onClick={() => navigate("/")}
+              aria-label="Go to ELFREYZZ LTD home page"
+              className="flex items-center w-fit text-left hover:opacity-80 transition-opacity"
+            >
+              <span className="font-bold text-base">
+                ELFREYZZ LTD
+              </span>
+            </button>
+
             <p className="text-xs sm:text-sm text-muted-foreground">
               Civil & Infrastructure Construction Services
             </p>
@@ -47,6 +57,7 @@ export const Footer = () => {
           {/* Quick Links */}
           <div className="flex flex-col gap-3">
             <h4 className="font-semibold text-sm">Quick Links</h4>
+
             <nav className="flex flex-col gap-2">
               <button
                 onClick={() => navigate("/")}
@@ -54,18 +65,28 @@ export const Footer = () => {
               >
                 Home
               </button>
+
+              <button
+                onClick={() => navigate("/about")}
+                className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors text-left"
+              >
+                About
+              </button>
+
               <button
                 onClick={() => navigate("/services")}
                 className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors text-left"
               >
                 Services
               </button>
+
               <button
                 onClick={() => navigate("/past-experiences")}
                 className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors text-left"
               >
                 Past Experiences
               </button>
+
               <button
                 onClick={() => navigate("/contact")}
                 className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors text-left"
@@ -78,9 +99,11 @@ export const Footer = () => {
           {/* Social Links */}
           <div className="flex flex-col gap-3">
             <h4 className="font-semibold text-sm">Follow Us</h4>
+
             <div className="flex gap-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
+
                 return (
                   <a
                     key={social.label}
@@ -102,11 +125,16 @@ export const Footer = () => {
         {/* Divider */}
         <div className="border-t border-border/50 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
+            
             <div>
               © {currentYear} ELFREYZZ LTD. All rights reserved.
             </div>
+
             <div>
-              <span className="hidden sm:inline">Designed for high-ticket infrastructure projects • </span>
+              <span className="hidden sm:inline">
+                Designed for high-ticket infrastructure projects •{" "}
+              </span>
+
               <button
                 onClick={() => navigate("/contact")}
                 className="text-primary hover:underline"
@@ -114,6 +142,7 @@ export const Footer = () => {
                 Get in touch
               </button>
             </div>
+
           </div>
         </div>
       </div>
