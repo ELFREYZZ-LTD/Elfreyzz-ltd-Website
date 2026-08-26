@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Moon, Sun, Calendar, Loader2 } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
@@ -12,34 +13,31 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { isLoaded, isLoading, openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["home", "services", "about", "past", "estimation", "contact"];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMobileMenuOpen(false);
+    // Update active section based on current route
+    const path = location.pathname;
+    if (path === "/") {
+      setActiveSection("home");
+    } else if (path === "/services") {
+      setActiveSection("services");
+    } else if (path === "/about") {
+      setActiveSection("about");
+    } else if (path === "/past-experiences") {
+      setActiveSection("past");
+    } else if (path === "/cost-estimation") {
+      setActiveSection("estimation");
+    } else if (path === "/contact") {
+      setActiveSection("contact");
     }
+  }, [location.pathname]);
+
+  const navigateToPage = (path: string, section: string) => {
+    navigate(path);
+    setActiveSection(section);
+    setIsMobileMenuOpen(false);
   };
 
   const handleCalendlyClick = () => {
@@ -48,12 +46,12 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
   };
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "services", label: "Services" },
-    { id: "about", label: "About" },
-    { id: "past", label: "Past experiences" },
-    { id: "estimation", label: "Cost estimation" },
-    { id: "contact", label: "Contact" },
+    { path: "/", id: "home", label: "Home" },
+    { path: "/services", id: "services", label: "Services" },
+    { path: "/about", id: "about", label: "About" },
+    { path: "/past-experiences", id: "past", label: "Past experiences" },
+    { path: "/cost-estimation", id: "estimation", label: "Cost estimation" },
+    { path: "/contact", id: "contact", label: "Contact" },
   ];
 
   return (
@@ -62,7 +60,7 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
         <div className="flex h-16 sm:h-18 items-center justify-between">
           {/* Brand */}
           <button 
-            onClick={() => scrollToSection("home")}
+            onClick={() => navigateToPage("/", "home")}
             className="flex items-center gap-2 sm:gap-3 group"
             aria-label="ELFREYZZ LTD Home"
           >
@@ -82,7 +80,7 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => navigateToPage(item.path, item.id)}
                 className={`px-2 xl:px-3 py-2 rounded-lg text-sm font-semibold transition-smooth hover:bg-muted/50 hover:-translate-y-0.5 ${
                   activeSection === item.id ? "bg-primary/10 text-primary" : "text-foreground"
                 }`}
@@ -137,7 +135,7 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => navigateToPage(item.path, item.id)}
                 className={`px-3 py-3 sm:py-2 rounded-lg text-sm font-semibold text-left transition-smooth hover:bg-muted/50 min-h-[44px] flex items-center ${
                   activeSection === item.id ? "bg-primary/10 text-primary" : "text-foreground"
                 }`}
