@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight, Loader2 } from "lucide-react";
 import heroImage from "@/assets/hero-construction.jpg";
@@ -5,13 +6,7 @@ import { useCalendly } from "@/hooks/useCalendly";
 
 export const Hero = () => {
   const { isLoaded, isLoading, openCalendly } = useCalendly();
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  const navigate = useNavigate();
 
   const handleCalendlyClick = () => {
     openCalendly('https://calendly.com/elfreyzzltd-info/30min');
@@ -49,7 +44,7 @@ export const Hero = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                onClick={() => scrollToSection("services")}
+                onClick={() => navigate("/services")}
                 className="w-full sm:w-auto gap-2 hover:bg-muted/50 transition-smooth min-h-[48px]"
               >
                 Our Services
@@ -59,7 +54,7 @@ export const Hero = () => {
               <Button 
                 size="lg"
                 variant="ghost"
-                onClick={() => scrollToSection("past")}
+                onClick={() => navigate("/past-experiences")}
                 className="w-full sm:w-auto gap-2 min-h-[48px]"
               >
                 See Past Projects
