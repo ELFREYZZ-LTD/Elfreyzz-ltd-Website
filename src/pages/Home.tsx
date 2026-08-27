@@ -483,7 +483,7 @@ const Home = () => {
 
         {/* FINAL CTA */}
         <section
-          id="CTA"
+          id="cta"
           className="relative overflow-hidden py-24 sm:py-32"
         >
           <div className="absolute inset-0 -z-10 bg-primary/[0.04]" />
