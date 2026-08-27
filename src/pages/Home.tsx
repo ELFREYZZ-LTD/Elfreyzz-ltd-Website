@@ -509,7 +509,7 @@ const Home = () => {
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
               {/* FIXED: Links directly to the Contact page */}
               <a
-                href="/contact"
+                href="#contact"
                 className="inline-flex items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
               >
                 Request a Consultation
