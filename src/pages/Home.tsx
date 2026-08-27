@@ -1,3 +1,4 @@
+```tsx
 import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -21,6 +22,9 @@ const Home = () => {
     if (initialTheme === "dark") {
       document.documentElement.classList.add("dark");
       setIsDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setIsDark(false);
     }
   }, []);
 
@@ -150,22 +154,20 @@ const Home = () => {
         Skip to content
       </a>
 
-      {/* Original Header preserved */}
+      {/* Header */}
       <Header
         onThemeToggle={toggleTheme}
         isDark={isDark}
       />
 
       <main id="main" tabIndex={-1}>
-
-        {/* Original Hero preserved */}
+        {/* Hero */}
         <Hero />
 
         {/* INTRO / TRUST */}
         <section className="border-y border-border bg-muted/30">
           <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                   Built With Purpose
@@ -183,7 +185,6 @@ const Home = () => {
                 to detail to deliver spaces and infrastructure built
                 for lasting value.
               </p>
-
             </div>
           </div>
         </section>
@@ -196,7 +197,6 @@ const Home = () => {
           <div className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
             <div className="max-w-3xl">
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                 Our Services
@@ -245,7 +245,6 @@ const Home = () => {
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
@@ -255,9 +254,7 @@ const Home = () => {
           className="bg-muted/40 py-24 sm:py-32"
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
             <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-
               <div>
                 <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                   Why Choose Elfreyzz
@@ -306,12 +303,11 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
         </section>
 
-        {/* Original PastProjects preserved */}
+        {/* PROJECTS */}
         <section id="projects">
           <PastProjects />
         </section>
@@ -322,9 +318,7 @@ const Home = () => {
           className="border-y border-border bg-muted/30 py-24 sm:py-28"
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
             <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
-
               <div className="lg:sticky lg:top-28">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                   Project Experience
@@ -355,7 +349,6 @@ const Home = () => {
                   </span>
                 ))}
               </div>
-
             </div>
           </div>
         </section>
@@ -366,7 +359,6 @@ const Home = () => {
           className="py-24 sm:py-32"
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
             <div className="mx-auto max-w-3xl text-center">
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                 Our Process
@@ -410,20 +402,16 @@ const Home = () => {
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
         {/* QUALITY & COMMITMENT */}
         <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground sm:py-28">
-
           <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-black/10 blur-3xl" />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
             <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-80">
                   Our Commitment
@@ -445,7 +433,6 @@ const Home = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-
                 <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm">
                   <p className="text-2xl font-bold">
                     Quality
@@ -489,7 +476,6 @@ const Home = () => {
                     shortcuts.
                   </p>
                 </div>
-
               </div>
             </div>
           </div>
@@ -500,13 +486,11 @@ const Home = () => {
           id="contact"
           className="relative overflow-hidden py-24 sm:py-32"
         >
-
           <div className="absolute inset-0 -z-10 bg-primary/[0.04]" />
 
           <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
 
           <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
               Start Your Project
             </p>
@@ -523,9 +507,9 @@ const Home = () => {
             </p>
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-
+              {/* FIXED: Links directly to the Contact page */}
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
               >
                 Request a Consultation
@@ -544,21 +528,19 @@ const Home = () => {
               >
                 View Our Projects
               </a>
-
             </div>
-
           </div>
         </section>
-
       </main>
 
-      {/* Original Footer preserved */}
+      {/* Footer */}
       <Footer />
 
-      {/* Original BackToTop preserved */}
+      {/* Back To Top */}
       <BackToTop />
     </div>
   );
 };
 
 export default Home;
+```
