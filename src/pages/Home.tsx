@@ -91,34 +91,34 @@ const Home = () => {
       number: "04",
       title: "Attention to Detail",
       description:
-        "From the structural work to the finishing touches, we believe every part of a project deserves careful consideration.",
+        "From structural work to finishing touches, we believe every part of a project deserves careful consideration.",
     },
   ];
 
   const process = [
     {
       step: "01",
-      title: "Let's Talk",
+      title: "Consultation",
       description:
-        "We start by understanding your plans, requirements, priorities, budget, and expectations for the project.",
+        "We begin by understanding your plans, requirements, priorities, budget, and expectations for the project.",
     },
     {
       step: "02",
-      title: "Plan",
+      title: "Planning",
       description:
-        "We establish the scope of work and coordinate the people, materials, timelines, and resources needed for the project.",
+        "We establish the scope of work and coordinate the people, materials, equipment, timelines, and resources required.",
     },
     {
       step: "03",
-      title: "Build",
+      title: "Construction",
       description:
-        "Our team gets to work, managing construction with a focus on quality, safety, workmanship, and progress.",
+        "Our team manages the work with a focus on quality, safety, workmanship, coordination, and steady progress.",
     },
     {
       step: "04",
-      title: "Complete",
+      title: "Completion",
       description:
-        "We bring the project through its final stages and make sure the finished work reflects the agreed vision and requirements.",
+        "We bring the project through its final stages and ensure the completed work reflects the agreed requirements.",
     },
   ];
 
@@ -131,6 +131,13 @@ const Home = () => {
     "Remodeling",
     "Property Improvements",
     "General Construction",
+    "Material & Supplies",
+    "Engineering Surveys",
+    "Engineering Consultation",
+    "Equipment Hire",
+    "Access Roads",
+    "Sewer Lines",
+    "Piped Water",
   ];
 
   return (
@@ -173,8 +180,8 @@ const Home = () => {
                 Every project is an opportunity to create something
                 lasting. We combine practical planning, skilled
                 workmanship, quality materials, and close attention
-                to detail to deliver spaces built for the people who
-                will use them.
+                to detail to deliver spaces and infrastructure built
+                for lasting value.
               </p>
 
             </div>
@@ -304,30 +311,37 @@ const Home = () => {
           </div>
         </section>
 
-        {/* ORIGINAL PAST PROJECTS PRESERVED */}
+        {/* Original PastProjects preserved */}
         <section id="projects">
           <PastProjects />
         </section>
 
-        {/* PROJECT TYPES */}
-        <section className="border-y border-border bg-muted/30 py-20">
+        {/* PROJECT EXPERIENCE */}
+        <section
+          id="expertise"
+          className="border-y border-border bg-muted/30 py-24 sm:py-28"
+        >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
-            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+            <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
 
-              <div>
+              <div className="lg:sticky lg:top-28">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                   Project Experience
                 </p>
 
-                <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-                  Built for different spaces and needs.
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                  Construction expertise{" "}
+                  <span className="text-primary">
+                    beyond the build.
+                  </span>
                 </h2>
 
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                  From individual homes to larger developments,
-                  our construction work is shaped around the specific
-                  requirements of every project.
+                <p className="mt-5 text-base leading-8 text-muted-foreground">
+                  Our experience extends across building construction,
+                  infrastructure, site works, engineering support,
+                  materials, and essential services that help bring
+                  complete projects together.
                 </p>
               </div>
 
@@ -335,7 +349,7 @@ const Home = () => {
                 {projectTypes.map((type) => (
                   <span
                     key={type}
-                    className="rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium transition-colors duration-200 hover:border-primary hover:text-primary"
+                    className="rounded-full border border-border bg-background px-5 py-3 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-primary hover:shadow-sm"
                   >
                     {type}
                   </span>
@@ -400,7 +414,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* QUALITY / CRAFTSMANSHIP */}
+        {/* QUALITY & COMMITMENT */}
         <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground sm:py-28">
 
           <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
@@ -425,8 +439,8 @@ const Home = () => {
                   We don't see construction as simply putting up
                   walls and completing a checklist. The finished
                   project becomes someone's home, workplace, investment,
-                  or future. That responsibility shapes how we approach
-                  every job.
+                  or community space. That responsibility shapes how
+                  we approach every job.
                 </p>
               </div>
 
@@ -481,62 +495,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* TESTIMONIALS PLACEHOLDER SECTION */}
-        <section
-          id="testimonials"
-          className="py-24 sm:py-32"
-        >
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                Client Experience
-              </p>
-
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                What our clients say
-              </h2>
-
-              <p className="mt-5 text-muted-foreground">
-                The strongest measure of our work is the experience
-                clients have throughout the project and the result
-                they receive at the end of it.
-              </p>
-            </div>
-
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
-
-              {[1, 2, 3].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-dashed border-border bg-muted/20 p-8"
-                >
-                  <div className="flex gap-1 text-primary">
-                    ★ ★ ★ ★ ★
-                  </div>
-
-                  <p className="mt-6 text-sm leading-7 text-muted-foreground">
-                    Client testimonial will appear here. Replace this
-                    section with verified feedback from a completed
-                    project.
-                  </p>
-
-                  <div className="mt-8">
-                    <p className="font-semibold">
-                      Client Name
-                    </p>
-
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Project / Location
-                    </p>
-                  </div>
-                </div>
-              ))}
-
-            </div>
-          </div>
-        </section>
-
         {/* FINAL CTA */}
         <section
           id="contact"
@@ -558,9 +516,10 @@ const Home = () => {
             </h2>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Whether you're planning a new build, renovating an
-              existing space, or exploring what's possible, we'd
-              be glad to hear about your project.
+              Whether you're planning a new build, developing
+              infrastructure, renovating an existing space, or
+              exploring what's possible, we'd be glad to hear about
+              your project.
             </p>
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
@@ -570,6 +529,7 @@ const Home = () => {
                 className="inline-flex items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
               >
                 Request a Consultation
+
                 <span
                   className="ml-2"
                   aria-hidden="true"
