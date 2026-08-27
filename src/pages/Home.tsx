@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { PastProjects } from "@/components/PastProjects";
@@ -10,7 +9,6 @@ const Home = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference or system preference
     const savedTheme = localStorage.getItem("elfreyzz-theme");
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
@@ -203,6 +201,7 @@ const Home = () => {
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
             <div className="max-w-3xl">
+
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                 Our Services
               </p>
@@ -220,6 +219,7 @@ const Home = () => {
                 experience and workmanship needed to move your
                 project forward.
               </p>
+
             </div>
 
             <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
@@ -553,10 +553,11 @@ const Home = () => {
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
 
-              {/* CONTACT PAGE ROUTE */}
-              <Link
-                to="/contact"
+              {/* REQUEST A CONSULTATION — CALL PHONE */}
+              <a
+                href="tel:+254714544535"
                 className="inline-flex items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+                aria-label="Call +254 714 544 535 for a consultation"
               >
                 Request a Consultation
 
@@ -566,9 +567,9 @@ const Home = () => {
                 >
                   →
                 </span>
-              </Link>
+              </a>
 
-              {/* PROJECTS SECTION */}
+              {/* VIEW PROJECTS */}
               <a
                 href="#projects"
                 className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
