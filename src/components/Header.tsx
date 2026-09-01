@@ -65,8 +65,8 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
             aria-label="ELFREYZZ LTD Home"
           >
             <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-primary flex items-center justify-center shadow-soft group-hover:shadow-lift transition-smooth">
-              <svg viewBox="0 0 64 64" className="w-5 h-5 sm:w-7 sm:h-7" aria-hidden="true">
-                <path d="M14 44 L28 20 L34 34 L50 12" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg viewBox="0 0 64 64" className="w-5 h-5 sm:w-7 sm:h-7 text-brand-white" aria-hidden="true">
+                <path d="M14 44 L28 20 L34 34 L50 12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
             <div>

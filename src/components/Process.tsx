@@ -55,7 +55,7 @@ export const Process = () => {
               className="bg-card/50 backdrop-blur-sm rounded-xl p-5 sm:p-6 text-center shadow-soft hover:shadow-lift transition-smooth focus-within:ring-2 focus-within:ring-primary/50"
               tabIndex={0}
             >
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-gradient-primary text-white font-bold text-lg sm:text-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-soft">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-gradient-primary text-brand-white font-bold text-lg sm:text-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-soft">
                 {step.num}
               </div>
               <h4 className="font-bold text-base sm:text-lg mb-2">{step.title}</h4>
