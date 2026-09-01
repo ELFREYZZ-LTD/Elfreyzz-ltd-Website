@@ -81,7 +81,7 @@ export const Services = () => {
               tabIndex={0}
             >
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start text-center sm:text-left">
-                <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center text-white flex-shrink-0 shadow-soft group-hover:shadow-glow transition-smooth">
+                <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center text-brand-white flex-shrink-0 shadow-soft group-hover:shadow-glow transition-smooth">
                   <i className={`fa-solid ${service.icon} text-lg`} aria-hidden="true"></i>
                 </div>
                 <div className="flex-1 min-w-0">

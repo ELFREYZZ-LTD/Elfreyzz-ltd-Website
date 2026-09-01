@@ -30,7 +30,7 @@ export const VideoSection = () => {
           Short overview video of our methodology and past projects.
         </p>
 
-        <div className="relative rounded-2xl overflow-hidden shadow-soft bg-black aspect-video">
+        <div className="relative rounded-2xl overflow-hidden shadow-soft bg-brand-charcoal aspect-video">
           <iframe
             loading="lazy"
             title="ELFREYZZ project highlights"

@@ -74,8 +74,8 @@ export const Hero = () => {
                   alt="ELFREYZZ construction site showing infrastructure development"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4 sm:p-6">
-                  <div className="text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/70 via-transparent to-transparent flex items-end p-4 sm:p-6">
+                  <div className="text-brand-white">
                     <div className="font-bold text-sm sm:text-base mb-1">Featured:</div>
                     <div className="text-xs sm:text-sm">Turnkey access road & sewer project — 1200m</div>
                   </div>

@@ -442,9 +442,9 @@ const Home = () => {
         {/* QUALITY & COMMITMENT */}
         <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground sm:py-28">
 
-          <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-primary-foreground/10 blur-3xl" />
 
-          <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-black/10 blur-3xl" />
+          <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-brand-charcoal/10 blur-3xl" />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
@@ -474,7 +474,7 @@ const Home = () => {
 
               <div className="grid grid-cols-2 gap-4">
 
-                <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm">
+                <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm">
                   <p className="text-2xl font-bold">
                     Quality
                   </p>
@@ -485,7 +485,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm">
+                <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm">
                   <p className="text-2xl font-bold">
                     Safety
                   </p>
@@ -496,7 +496,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm">
+                <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm">
                   <p className="text-2xl font-bold">
                     Integrity
                   </p>
@@ -507,7 +507,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm">
+                <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm">
                   <p className="text-2xl font-bold">
                     Durability
                   </p>
