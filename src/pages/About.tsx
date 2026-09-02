@@ -702,7 +702,7 @@ const About = () => {
               {/* Vision */}
               <div className="relative overflow-hidden rounded-3xl bg-primary p-9 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12">
 
-                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
+                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary-foreground/10 blur-3xl" />
 
                 <div className="relative">
 

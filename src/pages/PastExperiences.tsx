@@ -295,15 +295,15 @@ const PastExperiences = () => {
                     className="aspect-[4/5] w-full object-cover"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-brand-charcoal/20 to-transparent" />
 
                   <div className="absolute bottom-7 left-7 right-7">
 
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-white/70">
                       Experience Portfolio
                     </p>
 
-                    <p className="mt-2 text-2xl font-bold text-white sm:text-3xl">
+                    <p className="mt-2 text-2xl font-bold text-brand-white sm:text-3xl">
                       From planning to delivery.
                     </p>
 
@@ -541,13 +541,13 @@ const PastExperiences = () => {
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-brand-charcoal/20 to-transparent" />
 
                       {/* Project number */}
 
                       <div className="absolute left-7 top-7">
 
-                        <span className="font-mono text-5xl font-bold text-white/80">
+                        <span className="font-mono text-5xl font-bold text-brand-white/80">
                           {project.number}
                         </span>
 
@@ -557,7 +557,7 @@ const PastExperiences = () => {
 
                       <div className="absolute bottom-7 left-7">
 
-                        <span className="rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white backdrop-blur-md">
+                        <span className="rounded-full border border-brand-white/20 bg-brand-charcoal/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-brand-white backdrop-blur-md">
                           {project.type}
                         </span>
 

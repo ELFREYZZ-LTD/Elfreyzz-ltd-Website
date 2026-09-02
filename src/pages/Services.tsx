@@ -801,7 +801,7 @@ const Services = () => {
             }}
           />
 
-          <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-white/10 blur-[120px]" />
+          <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-primary-foreground/10 blur-[120px]" />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
@@ -852,7 +852,7 @@ const Services = () => {
 
                   <div
                     key={item.title}
-                    className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm"
+                    className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm"
                   >
 
                     <p className="text-xl font-bold">
