@@ -18,7 +18,7 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           <div className="space-y-4 sm:space-y-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-              ELFREYZZ LTD — Building reliable infrastructure that lasts.
+              ELFREYZZ LTD&nbsp;&nbsp;Built By You.
             </h1>
             
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
