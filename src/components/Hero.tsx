@@ -20,7 +20,7 @@ export const Hero = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
               ELFREYZZ LTD
               <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-brand-orange mt-1">
-                Built By You.
+                               Built By You.
               </span>
             </h1>
             
