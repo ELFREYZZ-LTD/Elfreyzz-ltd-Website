@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Moon, Sun, Calendar, Loader2 } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
-import logoAsset from "@/assets/elfreyzz-logo.png.asset.json";
 
 interface HeaderProps {
   onThemeToggle: () => void;
@@ -67,7 +66,7 @@ export const Header = ({ onThemeToggle, isDark }: HeaderProps) => {
           >
             <div className="w-12 h-10 sm:w-14 sm:h-12 flex items-center justify-center shrink-0 transition-smooth group-hover:scale-105">
               <img
-                src={logoAsset.url}
+                src="/favicon.svg"
                 alt="ELFREYZZ LTD logo"
                 className="w-full h-full object-contain"
               />
