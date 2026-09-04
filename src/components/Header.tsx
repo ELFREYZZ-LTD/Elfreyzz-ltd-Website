@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Moon, Sun, Calendar, Loader2 } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
-import logoAsset from "@/assets/elfreyzz-logo.svg.asset.json";
+import logoAsset from "@/assets/elfreyzz-logo.png.asset.json";
 
 interface HeaderProps {
   onThemeToggle: () => void;
