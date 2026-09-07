@@ -7,6 +7,32 @@ import { BackToTop } from "@/components/BackToTop";
 
 const Services = () => {
   const [openService, setOpenService] = useState<number | null>(null);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("elfreyzz-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+
+    if (initialTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      setIsDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setIsDark(false);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = isDark ? "light" : "dark";
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    setIsDark(!isDark);
+    localStorage.setItem("elfreyzz-theme", newTheme);
+  };
 
   const toggleService = (index: number) => {
     setOpenService(openService === index ? null : index);
