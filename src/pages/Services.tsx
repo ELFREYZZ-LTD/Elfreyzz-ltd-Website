@@ -7,25 +7,6 @@ import { BackToTop } from "@/components/BackToTop";
 
 const Services = () => {
   const [openService, setOpenService] = useState<number | null>(null);
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("elfreyzz-theme");
-
-    const initialTheme =
-      savedTheme ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-
-    if (initialTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDark(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setIsDark(false);
-    }
-  }, []);
 
   const toggleService = (index: number) => {
     setOpenService(openService === index ? null : index);
