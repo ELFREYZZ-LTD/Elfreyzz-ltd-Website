@@ -1,3 +1,4 @@
+```tsx
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
@@ -38,6 +39,11 @@ const Services = () => {
     localStorage.setItem("elfreyzz-theme", newTheme);
   };
 
+  /*
+   * PRIMARY SERVICES
+   *
+   * These intentionally match the homepage exactly.
+   */
   const services = [
     {
       number: "01",
@@ -45,9 +51,9 @@ const Services = () => {
       category: "Construction",
       icon: "⌂",
       description:
-        "From the ground up, we deliver carefully planned construction projects with attention to structure, craftsmanship, functionality, and finish.",
+        "From the ground up, we deliver carefully planned construction projects with attention to structure, craftsmanship, and finish.",
       details:
-        "Our new construction services cover projects from initial site preparation through the construction process and final completion. We work to ensure that every stage contributes to a finished structure that is practical, durable, and aligned with the client's requirements.",
+        "Our new construction services cover projects from initial site preparation through construction and final completion. We focus on practical planning, quality workmanship, and a finished structure that meets the requirements of the project.",
       includes: [
         "Ground-up construction",
         "Site preparation",
@@ -57,35 +63,33 @@ const Services = () => {
         "Project coordination",
       ],
     },
-
     {
       number: "02",
       title: "Residential Construction",
       category: "Homes & Residential",
       icon: "⌂",
       description:
-        "Thoughtfully built homes and residential spaces designed around your needs, lifestyle, vision, and long-term plans.",
+        "Thoughtfully built homes and residential spaces designed around your needs, lifestyle, and vision.",
       details:
-        "We understand that residential construction is both a significant investment and a personal undertaking. Our approach focuses on combining sound construction practices with careful attention to the spaces, finishes, and details that make a property feel like home.",
+        "We approach residential construction with attention to both the practical requirements of the project and the needs of the people who will use the space. From the structure to the finishing details, every stage is handled with care.",
       includes: [
         "Residential homes",
         "House construction",
         "Residential developments",
-        "Extensions",
         "Interior works",
         "Exterior works",
+        "Residential finishing",
       ],
     },
-
     {
       number: "03",
       title: "Commercial Construction",
       category: "Commercial Projects",
       icon: "▦",
       description:
-        "Professional construction services for commercial spaces, developments, offices, business premises, and other functional facilities.",
+        "Professional construction services for commercial spaces, developments, offices, and business premises.",
       details:
-        "Commercial projects require a practical understanding of functionality, durability, coordination, and the needs of the people who will ultimately use the space. We provide construction support focused on delivering commercial environments that serve their intended purpose.",
+        "Commercial construction requires careful consideration of functionality, durability, coordination, and the needs of the people who will use the space. We provide construction services focused on practical and dependable results.",
       includes: [
         "Commercial buildings",
         "Office spaces",
@@ -95,261 +99,48 @@ const Services = () => {
         "Finishing works",
       ],
     },
-
     {
       number: "04",
-      title: "General Construction",
-      category: "Construction Services",
-      icon: "▧",
-      description:
-        "Flexible construction support for projects that require a combination of building, site, structural, finishing, and related works.",
-      details:
-        "Not every construction requirement fits neatly into a single category. Our general construction services provide a flexible solution for clients who require multiple types of construction work coordinated around one project or specific requirement.",
-      includes: [
-        "General building works",
-        "Site works",
-        "Structural works",
-        "Maintenance-related works",
-        "Finishing works",
-        "Project-specific construction",
-      ],
-    },
-
-    {
-      number: "05",
-      title: "Renovation",
+      title: "Renovation & Remodeling",
       category: "Property Improvement",
       icon: "↗",
       description:
-        "Transform existing properties through carefully planned renovations that improve functionality, appearance, comfort, and value.",
+        "Breathe new life into existing spaces through renovations, extensions, remodeling, and property improvements.",
       details:
-        "Renovation allows an existing property to evolve with changing needs. We help clients improve and modernize spaces while taking into account the existing structure, intended use, desired finishes, and practical requirements of the project.",
+        "We help transform existing properties to better suit changing needs, improve functionality, and create more useful spaces. Our renovation and remodeling work can cover individual areas or broader property improvements.",
       includes: [
         "Property renovations",
-        "Interior renovations",
-        "Exterior renovations",
-        "Property upgrades",
-        "Structural improvements",
-        "Finishing improvements",
-      ],
-    },
-
-    {
-      number: "06",
-      title: "Extensions",
-      category: "Property Improvement",
-      icon: "＋",
-      description:
-        "Expand existing properties with carefully considered extensions designed to create additional usable space.",
-      details:
-        "When an existing property no longer provides enough space, an extension can offer a practical alternative to moving or rebuilding. We provide construction support for extensions that integrate new spaces with the existing property.",
-      includes: [
-        "Residential extensions",
-        "Additional rooms",
-        "Building extensions",
-        "Property expansions",
-        "Structural additions",
-        "Finishing and integration",
-      ],
-    },
-
-    {
-      number: "07",
-      title: "Remodeling",
-      category: "Property Transformation",
-      icon: "↻",
-      description:
-        "Reconfigure and transform existing spaces to better suit new uses, modern requirements, and changing lifestyles.",
-      details:
-        "Remodeling can fundamentally change how an existing property functions. We help clients rework spaces and improve layouts while considering the structural and practical requirements involved in transforming an existing building.",
-      includes: [
+        "Extensions",
         "Space reconfiguration",
-        "Layout improvements",
         "Interior remodeling",
-        "Functional upgrades",
-        "Property transformation",
-        "Finishing works",
-      ],
-    },
-
-    {
-      number: "08",
-      title: "Property Improvements",
-      category: "Property Development",
-      icon: "◆",
-      description:
-        "Practical improvements that enhance existing properties, improve usability, and support long-term property value.",
-      details:
-        "Property improvement projects can range from focused upgrades to broader improvements across a building or site. We work with clients to identify the construction work required to improve the property's functionality, appearance, and overall condition.",
-      includes: [
-        "Property upgrades",
-        "Building improvements",
-        "Functional improvements",
-        "Exterior improvements",
-        "Interior improvements",
-        "General property works",
-      ],
-    },
-
-    {
-      number: "09",
-      title: "Access Roads",
-      category: "Infrastructure",
-      icon: "━",
-      description:
-        "Construction and site works that provide practical access to properties, developments, construction sites, and other facilities.",
-      details:
-        "Reliable access is an important part of many developments. We provide support for access road construction and related site works intended to improve connectivity and accessibility within and around project sites.",
-      includes: [
-        "Access road construction",
-        "Site access works",
-        "Development access",
-        "Road preparation",
-        "Supporting site works",
-        "Infrastructure coordination",
-      ],
-    },
-
-    {
-      number: "10",
-      title: "Sewer Lines",
-      category: "Infrastructure",
-      icon: "⌁",
-      description:
-        "Sewer infrastructure works designed to support property developments and provide essential site services.",
-      details:
-        "Sewer infrastructure is a fundamental component of many residential, commercial, and development projects. We support sewer line works as part of broader site development and infrastructure requirements.",
-      includes: [
-        "Sewer line works",
-        "Site infrastructure",
-        "Development infrastructure",
-        "Drainage-related works",
-        "Infrastructure coordination",
-        "Project-specific site works",
-      ],
-    },
-
-    {
-      number: "11",
-      title: "Piped Water",
-      category: "Infrastructure",
-      icon: "≈",
-      description:
-        "Water infrastructure and piped water works supporting residential, commercial, and property development requirements.",
-      details:
-        "Reliable water infrastructure is essential for functional developments. We provide support for piped water works as part of broader infrastructure and site development requirements.",
-      includes: [
-        "Piped water systems",
-        "Water infrastructure",
-        "Site water works",
-        "Development connections",
-        "Supporting site works",
-        "Infrastructure coordination",
-      ],
-    },
-
-    {
-      number: "12",
-      title: "Engineering Surveys",
-      category: "Engineering",
-      icon: "⌗",
-      description:
-        "Engineering survey services that provide useful site information to support planning, construction, development, and decision-making.",
-      details:
-        "Good construction decisions depend on reliable information about the site and its conditions. Engineering surveys can provide important technical information needed to inform project planning and construction activities.",
-      includes: [
-        "Engineering surveys",
-        "Site information",
-        "Technical measurements",
-        "Construction support",
-        "Development planning support",
-        "Site assessment",
-      ],
-    },
-
-    {
-      number: "13",
-      title: "Engineering Consultation",
-      category: "Engineering",
-      icon: "⌘",
-      description:
-        "Engineering consultation to help clients understand technical considerations and make informed decisions about their projects.",
-      details:
-        "Construction projects often involve technical questions that need to be considered before work begins or as the project develops. Our engineering consultation services provide technical support to help clients and project teams navigate these requirements.",
-      includes: [
-        "Engineering consultation",
-        "Technical guidance",
-        "Project assessment",
-        "Construction consultation",
-        "Site-related consultation",
-        "Technical project support",
-      ],
-    },
-
-    {
-      number: "14",
-      title: "Equipment Hire",
-      category: "Construction Support",
-      icon: "▰",
-      description:
-        "Construction equipment hire to support project sites, contractors, developers, and specific construction requirements.",
-      details:
-        "Access to appropriate equipment can make construction activities more efficient and practical. Our equipment hire service provides clients and project teams with additional resources to support construction and site operations.",
-      includes: [
-        "Construction equipment",
-        "Site equipment",
-        "Equipment hire",
-        "Project-specific equipment",
-        "Contractor support",
-        "Site operation support",
-      ],
-    },
-
-    {
-      number: "15",
-      title: "Materials & Supplies",
-      category: "Construction Support",
-      icon: "◆",
-      description:
-        "Construction materials and supplies to support projects from initial works through construction and finishing.",
-      details:
-        "Materials are fundamental to construction quality and project progress. We support construction requirements through the provision and coordination of materials and supplies needed for different stages of a project.",
-      includes: [
-        "Construction materials",
-        "Building supplies",
-        "Project materials",
-        "Site requirements",
-        "Material coordination",
-        "Construction resource support",
+        "Property improvements",
+        "Finishing improvements",
       ],
     },
   ];
 
-  const serviceGroups = [
-    {
-      title: "Construction",
-      description:
-        "Core building and construction services for new developments, homes, businesses, and general construction requirements.",
-      numbers: ["01", "02", "03", "04"],
-    },
-    {
-      title: "Property Improvement",
-      description:
-        "Services that help existing properties evolve, expand, improve, and adapt to changing requirements.",
-      numbers: ["05", "06", "07", "08"],
-    },
-    {
-      title: "Infrastructure",
-      description:
-        "Essential site infrastructure supporting access, water, sewer, and wider development requirements.",
-      numbers: ["09", "10", "11"],
-    },
-    {
-      title: "Engineering & Support",
-      description:
-        "Technical services, equipment, and materials that help construction projects move forward effectively.",
-      numbers: ["12", "13", "14", "15"],
-    },
+  /*
+   * PROJECT EXPERIENCE
+   *
+   * These are capabilities and project types, not separate
+   * primary services. This mirrors the homepage structure.
+   */
+  const projectTypes = [
+    "New Builds",
+    "Residential Homes",
+    "Commercial Buildings",
+    "Renovations",
+    "Extensions",
+    "Remodeling",
+    "Property Improvements",
+    "General Construction",
+    "Material & Supplies",
+    "Engineering Surveys",
+    "Engineering Consultation",
+    "Equipment Hire",
+    "Access Roads",
+    "Sewer Lines",
+    "Piped Water",
   ];
 
   return (
@@ -412,10 +203,12 @@ const Services = () => {
                 </h1>
 
                 <p className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                  From new homes and commercial buildings to renovations,
-                  infrastructure, engineering support, equipment, and
-                  materials, we provide construction services designed
-                  around the practical requirements of your project.
+                  From new homes and commercial buildings to
+                  renovations, extensions, property improvements,
+                  infrastructure, engineering support, equipment,
+                  and materials, we provide construction services
+                  designed around the practical requirements of
+                  your project.
                 </p>
 
                 <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -454,11 +247,11 @@ const Services = () => {
 
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                        Our Capabilities
+                        Primary Services
                       </p>
 
                       <p className="mt-2 text-xl font-semibold">
-                        One project. Multiple solutions.
+                        Four core ways we build.
                       </p>
                     </div>
 
@@ -468,31 +261,25 @@ const Services = () => {
 
                   </div>
 
-                  <div className="mt-8 space-y-6">
+                  <div className="mt-8 space-y-5">
 
-                    {serviceGroups.map((group) => (
-
+                    {services.map((service) => (
                       <div
-                        key={group.title}
-                        className="flex gap-4"
+                        key={service.number}
+                        className="flex items-center gap-4"
                       >
 
-                        <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary">
-                          {group.numbers.length}
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-bold text-primary">
+                          {service.number}
                         </div>
 
                         <div>
                           <p className="font-semibold">
-                            {group.title}
-                          </p>
-
-                          <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                            {group.description}
+                            {service.title}
                           </p>
                         </div>
 
                       </div>
-
                     ))}
 
                   </div>
@@ -507,6 +294,7 @@ const Services = () => {
 
           </div>
         </section>
+
 
         {/* =====================================================
             INTRO
@@ -534,7 +322,8 @@ const Services = () => {
                 lasting. We combine practical planning, skilled
                 workmanship, quality materials, technical support,
                 and close attention to detail to deliver buildings,
-                infrastructure, and improvements designed for lasting value.
+                infrastructure, and improvements designed for lasting
+                value.
               </p>
 
             </div>
@@ -543,8 +332,9 @@ const Services = () => {
 
         </section>
 
+
         {/* =====================================================
-            SERVICE DIRECTORY
+            PRIMARY SERVICES
         ===================================================== */}
         <section
           id="services"
@@ -558,13 +348,11 @@ const Services = () => {
             <div className="max-w-3xl">
 
               <div className="mb-5 flex items-center gap-4">
-
                 <span className="h-px w-10 bg-primary" />
 
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                   What We Offer
                 </p>
-
               </div>
 
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
@@ -575,20 +363,20 @@ const Services = () => {
               </h2>
 
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                Whether you're building from the ground up, improving
-                an existing property, developing infrastructure, or
-                looking for technical and construction support, our
-                services cover the requirements that help projects
-                move forward.
+                Whether you're building from the ground up,
+                constructing a home or commercial space, or
+                transforming an existing property, our core
+                services provide the foundation for getting
+                your project built.
               </p>
 
             </div>
+
 
             {/* Service cards */}
             <div className="mt-16 space-y-6">
 
               {services.map((service) => (
-
                 <article
                   key={service.number}
                   className="group relative overflow-hidden rounded-3xl border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5"
@@ -606,6 +394,7 @@ const Services = () => {
                       </span>
 
                     </div>
+
 
                     {/* Main content */}
                     <div className="p-8 sm:p-10 lg:p-12">
@@ -640,6 +429,7 @@ const Services = () => {
 
                     </div>
 
+
                     {/* Included */}
                     <div className="border-t border-border bg-muted/20 p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
 
@@ -650,7 +440,6 @@ const Services = () => {
                       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
 
                         {service.includes.map((item) => (
-
                           <div
                             key={item}
                             className="flex items-start gap-3"
@@ -663,7 +452,6 @@ const Services = () => {
                             </span>
 
                           </div>
-
                         ))}
 
                       </div>
@@ -691,91 +479,59 @@ const Services = () => {
                   </div>
 
                 </article>
-
               ))}
 
             </div>
 
           </div>
+
         </section>
 
+
         {/* =====================================================
-            SERVICE AREAS SUMMARY
+            PROJECT EXPERIENCE
         ===================================================== */}
-        <section className="border-y border-border bg-muted/30 py-24 sm:py-28">
+        <section
+          id="expertise"
+          className="border-y border-border bg-muted/30 py-24 sm:py-28"
+        >
 
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
-            <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
+            <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
 
-              <div>
+              <div className="lg:sticky lg:top-28">
 
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                  Our Capabilities
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                  Project Experience
                 </p>
 
-                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                  More than a building contractor.
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                  Construction expertise{" "}
+                  <span className="text-primary">
+                    beyond the build.
+                  </span>
                 </h2>
 
                 <p className="mt-5 text-base leading-8 text-muted-foreground">
-                  Our range of services allows us to support different
-                  aspects of construction and property development,
-                  from the core building works to the infrastructure,
-                  technical services, equipment, and materials that
-                  projects depend on.
+                  Our experience extends across building construction,
+                  infrastructure, site works, engineering support,
+                  materials, and essential services that help bring
+                  complete projects together.
                 </p>
 
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
 
-                {serviceGroups.map((group) => (
+              <div className="flex flex-wrap gap-3">
 
-                  <div
-                    key={group.title}
-                    className="rounded-2xl border border-border bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
+                {projectTypes.map((type) => (
+                  <span
+                    key={type}
+                    className="rounded-full border border-border bg-background px-5 py-3 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-primary hover:shadow-sm"
                   >
-
-                    <div className="flex items-center justify-between">
-
-                      <h3 className="text-xl font-semibold">
-                        {group.title}
-                      </h3>
-
-                      <span className="font-mono text-xs text-primary">
-                        {group.numbers.length.toString().padStart(2, "0")}
-                      </span>
-
-                    </div>
-
-                    <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                      {group.description}
-                    </p>
-
-                    <div className="mt-6 flex flex-wrap gap-2">
-
-                      {group.numbers.map((number) => {
-
-                        const service = services.find(
-                          (item) => item.number === number
-                        );
-
-                        return service ? (
-                          <span
-                            key={number}
-                            className="rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground"
-                          >
-                            {service.title}
-                          </span>
-                        ) : null;
-
-                      })}
-
-                    </div>
-
-                  </div>
-
+                    {type}
+                  </span>
                 ))}
 
               </div>
@@ -785,6 +541,7 @@ const Services = () => {
           </div>
 
         </section>
+
 
         {/* =====================================================
             QUALITY / COMMITMENT
@@ -829,6 +586,7 @@ const Services = () => {
 
               </div>
 
+
               <div className="grid grid-cols-2 gap-4">
 
                 {[
@@ -849,7 +607,6 @@ const Services = () => {
                     text: "Construction focused on lasting value rather than shortcuts.",
                   },
                 ].map((item) => (
-
                   <div
                     key={item.title}
                     className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm"
@@ -864,7 +621,6 @@ const Services = () => {
                     </p>
 
                   </div>
-
                 ))}
 
               </div>
@@ -874,6 +630,7 @@ const Services = () => {
           </div>
 
         </section>
+
 
         {/* =====================================================
             FINAL CTA
@@ -904,15 +661,14 @@ const Services = () => {
             </h2>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Whether you're planning a new build, developing
-              infrastructure, renovating an existing property, or
-              looking for technical construction support, we'd be glad
-              to hear about your project.
+              Whether you're planning a new build, constructing
+              a home or commercial space, renovating an existing
+              property, or looking for additional construction
+              support, we'd be glad to hear about your project.
             </p>
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
 
-              {/* Registered Contact Route */}
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-xl shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
@@ -927,7 +683,6 @@ const Services = () => {
                 </span>
               </Link>
 
-              {/* Direct Phone Call */}
               <a
                 href="tel:+254714544535"
                 className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-8 py-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:text-primary"
@@ -957,3 +712,4 @@ const Services = () => {
 };
 
 export default Services;
+```
