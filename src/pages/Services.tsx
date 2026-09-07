@@ -1,3 +1,4 @@
+```tsx
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
@@ -7,6 +8,10 @@ import { BackToTop } from "@/components/BackToTop";
 const Services = () => {
   const [isDark, setIsDark] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
+
+  /* ============================================================
+     THEME
+  ============================================================ */
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("elfreyzz-theme");
@@ -43,6 +48,10 @@ const Services = () => {
   const toggleService = (index: number) => {
     setOpenService(openService === index ? null : index);
   };
+
+  /* ============================================================
+     SERVICES
+  ============================================================ */
 
   const services = [
     {
@@ -283,9 +292,46 @@ const Services = () => {
     },
   ];
 
+  const capabilityTags = [
+    "Infrastructure",
+    "Engineering",
+    "Construction",
+    "Supply",
+    "Equipment",
+  ];
+
+  const executionPoints = [
+    "Engineering-led project execution",
+    "Construction materials and equipment support",
+    "Infrastructure and civil works capability",
+    "Professional project coordination",
+  ];
+
+  const supportSteps = [
+    {
+      number: "01",
+      title: "Assess",
+      text: "Understand the site, requirements and technical needs.",
+    },
+    {
+      number: "02",
+      title: "Coordinate",
+      text: "Bring together engineering, materials and resources.",
+    },
+    {
+      number: "03",
+      title: "Deliver",
+      text: "Execute the work with focus on quality and reliability.",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      {/* Accessibility */}
+
+      {/* ========================================================
+          ACCESSIBILITY
+      ======================================================== */}
+
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
@@ -293,75 +339,102 @@ const Services = () => {
         Skip to content
       </a>
 
+      {/* ========================================================
+          HEADER
+      ======================================================== */}
+
       <Header
         onThemeToggle={toggleTheme}
         isDark={isDark}
       />
 
       <main id="main" tabIndex={-1}>
-        {/* =====================================================
+
+        {/* ======================================================
             HERO
-        ===================================================== */}
-        <section className="relative min-h-[680px] overflow-hidden bg-slate-950 text-white">
-          {/* Hero image */}
+        ====================================================== */}
+
+        <section className="relative min-h-[680px] overflow-hidden bg-foreground text-background">
+
+          {/* Background image */}
+
           <div className="absolute inset-0">
+
             <img
               src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2200&q=90"
               alt="Construction project"
               className="h-full w-full object-cover object-center"
             />
 
-            <div className="absolute inset-0 bg-slate-950/75" />
+            {/* Theme-based overlay */}
 
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/30" />
+            <div className="absolute inset-0 bg-foreground/75" />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/80 to-foreground/30" />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-foreground/20" />
+
           </div>
 
-          {/* Decorative grid */}
+          {/* Homepage-style subtle grid */}
+
           <div
             className="absolute inset-0 opacity-[0.06]"
             style={{
               backgroundImage:
-                "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+                "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
               backgroundSize: "70px 70px",
             }}
           />
 
-          {/* Orange glow */}
-          <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-orange-500/20 blur-[130px]" />
+          {/* SAME PRIMARY COLOR AS HOMEPAGE */}
+
+          <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[130px]" />
 
           <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-center px-6 py-28 lg:px-8">
-            <div className="max-w-4xl">
-              {/* Eyebrow */}
-              <div className="animate-[fadeIn_0.8s_ease-out] mb-7 flex items-center gap-4">
-                <span className="h-px w-14 bg-orange-500" />
 
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-400">
+            <div className="max-w-4xl">
+
+              {/* Eyebrow */}
+
+              <div className="mb-7 flex animate-[fadeIn_0.8s_ease-out] items-center gap-4">
+
+                <span className="h-px w-14 bg-primary" />
+
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
                   Our Services
                 </p>
+
               </div>
 
+              {/* Heading */}
+
               <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-8xl">
+
                 Infrastructure.
+
                 <br />
 
-                <span className="text-orange-500">
+                <span className="text-primary">
                   Built properly.
                 </span>
+
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+              <p className="mt-8 max-w-2xl text-lg leading-8 text-background/75 sm:text-xl">
                 Engineering, construction, infrastructure,
                 materials and equipment solutions designed to
                 keep your project moving from planning to
                 completion.
               </p>
 
+              {/* Hero buttons */}
+
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-sm font-bold text-white shadow-2xl shadow-orange-500/20 transition-all duration-300 hover:-translate-y-1 hover:bg-orange-600"
+                  className="group inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   Request a Consultation
 
@@ -372,70 +445,87 @@ const Services = () => {
 
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-orange-400 hover:bg-white/10 hover:text-orange-300"
+                  className="inline-flex items-center justify-center rounded-xl border border-background/20 bg-background/5 px-8 py-4 text-sm font-semibold text-background backdrop-blur-md transition-all duration-300 hover:border-primary hover:bg-background/10 hover:text-primary"
                 >
                   Explore Services
                 </a>
+
               </div>
 
               {/* Hero statistics */}
-              <div className="mt-16 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
+
+              <div className="mt-16 grid max-w-2xl grid-cols-3 gap-6 border-t border-background/15 pt-8">
+
                 <div>
-                  <p className="text-3xl font-bold text-white">
+                  <p className="text-3xl font-bold text-background">
                     08
                   </p>
-                  <p className="mt-1 text-xs uppercase tracking-wider text-slate-400">
+
+                  <p className="mt-1 text-xs uppercase tracking-wider text-background/50">
                     Core Services
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-3xl font-bold text-white">
+                  <p className="text-3xl font-bold text-background">
                     01
                   </p>
-                  <p className="mt-1 text-xs uppercase tracking-wider text-slate-400">
+
+                  <p className="mt-1 text-xs uppercase tracking-wider text-background/50">
                     Integrated Team
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-3xl font-bold text-orange-400">
+                  <p className="text-3xl font-bold text-primary">
                     ✓
                   </p>
-                  <p className="mt-1 text-xs uppercase tracking-wider text-slate-400">
+
+                  <p className="mt-1 text-xs uppercase tracking-wider text-background/50">
                     Project Focused
                   </p>
                 </div>
+
               </div>
+
             </div>
           </div>
 
-          {/* Bottom wave */}
+          {/* Homepage-style bottom transition */}
+
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-background [clip-path:polygon(0_100%,100%_100%,100%_40%,75%_0,50%_35%,25%_5%,0_45%)]" />
+
         </section>
 
-        {/* =====================================================
-            INTRO - WARM SECTION
-        ===================================================== */}
-        <section className="relative overflow-hidden bg-orange-50 py-20 dark:bg-orange-950/20 sm:py-24">
-          <div className="absolute -right-24 top-0 h-72 w-72 rounded-full bg-orange-300/20 blur-3xl dark:bg-orange-500/10" />
+        {/* ======================================================
+            INTRO
+        ====================================================== */}
+
+        <section className="relative overflow-hidden border-y border-border bg-muted/30 py-20 sm:py-24">
+
+          <div className="absolute -right-24 top-0 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.25em] text-orange-600 dark:text-orange-400">
+
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
                   What We Do
                 </p>
 
-                <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
                   One team.
                   <br />
                   Multiple capabilities.
                 </h2>
+
               </div>
 
               <div>
-                <p className="text-lg leading-8 text-slate-700 dark:text-slate-300">
+
+                <p className="text-lg leading-8 text-muted-foreground">
                   Our services cover essential infrastructure and
                   construction requirements — from roads and water
                   networks to sewer lines, structures, surveys,
@@ -443,35 +533,42 @@ const Services = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  {[
-                    "Infrastructure",
-                    "Engineering",
-                    "Construction",
-                    "Supply",
-                    "Equipment",
-                  ].map((item) => (
+
+                  {capabilityTags.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm dark:border-orange-900 dark:bg-slate-900 dark:text-slate-200"
+                      className="rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
                     >
                       {item}
                     </span>
                   ))}
+
                 </div>
+
               </div>
+
             </div>
           </div>
+
         </section>
 
-        {/* =====================================================
-            SERVICES SECTION
-        ===================================================== */}
+        {/* ======================================================
+            SERVICES
+        ====================================================== */}
+
         <section
           id="services"
-          className="relative overflow-hidden bg-slate-100 py-24 dark:bg-slate-950 sm:py-32"
+          className="relative overflow-hidden py-24 sm:py-32"
         >
+
+          {/* Homepage-style muted background */}
+
+          <div className="absolute inset-0 bg-muted/40" />
+
+          {/* Subtle theme grid */}
+
           <div
-            className="absolute inset-0 opacity-[0.035]"
+            className="absolute inset-0 opacity-[0.025]"
             style={{
               backgroundImage:
                 "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
@@ -479,47 +576,66 @@ const Services = () => {
             }}
           />
 
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <div className="flex items-center justify-center gap-4">
-                <span className="h-px w-10 bg-orange-500" />
+          {/* Primary glow */}
 
-                <p className="text-sm font-bold uppercase tracking-[0.25em] text-orange-500">
+          <div className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div className="mx-auto max-w-3xl text-center">
+
+              <div className="flex items-center justify-center gap-4">
+
+                <span className="h-px w-10 bg-primary" />
+
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
                   Our Expertise
                 </p>
 
-                <span className="h-px w-10 bg-orange-500" />
+                <span className="h-px w-10 bg-primary" />
+
               </div>
 
-              <h2 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+              <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+
                 Services that move{" "}
-                <span className="text-orange-500">
+
+                <span className="text-primary">
                   projects forward.
                 </span>
+
               </h2>
 
-              <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400">
+              <p className="mt-6 text-lg leading-8 text-muted-foreground">
                 Explore our eight core service areas. Select a
                 service to reveal more information.
               </p>
+
             </div>
 
             {/* Service cards */}
+
             <div className="mt-16 grid gap-7 md:grid-cols-2">
+
               {services.map((service, index) => {
+
                 const isOpen = openService === index;
 
                 return (
+
                   <article
                     key={service.number}
-                    className={`group relative overflow-hidden rounded-3xl border bg-white shadow-lg transition-all duration-500 dark:bg-slate-900 ${
+                    className={`group relative overflow-hidden rounded-3xl border bg-background shadow-lg transition-all duration-500 ${
                       isOpen
-                        ? "border-orange-500/60 shadow-2xl shadow-orange-500/10"
-                        : "border-slate-200 hover:-translate-y-2 hover:border-orange-400/50 hover:shadow-2xl dark:border-slate-800"
+                        ? "border-primary/60 shadow-2xl shadow-primary/10"
+                        : "border-border hover:-translate-y-2 hover:border-primary/50 hover:shadow-2xl"
                     }`}
                   >
+
                     {/* Image */}
+
                     <div className="relative h-64 overflow-hidden">
+
                       <img
                         src={service.image}
                         alt={service.title}
@@ -531,51 +647,65 @@ const Services = () => {
                         }`}
                       />
 
-                      {/* Image overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+                      {/* Theme overlay */}
 
-                      {/* Orange tint on hover */}
-                      <div className="absolute inset-0 bg-orange-500/0 transition-colors duration-500 group-hover:bg-orange-500/10" />
+                      <div className="absolute inset-0 bg-foreground/40" />
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent" />
+
+                      {/* Primary hover tint */}
+
+                      <div className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/10" />
 
                       {/* Number */}
-                      <div className="absolute left-6 top-6 flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-slate-950/60 font-mono text-sm font-bold text-white backdrop-blur-md">
+
+                      <div className="absolute left-6 top-6 flex h-12 w-12 items-center justify-center rounded-xl border border-background/20 bg-foreground/60 font-mono text-sm font-bold text-background backdrop-blur-md">
                         {service.number}
                       </div>
 
                       {/* Category */}
+
                       <div className="absolute bottom-5 left-6">
-                        <span className="rounded-full bg-orange-500 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
+
+                        <span className="rounded-full bg-primary px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary-foreground shadow-lg">
                           {service.category}
                         </span>
+
                       </div>
 
                       {/* Icon */}
-                      <div className="absolute bottom-5 right-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-white backdrop-blur-md transition-all duration-300 group-hover:bg-orange-500">
+
+                      <div className="absolute bottom-5 right-6 flex h-12 w-12 items-center justify-center rounded-xl border border-background/10 bg-background/10 text-background backdrop-blur-md transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                         {service.icon}
                       </div>
+
                     </div>
 
-                    {/* Content */}
-                    <div className="p-7 sm:p-8">
-                      <div className="flex items-start justify-between gap-5">
-                        <div>
-                          <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                            {service.title}
-                          </h3>
+                    {/* Card content */}
 
-                          <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-400">
-                            {service.short}
-                          </p>
-                        </div>
+                    <div className="p-7 sm:p-8">
+
+                      <div>
+
+                        <h3 className="text-2xl font-bold tracking-tight">
+                          {service.title}
+                        </h3>
+
+                        <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                          {service.short}
+                        </p>
+
                       </div>
 
-                      {/* Dropdown button */}
+                      {/* Dropdown */}
+
                       <button
                         type="button"
                         onClick={() => toggleService(index)}
                         aria-expanded={isOpen}
-                        className="mt-6 flex w-full items-center justify-between border-t border-slate-200 pt-5 text-left text-sm font-bold text-orange-600 transition-colors hover:text-orange-500 dark:border-slate-800 dark:text-orange-400"
+                        className="mt-6 flex w-full items-center justify-between border-t border-border pt-5 text-left text-sm font-semibold text-primary transition-colors hover:text-foreground"
                       >
+
                         <span>
                           {isOpen
                             ? "Hide details"
@@ -583,10 +713,11 @@ const Services = () => {
                         </span>
 
                         <span
-                          className={`flex h-8 w-8 items-center justify-center rounded-full bg-orange-100 transition-transform duration-300 dark:bg-orange-950/50 ${
+                          className={`flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform duration-300 ${
                             isOpen ? "rotate-180" : ""
                           }`}
                         >
+
                           <svg
                             viewBox="0 0 24 24"
                             fill="none"
@@ -594,16 +725,21 @@ const Services = () => {
                             strokeWidth="2"
                             className="h-4 w-4"
                           >
+
                             <path
                               d="M6 9l6 6 6-6"
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             />
+
                           </svg>
+
                         </span>
+
                       </button>
 
-                      {/* Animated dropdown */}
+                      {/* Animated details */}
+
                       <div
                         className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
                           isOpen
@@ -611,7 +747,9 @@ const Services = () => {
                             : "grid-rows-[0fr]"
                         }`}
                       >
+
                         <div className="overflow-hidden">
+
                           <div
                             className={`pt-5 transition-all duration-500 ${
                               isOpen
@@ -619,51 +757,74 @@ const Services = () => {
                                 : "-translate-y-3 opacity-0"
                             }`}
                           >
-                            <div className="rounded-2xl bg-slate-100 p-5 dark:bg-slate-800">
-                              <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
+
+                            <div className="rounded-2xl border border-border bg-muted/40 p-5">
+
+                              <p className="text-sm leading-7 text-muted-foreground">
                                 {service.details}
                               </p>
 
                               <Link
                                 to="/contact"
-                                className="mt-5 inline-flex items-center text-sm font-bold text-orange-600 transition-all hover:gap-3 dark:text-orange-400"
+                                className="mt-5 inline-flex items-center text-sm font-semibold text-primary transition-all hover:gap-3 hover:text-foreground"
                               >
                                 Discuss this service
+
                                 <span className="ml-2">
                                   →
                                 </span>
+
                               </Link>
+
                             </div>
+
                           </div>
+
                         </div>
+
                       </div>
+
                     </div>
 
-                    {/* Bottom accent */}
+                    {/* Primary accent */}
+
                     <div
-                      className={`h-1 origin-left bg-orange-500 transition-transform duration-500 ${
+                      className={`h-1 origin-left bg-primary transition-transform duration-500 ${
                         isOpen
                           ? "scale-x-100"
                           : "scale-x-0 group-hover:scale-x-100"
                       }`}
                     />
+
                   </article>
+
                 );
               })}
+
             </div>
+
           </div>
+
         </section>
 
-        {/* =====================================================
-            IMAGE FEATURE SECTION
-        ===================================================== */}
-        <section className="relative overflow-hidden bg-slate-950 py-24 text-white sm:py-32">
-          <div className="absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-orange-500/10 blur-[120px]" />
+        {/* ======================================================
+            FEATURE SECTION
+        ====================================================== */}
+
+        <section className="relative overflow-hidden bg-foreground py-24 text-background sm:py-32">
+
+          {/* Primary glow */}
+
+          <div className="absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+
             <div className="grid items-center gap-14 lg:grid-cols-2">
+
               {/* Image */}
+
               <div className="group relative overflow-hidden rounded-[2rem]">
+
                 <img
                   src="https://images.unsplash.com/photo-1516939884455-1442c865e6f5?auto=format&fit=crop&w=1400&q=90"
                   alt="Civil engineering construction site"
@@ -671,22 +832,29 @@ const Services = () => {
                   className="h-[500px] w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent" />
 
                 <div className="absolute bottom-7 left-7 right-7">
-                  <div className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-slate-950/60 px-4 py-3 backdrop-blur-md">
-                    <span className="h-2 w-2 rounded-full bg-orange-500" />
+
+                  <div className="inline-flex items-center gap-3 rounded-xl border border-background/10 bg-foreground/60 px-4 py-3 backdrop-blur-md">
+
+                    <span className="h-2 w-2 rounded-full bg-primary" />
 
                     <span className="text-sm font-semibold">
                       Infrastructure & Civil Works
                     </span>
+
                   </div>
+
                 </div>
+
               </div>
 
               {/* Text */}
+
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.25em] text-orange-400">
+
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
                   Built For The Real World
                 </p>
 
@@ -694,7 +862,7 @@ const Services = () => {
                   Technical capability meets practical execution.
                 </h2>
 
-                <p className="mt-7 text-lg leading-8 text-slate-400">
+                <p className="mt-7 text-lg leading-8 text-background/60">
                   Successful infrastructure projects require
                   more than individual services. They require
                   coordination between engineering, materials,
@@ -703,78 +871,86 @@ const Services = () => {
                 </p>
 
                 <div className="mt-10 space-y-5">
-                  {[
-                    "Engineering-led project execution",
-                    "Construction materials and equipment support",
-                    "Infrastructure and civil works capability",
-                    "Professional project coordination",
-                  ].map((item, index) => (
+
+                  {executionPoints.map((item, index) => (
+
                     <div
                       key={item}
                       className="flex items-center gap-4"
                     >
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-500/15 text-sm font-bold text-orange-400">
+
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/15 text-sm font-semibold text-primary">
                         0{index + 1}
                       </div>
 
-                      <span className="text-sm font-medium text-slate-200">
+                      <span className="text-sm font-medium text-background/85">
                         {item}
                       </span>
+
                     </div>
+
                   ))}
+
                 </div>
 
                 <Link
                   to="/contact"
-                  className="mt-10 inline-flex items-center rounded-xl bg-orange-500 px-7 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-orange-600"
+                  className="mt-10 inline-flex items-center rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   Talk About Your Project
-                  <span className="ml-2">→</span>
+
+                  <span className="ml-2">
+                    →
+                  </span>
+
                 </Link>
+
               </div>
+
             </div>
+
           </div>
+
         </section>
 
-        {/* =====================================================
-            SERVICE PROCESS STRIP
-        ===================================================== */}
-        <section className="bg-orange-500 py-20 text-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* ======================================================
+            PROJECT SUPPORT
+        ====================================================== */}
+
+        <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground">
+
+          {/* Subtle primary-foreground glow */}
+
+          <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-primary-foreground/10 blur-3xl" />
+
+          <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-foreground/10 blur-3xl" />
+
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+
             <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.25em] text-orange-100">
+
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] opacity-80">
                   How We Support Projects
                 </p>
 
                 <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
                   From planning to execution.
                 </h2>
+
               </div>
 
               <div className="grid gap-4 sm:grid-cols-3">
-                {[
-                  {
-                    number: "01",
-                    title: "Assess",
-                    text: "Understand the site, requirements and technical needs.",
-                  },
-                  {
-                    number: "02",
-                    title: "Coordinate",
-                    text: "Bring together engineering, materials and resources.",
-                  },
-                  {
-                    number: "03",
-                    title: "Deliver",
-                    text: "Execute the work with focus on quality and reliability.",
-                  },
-                ].map((item) => (
+
+                {supportSteps.map((item) => (
+
                   <div
                     key={item.number}
-                    className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/15"
+                    className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/15"
                   >
-                    <p className="font-mono text-sm font-bold text-orange-100">
+
+                    <p className="font-mono text-sm font-semibold opacity-70">
                       {item.number}
                     </p>
 
@@ -782,35 +958,51 @@ const Services = () => {
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-sm leading-6 text-orange-50/80">
+                    <p className="mt-2 text-sm leading-6 opacity-75">
                       {item.text}
                     </p>
+
                   </div>
+
                 ))}
+
               </div>
+
             </div>
+
           </div>
+
         </section>
 
-        {/* =====================================================
+        {/* ======================================================
             FINAL CTA
-        ===================================================== */}
-        <section className="relative overflow-hidden bg-slate-900 py-24 text-white sm:py-32 dark:bg-black">
-          <div className="absolute inset-0 opacity-[0.04]">
-            <div
-              className="h-full w-full"
-              style={{
-                backgroundImage:
-                  "linear-gradient(45deg, white 1px, transparent 1px)",
-                backgroundSize: "32px 32px",
-              }}
-            />
-          </div>
+        ====================================================== */}
 
-          <div className="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-orange-500/10 blur-[120px]" />
+        <section className="relative overflow-hidden py-24 sm:py-32">
 
-          <div className="relative mx-auto max-w-4xl px-6 text-center lg:px-8">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-500 shadow-2xl shadow-orange-500/20">
+          {/* Same subtle homepage CTA treatment */}
+
+          <div className="absolute inset-0 -z-10 bg-primary/[0.04]" />
+
+          <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
+
+          {/* Subtle grid */}
+
+          <div
+            className="absolute inset-0 -z-10 opacity-[0.025]"
+            style={{
+              backgroundImage:
+                "linear-gradient(45deg, currentColor 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+            }}
+          />
+
+          <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+
+            {/* Icon */}
+
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
+
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -818,20 +1010,29 @@ const Services = () => {
                 strokeWidth="1.8"
                 className="h-7 w-7"
               >
+
                 <path
                   d="M3 21h18"
                   strokeLinecap="round"
                 />
+
                 <path d="M5 21V7l7-4 7 4v14" />
+
                 <path d="M9 21v-5h6v5" />
+
                 <path d="M9 9h1" />
+
                 <path d="M14 9h1" />
+
                 <path d="M9 12h1" />
+
                 <path d="M14 12h1" />
+
               </svg>
+
             </div>
 
-            <p className="mt-7 text-sm font-bold uppercase tracking-[0.25em] text-orange-400">
+            <p className="mt-7 text-sm font-semibold uppercase tracking-[0.25em] text-primary">
               Start Your Project
             </p>
 
@@ -839,7 +1040,7 @@ const Services = () => {
               Have an infrastructure project in mind?
             </h2>
 
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
               Tell us what you need. Whether it involves roads,
               water, sewer systems, structures, engineering,
               project management, materials or equipment, we can
@@ -847,38 +1048,53 @@ const Services = () => {
             </p>
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-orange-500/20 transition-all duration-300 hover:-translate-y-1 hover:bg-orange-600"
+                className="inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 Request a Consultation
+
                 <span className="ml-2 text-lg">
                   →
                 </span>
+
               </Link>
 
               <a
                 href="tel:+254714544535"
-                className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-400 hover:text-orange-400"
+                className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-8 py-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:text-primary hover:shadow-lg"
               >
                 Call +254 714 544 535
               </a>
+
             </div>
+
           </div>
+
         </section>
+
       </main>
+
+      {/* ========================================================
+          FOOTER
+      ======================================================== */}
 
       <Footer />
 
       <BackToTop />
 
-      {/* Global animation styles */}
+      {/* ========================================================
+          GLOBAL ANIMATIONS
+      ======================================================== */}
+
       <style>{`
         @keyframes fadeIn {
           from {
             opacity: 0;
             transform: translateY(15px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0);
@@ -900,8 +1116,10 @@ const Services = () => {
           }
         }
       `}</style>
+
     </div>
   );
 };
 
 export default Services;
+```
