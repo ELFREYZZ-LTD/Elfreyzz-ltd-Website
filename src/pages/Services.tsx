@@ -6,22 +6,16 @@ import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
 
 const Services = () => {
-  const [isDark, setIsDark] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
-
-  /* ============================================================
-     THEME
-  ============================================================ */
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("elfreyzz-theme");
-
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
     const initialTheme =
-      savedTheme || (prefersDark ? "dark" : "light");
+      savedTheme ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
 
     if (initialTheme === "dark") {
       document.documentElement.classList.add("dark");
@@ -32,1091 +26,757 @@ const Services = () => {
     }
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = isDark ? "light" : "dark";
-
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    setIsDark(!isDark);
-    localStorage.setItem("elfreyzz-theme", newTheme);
-  };
-
   const toggleService = (index: number) => {
     setOpenService(openService === index ? null : index);
   };
-
-  /* ============================================================
-     SERVICES
-  ============================================================ */
 
   const services = [
     {
       number: "01",
       title: "Access Roads",
+      category: "Roads & Civil Works",
       short:
-        "Design and construction of paved and unpaved access roads, earthworks, drainage and surfacing.",
+        "Construction and improvement of durable access roads for residential, commercial, institutional and industrial developments.",
       details:
-        "We provide access road solutions covering earthworks, grading, drainage, sub-base preparation, surfacing and associated road infrastructure. Our approach focuses on creating reliable access routes that can withstand practical site and traffic requirements.",
+        "We provide complete access road construction solutions, including site preparation, earthworks, grading, drainage, sub-base preparation, surfacing and finishing. Our approach focuses on durability, proper water management and dependable access throughout the life of the development.",
       image:
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85",
-      category: "Infrastructure",
+        "https://images.unsplash.com/photo-1590644365607-1c5a0e3c8e4a?auto=format&fit=crop&w=1200&q=80",
       icon: (
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.7}
         >
-          <path d="M8 21h8" />
-          <path d="M6 17l3-14h6l3 14" />
-          <path d="M9 13h6" />
-          <path d="M8 9h8" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 20l-5-2V6l5 2m0 12l6-2m-6 2V8m6 10l6 2V8l-6-2m0 12V6m0 0L9 8"
+          />
         </svg>
       ),
     },
-
     {
       number: "02",
       title: "Piped Water",
-      short:
-        "Potable water network design, mainlines, distribution networks and connection works.",
-      details:
-        "Our piped water services cover water distribution infrastructure, mainlines, network extensions and connection works. We support projects requiring dependable water infrastructure from network planning through installation.",
-      image:
-        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=85",
       category: "Water Infrastructure",
+      short:
+        "Reliable piped water infrastructure designed to support residential, commercial and institutional developments.",
+      details:
+        "Our piped water services cover the planning, installation and extension of water distribution systems. We work with appropriate pipework, fittings, valves and related infrastructure to create dependable water networks that meet project requirements.",
+      image:
+        "https://images.unsplash.com/photo-1581093458791-9d42e3c3e6c4?auto=format&fit=crop&w=1200&q=80",
       icon: (
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.7}
         >
-          <path d="M3 8c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2" />
-          <path d="M3 13c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2" />
-          <path d="M3 18c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 3.5S6.5 10.1 6.5 14.5a5.5 5.5 0 0011 0C17.5 10.1 12 3.5 12 3.5z"
+          />
         </svg>
       ),
     },
-
     {
       number: "03",
       title: "Sewer Lines",
+      category: "Drainage & Sewerage",
       short:
-        "Gravity sewers, manholes, pumping stations and full sanitation solutions.",
+        "Professional sewer and drainage infrastructure designed for efficient wastewater collection and management.",
       details:
-        "We undertake sewer infrastructure works including gravity sewer lines, manholes, associated drainage infrastructure and pumping station requirements. Our focus is on functional sanitation systems designed around the needs of each project.",
+        "We undertake sewer line construction and associated drainage works, including excavation, pipe installation, connections, manholes and reinstatement. Our work emphasizes correct gradients, efficient flow and long-term system reliability.",
       image:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=85",
-      category: "Sanitation",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
       icon: (
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.7}
         >
-          <path d="M4 7h10" />
-          <path d="M4 17h10" />
-          <path d="M14 7c0 0 0 10 4 10" />
-          <path d="M18 5c2 0 3 2 3 4s-1 4-3 4" />
-          <path d="M18 5v8" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 7h16M4 12h16M4 17h16"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8 4v16M16 4v16"
+          />
         </svg>
       ),
     },
-
     {
       number: "04",
       title: "Structures",
+      category: "Building & Construction",
       short:
-        "Foundations, retaining walls, reinforced concrete structures and structural repairs.",
+        "Construction of quality structures with a strong focus on workmanship, durability, safety and functionality.",
       details:
-        "Our structural works include foundations, reinforced concrete construction, retaining walls and structural repair works. We combine careful preparation and construction practices to create dependable structural elements.",
+        "We deliver building and structural construction works for a range of developments. From foundations and structural works through to finishing, our teams coordinate construction activities with close attention to quality, specifications, safety and project timelines.",
       image:
-        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85",
-      category: "Structural Works",
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
       icon: (
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.7}
         >
-          <rect x="4" y="3" width="16" height="18" rx="1" />
-          <path d="M8 7h2" />
-          <path d="M14 7h2" />
-          <path d="M8 11h2" />
-          <path d="M14 11h2" />
-          <path d="M8 15h2" />
-          <path d="M14 15h2" />
-          <path d="M10 21v-3h4v3" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"
+          />
         </svg>
       ),
     },
-
     {
       number: "05",
       title: "Engineering Survey",
+      category: "Survey & Engineering",
       short:
-        "Topographic surveys, setting out, and geotechnical coordination for accurate project delivery.",
+        "Engineering survey solutions supporting accurate planning, setting out and execution of construction projects.",
       details:
-        "Accurate site information is essential before construction begins. Our engineering survey services support topographic surveying, setting out and coordination with geotechnical requirements to help projects begin from reliable technical information.",
+        "Our engineering survey services support construction teams with accurate site information and setting-out requirements. We provide survey support for roads, structures, infrastructure and other civil works to help projects progress with greater precision.",
       image:
-        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=85",
-      category: "Engineering",
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
       icon: (
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.7}
         >
-          <path d="M4 19L19 4" />
-          <path d="M6 21l-3-3" />
-          <path d="M8 17l-2-2" />
-          <path d="M11 14l-2-2" />
-          <path d="M14 11l-2-2" />
-          <path d="M17 8l-2-2" />
-          <path d="M20 5l-2-2" />
+          <circle cx="12" cy="12" r="7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 5v14M5 12h14"
+          />
         </svg>
       ),
     },
-
     {
       number: "06",
       title: "Project Management",
+      category: "Professional Services",
       short:
-        "End-to-end project oversight, quality control, and stakeholder communication.",
+        "Structured project management focused on coordination, quality control, cost awareness and timely delivery.",
       details:
-        "We provide professional coordination throughout the project lifecycle, helping manage schedules, quality requirements, resources, site activities and communication between project stakeholders.",
+        "We coordinate construction activities from planning through implementation and completion. Our project management approach emphasizes effective communication, resource coordination, quality assurance, progress monitoring and adherence to project requirements.",
       image:
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=85",
-      category: "Management",
+        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80",
       icon: (
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.7}
         >
-          <path d="M6 9h12" />
-          <path d="M8 9V6h8v3" />
-          <path d="M4 9h16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Z" />
-          <path d="M7 14v5h10v-5" />
-          <path d="M10 17h4" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 19V5m0 14h16M8 15V9m4 6V6m4 9v-4"
+          />
         </svg>
       ),
     },
-
     {
       number: "07",
       title: "Materials Supply",
+      category: "Construction Supplies",
       short:
-        "Supply of high-quality construction materials including aggregates, sand, and pre-cast concrete items.",
+        "Supply of general construction products including hardware, construction materials and road survey equipment.",
       details:
-        "We support construction projects with the supply of essential construction materials, including aggregates, sand and pre-cast concrete products. Our supply service is designed to help projects maintain continuity and reliable material availability.",
+        "Our procurement and supply capabilities allow us to source and deliver a broad range of construction-related products. These include hardware materials, construction materials and road survey equipment required by contractors, developers and other project stakeholders.",
       image:
-        "https://images.unsplash.com/photo-1531835551805-16d864c8d311?auto=format&fit=crop&w=1200&q=85",
-      category: "Supply",
+        "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=1200&q=80",
       icon: (
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.7}
         >
-          <path d="M3 17h12" />
-          <path d="M5 17V9h7v8" />
-          <path d="M12 12h5l3 3v2h-8" />
-          <circle cx="7" cy="19" r="2" />
-          <circle cx="17" cy="19" r="2" />
-          <path d="M5 9l2-3h4l2 3" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 7h18M5 7v12h14V7M8 7V4h8v3M8 11h8M8 15h5"
+          />
         </svg>
       ),
     },
-
     {
       number: "08",
       title: "Equipment Hire",
+      category: "Plant & Equipment",
       short:
-        "Flexible hire options for a wide range of heavy construction machinery and equipment.",
+        "Access to construction equipment and machinery to support efficient execution of civil and building works.",
       details:
-        "Our equipment hire service provides flexible access to construction machinery and heavy equipment for projects that require additional site capacity without the need for direct equipment ownership.",
+        "We provide equipment hire solutions for construction activities requiring dependable plant and machinery. Our services help contractors and project teams access the equipment they need while maintaining flexibility throughout project execution.",
       image:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=85",
-      category: "Equipment",
+        "https://images.unsplash.com/photo-1535732820275-9ffd998cac22?auto=format&fit=crop&w=1200&q=80",
       icon: (
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.7}
         >
-          <path d="M3 17h4" />
-          <path d="M17 17h4" />
-          <path d="M6 17V9h7l4 4v4" />
-          <path d="M13 9V5h3l2 4" />
-          <circle cx="7" cy="18" r="2.5" />
-          <circle cx="17" cy="18" r="2.5" />
-          <path d="M9 11h4" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 17h16M6 17V9h8l3 3v5M9 17v3m6-3v3M8 9V6h5"
+          />
+          <circle cx="8" cy="20" r="1.5" />
+          <circle cx="16" cy="20" r="1.5" />
         </svg>
       ),
-    },
-  ];
-
-  const capabilityTags = [
-    "Infrastructure",
-    "Engineering",
-    "Construction",
-    "Supply",
-    "Equipment",
-  ];
-
-  const executionPoints = [
-    "Engineering-led project execution",
-    "Construction materials and equipment support",
-    "Infrastructure and civil works capability",
-    "Professional project coordination",
-  ];
-
-  const supportSteps = [
-    {
-      number: "01",
-      title: "Assess",
-      text: "Understand the site, requirements and technical needs.",
-    },
-    {
-      number: "02",
-      title: "Coordinate",
-      text: "Bring together engineering, materials and resources.",
-    },
-    {
-      number: "03",
-      title: "Deliver",
-      text: "Execute the work with focus on quality and reliability.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen overflow-hidden bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+      <Header />
 
-      {/* ========================================================
-          ACCESSIBILITY
-      ======================================================== */}
+      {/* HERO */}
+      <section className="relative isolate overflow-hidden bg-gray-100 dark:bg-gray-900">
+        <div className="absolute inset-0">
+          <div className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-[#D98B5F]/10 blur-3xl dark:bg-[#D98B5F]/10" />
+          <div className="absolute -right-24 top-10 h-96 w-96 rounded-full bg-gray-300/50 blur-3xl dark:bg-gray-700/20" />
+          <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-[#F3D9CC]/50 blur-3xl dark:bg-[#D98B5F]/5" />
+        </div>
 
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
-      >
-        Skip to content
-      </a>
-
-      {/* ========================================================
-          HEADER
-      ======================================================== */}
-
-      <Header
-        onThemeToggle={toggleTheme}
-        isDark={isDark}
-      />
-
-      <main id="main" tabIndex={-1}>
-
-        {/* ======================================================
-            HERO
-        ====================================================== */}
-
-        <section className="relative min-h-[680px] overflow-hidden bg-foreground text-background">
-
-          {/* Background image */}
-
-          <div className="absolute inset-0">
-
-            <img
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2200&q=90"
-              alt="Construction project"
-              className="h-full w-full object-cover object-center"
-            />
-
-            {/* Theme-based overlay */}
-
-            <div className="absolute inset-0 bg-foreground/75" />
-
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/80 to-foreground/30" />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-foreground/20" />
-
-          </div>
-
-          {/* Homepage-style subtle grid */}
-
-          <div
-            className="absolute inset-0 opacity-[0.06]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
-              backgroundSize: "70px 70px",
-            }}
-          />
-
-          {/* SAME PRIMARY COLOR AS HOMEPAGE */}
-
-          <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[130px]" />
-
-          <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-center px-6 py-28 lg:px-8">
-
-            <div className="max-w-4xl">
-
-              {/* Eyebrow */}
-
-              <div className="mb-7 flex animate-[fadeIn_0.8s_ease-out] items-center gap-4">
-
-                <span className="h-px w-14 bg-primary" />
-
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-                  Our Services
-                </p>
-
+        <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-20 lg:px-8 lg:pb-32 lg:pt-28">
+          <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="max-w-3xl">
+              <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-gray-300 bg-white/70 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/70 dark:text-gray-300">
+                <span className="h-2 w-2 rounded-full bg-[#D98B5F]" />
+                Professional Construction Solutions
               </div>
 
-              {/* Heading */}
-
-              <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-8xl">
-
-                Infrastructure.
-
-                <br />
-
-                <span className="text-primary">
-                  Built properly.
+              <h1 className="text-5xl font-bold tracking-tight text-gray-950 sm:text-6xl lg:text-7xl dark:text-white">
+                Building solutions
+                <span className="block bg-gradient-to-r from-[#C97F55] via-[#DFA080] to-[#F1D5C4] bg-clip-text text-transparent">
+                  designed to last.
                 </span>
-
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-8 text-background/75 sm:text-xl">
-                Engineering, construction, infrastructure,
-                materials and equipment solutions designed to
-                keep your project moving from planning to
-                completion.
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-600 sm:text-xl dark:text-gray-400">
+                From roads and civil infrastructure to structures, water
+                systems, engineering surveys and construction supplies, we
+                deliver dependable solutions built around quality,
+                functionality and long-term value.
               </p>
 
-              {/* Hero buttons */}
-
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-
+              <div className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#C97F55] via-[#D98B5F] to-[#E8B49A] px-6 py-3.5 font-semibold text-white shadow-lg shadow-[#D98B5F]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#D98B5F]/25"
                 >
                   Request a Consultation
-
-                  <span className="ml-3 text-lg transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
+                  <svg
+                    className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 12h14m-6-6l6 6-6 6"
+                    />
+                  </svg>
                 </Link>
 
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center rounded-xl border border-background/20 bg-background/5 px-8 py-4 text-sm font-semibold text-background backdrop-blur-md transition-all duration-300 hover:border-primary hover:bg-background/10 hover:text-primary"
+                  className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white/80 px-6 py-3.5 font-semibold text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DFA080] hover:bg-[#FAF0EA] hover:text-[#B96F49] dark:border-gray-700 dark:bg-gray-900/70 dark:text-gray-200 dark:hover:border-[#D98B5F]/50 dark:hover:bg-gray-800"
                 >
-                  Explore Services
+                  Explore Our Services
                 </a>
-
               </div>
 
-              {/* Hero statistics */}
-
-              <div className="mt-16 grid max-w-2xl grid-cols-3 gap-6 border-t border-background/15 pt-8">
-
+              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-6 border-t border-gray-300 pt-8 dark:border-gray-700 sm:grid-cols-3">
                 <div>
-                  <p className="text-3xl font-bold text-background">
-                    08
+                  <p className="text-2xl font-bold text-gray-950 dark:text-white">
+                    8+
                   </p>
-
-                  <p className="mt-1 text-xs uppercase tracking-wider text-background/50">
+                  <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                     Core Services
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-3xl font-bold text-background">
-                    01
+                  <p className="text-2xl font-bold text-gray-950 dark:text-white">
+                    Quality
                   </p>
-
-                  <p className="mt-1 text-xs uppercase tracking-wider text-background/50">
-                    Integrated Team
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-3xl font-bold text-primary">
-                    ✓
-                  </p>
-
-                  <p className="mt-1 text-xs uppercase tracking-wider text-background/50">
-                    Project Focused
+                  <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    Driven Delivery
                   </p>
                 </div>
 
+                <div className="hidden sm:block">
+                  <p className="text-2xl font-bold text-gray-950 dark:text-white">
+                    Kenya
+                  </p>
+                  <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    & Beyond
+                  </p>
+                </div>
               </div>
+            </div>
 
+            <div className="relative">
+              <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#D98B5F]/15 via-transparent to-gray-300/30 blur-2xl dark:from-[#D98B5F]/10 dark:to-gray-700/10" />
+
+              <div className="relative overflow-hidden rounded-[2rem] border border-gray-300 bg-white p-3 shadow-2xl shadow-gray-300/30 dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20">
+                <div className="relative overflow-hidden rounded-[1.5rem]">
+                  <img
+                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85"
+                    alt="Construction project"
+                    className="h-[500px] w-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/10 to-transparent" />
+
+                  <div className="absolute bottom-0 left-0 right-0 p-7">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#F1D5C4]">
+                      ELFREYZZ LTD.
+                    </p>
+                    <h2 className="mt-2 text-2xl font-bold text-white">
+                      Quality construction. Practical solutions.
+                    </h2>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Homepage-style bottom transition */}
-
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-background [clip-path:polygon(0_100%,100%_100%,100%_40%,75%_0,50%_35%,25%_5%,0_45%)]" />
-
-        </section>
-
-        {/* ======================================================
-            INTRO
-        ====================================================== */}
-
-        <section className="relative overflow-hidden border-y border-border bg-muted/30 py-20 sm:py-24">
-
-          <div className="absolute -right-24 top-0 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
-
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
-            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-
-              <div>
-
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-                  What We Do
-                </p>
-
-                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                  One team.
-                  <br />
-                  Multiple capabilities.
-                </h2>
-
-              </div>
-
-              <div>
-
-                <p className="text-lg leading-8 text-muted-foreground">
-                  Our services cover essential infrastructure and
-                  construction requirements — from roads and water
-                  networks to sewer lines, structures, surveys,
-                  project management, materials and equipment.
-                </p>
-
-                <div className="mt-8 flex flex-wrap gap-3">
-
-                  {capabilityTags.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
-                    >
-                      {item}
-                    </span>
-                  ))}
-
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
-        </section>
-
-        {/* ======================================================
-            SERVICES
-        ====================================================== */}
-
-        <section
-          id="services"
-          className="relative overflow-hidden py-24 sm:py-32"
-        >
-
-          {/* Homepage-style muted background */}
-
-          <div className="absolute inset-0 bg-muted/40" />
-
-          {/* Subtle theme grid */}
-
-          <div
-            className="absolute inset-0 opacity-[0.025]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
-              backgroundSize: "80px 80px",
-            }}
-          />
-
-          {/* Primary glow */}
-
-          <div className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
-
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
-            <div className="mx-auto max-w-3xl text-center">
-
-              <div className="flex items-center justify-center gap-4">
-
-                <span className="h-px w-10 bg-primary" />
-
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-                  Our Expertise
-                </p>
-
-                <span className="h-px w-10 bg-primary" />
-
-              </div>
-
-              <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-
-                Services that move{" "}
-
-                <span className="text-primary">
-                  projects forward.
-                </span>
-
-              </h2>
-
-              <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                Explore our eight core service areas. Select a
-                service to reveal more information.
+      {/* INTRODUCTION */}
+      <section className="bg-white py-20 dark:bg-gray-950 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#C97F55]">
+                What We Do
               </p>
 
+              <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-5xl">
+                Construction expertise with a practical approach.
+              </h2>
             </div>
 
-            {/* Service cards */}
+            <div className="max-w-3xl">
+              <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
+                ELFREYZZ Ltd. provides professional construction services
+                across building, roads, civil works, infrastructure,
+                procurement and related construction solutions. We combine
+                technical knowledge, practical experience and dependable
+                coordination to help clients move projects from concept to
+                completion.
+              </p>
 
-            <div className="mt-16 grid gap-7 md:grid-cols-2">
+              <p className="mt-5 text-lg leading-8 text-gray-600 dark:text-gray-400">
+                Our services are structured to support both individual project
+                requirements and broader construction programmes, giving
+                clients access to construction expertise, materials,
+                equipment and project support through one dependable partner.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              {services.map((service, index) => {
+      {/* SERVICES */}
+      <section
+        id="services"
+        className="bg-gray-100 py-20 dark:bg-gray-900 lg:py-28"
+      >
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#C97F55]">
+              Our Services
+            </p>
 
-                const isOpen = openService === index;
+            <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-5xl">
+              Complete solutions for construction and infrastructure.
+            </h2>
 
-                return (
+            <p className="mt-5 text-lg leading-8 text-gray-600 dark:text-gray-400">
+              Explore our range of construction, civil works, engineering,
+              supply and equipment services.
+            </p>
+          </div>
 
-                  <article
-                    key={service.number}
-                    className={`group relative overflow-hidden rounded-3xl border bg-background shadow-lg transition-all duration-500 ${
-                      isOpen
-                        ? "border-primary/60 shadow-2xl shadow-primary/10"
-                        : "border-border hover:-translate-y-2 hover:border-primary/50 hover:shadow-2xl"
-                    }`}
-                  >
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, index) => {
+              const isOpen = openService === index;
 
-                    {/* Image */}
+              return (
+                <div
+                  key={service.number}
+                  className={`group relative overflow-hidden rounded-2xl border bg-white transition-all duration-500 dark:bg-gray-800 ${
+                    isOpen
+                      ? "border-[#DFA080] shadow-xl shadow-[#D98B5F]/10 dark:border-[#D98B5F]/50"
+                      : "border-gray-200 shadow-sm hover:-translate-y-2 hover:border-[#E8B49A] hover:shadow-xl hover:shadow-gray-300/30 dark:border-gray-700 dark:hover:border-[#D98B5F]/40"
+                  }`}
+                >
+                  <div className="relative h-52 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
 
-                    <div className="relative h-64 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/10 to-transparent" />
 
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        loading="lazy"
-                        className={`h-full w-full object-cover transition-transform duration-700 ${
-                          isOpen
-                            ? "scale-110"
-                            : "group-hover:scale-105"
-                        }`}
-                      />
-
-                      {/* Theme overlay */}
-
-                      <div className="absolute inset-0 bg-foreground/40" />
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent" />
-
-                      {/* Primary hover tint */}
-
-                      <div className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/10" />
-
-                      {/* Number */}
-
-                      <div className="absolute left-6 top-6 flex h-12 w-12 items-center justify-center rounded-xl border border-background/20 bg-foreground/60 font-mono text-sm font-bold text-background backdrop-blur-md">
-                        {service.number}
-                      </div>
-
-                      {/* Category */}
-
-                      <div className="absolute bottom-5 left-6">
-
-                        <span className="rounded-full bg-primary px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary-foreground shadow-lg">
-                          {service.category}
-                        </span>
-
-                      </div>
-
-                      {/* Icon */}
-
-                      <div className="absolute bottom-5 right-6 flex h-12 w-12 items-center justify-center rounded-xl border border-background/10 bg-background/10 text-background backdrop-blur-md transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-                        {service.icon}
-                      </div>
-
+                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white backdrop-blur-md">
+                      {service.icon}
                     </div>
 
-                    {/* Card content */}
+                    <span className="absolute bottom-5 right-5 rounded-full bg-gray-950/60 px-3 py-1 text-xs font-semibold text-gray-100 backdrop-blur-md">
+                      {service.number}
+                    </span>
+                  </div>
 
-                    <div className="p-7 sm:p-8">
+                  <div className="p-6">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#C97F55]">
+                      {service.category}
+                    </p>
 
-                      <div>
+                    <h3 className="mt-2 text-xl font-bold text-gray-950 dark:text-white">
+                      {service.title}
+                    </h3>
 
-                        <h3 className="text-2xl font-bold tracking-tight">
-                          {service.title}
-                        </h3>
+                    <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-400">
+                      {service.short}
+                    </p>
 
-                        <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                          {service.short}
-                        </p>
-
+                    <div
+                      className={`grid transition-all duration-500 ${
+                        isOpen
+                          ? "mt-4 grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="border-t border-gray-200 pt-4 dark:border-gray-700">
+                          <p className="text-sm leading-6 text-gray-600 dark:text-gray-400">
+                            {service.details}
+                          </p>
+                        </div>
                       </div>
+                    </div>
 
-                      {/* Dropdown */}
-
+                    <div className="mt-5 flex items-center justify-between gap-3">
                       <button
                         type="button"
                         onClick={() => toggleService(index)}
-                        aria-expanded={isOpen}
-                        className="mt-6 flex w-full items-center justify-between border-t border-border pt-5 text-left text-sm font-semibold text-primary transition-colors hover:text-foreground"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-gray-800 transition-colors hover:text-[#B96F49] dark:text-gray-200 dark:hover:text-[#E8B49A]"
                       >
+                        {isOpen ? "Show Less" : "Learn More"}
 
-                        <span>
-                          {isOpen
-                            ? "Hide details"
-                            : "View service details"}
-                        </span>
-
-                        <span
-                          className={`flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform duration-300 ${
+                        <svg
+                          className={`h-4 w-4 transition-transform duration-300 ${
                             isOpen ? "rotate-180" : ""
                           }`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
                         >
-
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            className="h-4 w-4"
-                          >
-
-                            <path
-                              d="M6 9l6 6 6-6"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-
-                          </svg>
-
-                        </span>
-
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
                       </button>
 
-                      {/* Animated details */}
-
-                      <div
-                        className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
-                          isOpen
-                            ? "grid-rows-[1fr]"
-                            : "grid-rows-[0fr]"
-                        }`}
+                      <Link
+                        to="/contact"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#FAF0EA] text-[#B96F49] transition-all duration-300 hover:bg-gradient-to-br hover:from-[#C97F55] hover:to-[#E8B49A] hover:text-white dark:bg-[#D98B5F]/10 dark:text-[#E8B49A] dark:hover:bg-[#D98B5F] dark:hover:text-white"
+                        aria-label={`Contact us about ${service.title}`}
                       >
-
-                        <div className="overflow-hidden">
-
-                          <div
-                            className={`pt-5 transition-all duration-500 ${
-                              isOpen
-                                ? "translate-y-0 opacity-100"
-                                : "-translate-y-3 opacity-0"
-                            }`}
-                          >
-
-                            <div className="rounded-2xl border border-border bg-muted/40 p-5">
-
-                              <p className="text-sm leading-7 text-muted-foreground">
-                                {service.details}
-                              </p>
-
-                              <Link
-                                to="/contact"
-                                className="mt-5 inline-flex items-center text-sm font-semibold text-primary transition-all hover:gap-3 hover:text-foreground"
-                              >
-                                Discuss this service
-
-                                <span className="ml-2">
-                                  →
-                                </span>
-
-                              </Link>
-
-                            </div>
-
-                          </div>
-
-                        </div>
-
-                      </div>
-
+                        <svg
+                          className="h-4 w-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 12h14m-6-6l6 6-6 6"
+                          />
+                        </svg>
+                      </Link>
                     </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-                    {/* Primary accent */}
+      {/* FEATURE */}
+      <section className="bg-white py-20 dark:bg-gray-950 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-100 shadow-xl dark:border-gray-700 dark:bg-gray-900 lg:grid-cols-2">
+            <div className="relative min-h-[420px] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1590479773265-7464e5d48118?auto=format&fit=crop&w=1400&q=85"
+                alt="Civil engineering and construction work"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
 
-                    <div
-                      className={`h-1 origin-left bg-primary transition-transform duration-500 ${
-                        isOpen
-                          ? "scale-x-100"
-                          : "scale-x-0 group-hover:scale-x-100"
-                      }`}
-                    />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-950/70 via-gray-950/20 to-transparent" />
 
-                  </article>
-
-                );
-              })}
-
+              <div className="absolute bottom-8 left-8">
+                <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md">
+                  Built for Performance
+                </span>
+              </div>
             </div>
 
-          </div>
+            <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#C97F55]">
+                One Construction Partner
+              </p>
 
-        </section>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-4xl">
+                From infrastructure to materials, we support the entire
+                construction journey.
+              </h2>
 
-        {/* ======================================================
-            FEATURE SECTION
-        ====================================================== */}
+              <p className="mt-5 text-lg leading-8 text-gray-600 dark:text-gray-400">
+                Our combination of construction expertise, engineering support,
+                procurement capability and equipment solutions enables us to
+                provide practical services around the needs of each project.
+              </p>
 
-        <section className="relative overflow-hidden bg-foreground py-24 text-background sm:py-32">
-
-          {/* Primary glow */}
-
-          <div className="absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
-
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
-            <div className="grid items-center gap-14 lg:grid-cols-2">
-
-              {/* Image */}
-
-              <div className="group relative overflow-hidden rounded-[2rem]">
-
-                <img
-                  src="https://images.unsplash.com/photo-1516939884455-1442c865e6f5?auto=format&fit=crop&w=1400&q=90"
-                  alt="Civil engineering construction site"
-                  loading="lazy"
-                  className="h-[500px] w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent" />
-
-                <div className="absolute bottom-7 left-7 right-7">
-
-                  <div className="inline-flex items-center gap-3 rounded-xl border border-background/10 bg-foreground/60 px-4 py-3 backdrop-blur-md">
-
-                    <span className="h-2 w-2 rounded-full bg-primary" />
-
-                    <span className="text-sm font-semibold">
-                      Infrastructure & Civil Works
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {[
+                  "Quality-focused execution",
+                  "Practical engineering solutions",
+                  "Reliable procurement",
+                  "Project-focused coordination",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FAF0EA] text-[#B96F49] dark:bg-[#D98B5F]/10 dark:text-[#E8B49A]">
+                      <svg
+                        className="h-3 w-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={3}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 12l4 4L19 6"
+                        />
+                      </svg>
                     </span>
 
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {item}
+                    </span>
                   </div>
-
-                </div>
-
+                ))}
               </div>
 
-              {/* Text */}
-
-              <div>
-
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-                  Built For The Real World
-                </p>
-
-                <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-                  Technical capability meets practical execution.
-                </h2>
-
-                <p className="mt-7 text-lg leading-8 text-background/60">
-                  Successful infrastructure projects require
-                  more than individual services. They require
-                  coordination between engineering, materials,
-                  equipment, site operations and project
-                  management.
-                </p>
-
-                <div className="mt-10 space-y-5">
-
-                  {executionPoints.map((item, index) => (
-
-                    <div
-                      key={item}
-                      className="flex items-center gap-4"
-                    >
-
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/15 text-sm font-semibold text-primary">
-                        0{index + 1}
-                      </div>
-
-                      <span className="text-sm font-medium text-background/85">
-                        {item}
-                      </span>
-
-                    </div>
-
-                  ))}
-
-                </div>
-
+              <div className="mt-9">
                 <Link
                   to="/contact"
-                  className="mt-10 inline-flex items-center rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#C97F55] via-[#D98B5F] to-[#E8B49A] px-6 py-3.5 font-semibold text-white shadow-lg shadow-[#D98B5F]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  Talk About Your Project
-
-                  <span className="ml-2">
-                    →
-                  </span>
-
-                </Link>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* ======================================================
-            PROJECT SUPPORT
-        ====================================================== */}
-
-        <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground">
-
-          {/* Subtle primary-foreground glow */}
-
-          <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-primary-foreground/10 blur-3xl" />
-
-          <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-foreground/10 blur-3xl" />
-
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
-            <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-
-              <div>
-
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] opacity-80">
-                  How We Support Projects
-                </p>
-
-                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                  From planning to execution.
-                </h2>
-
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-3">
-
-                {supportSteps.map((item) => (
-
-                  <div
-                    key={item.number}
-                    className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/15"
+                  Discuss Your Project
+                  <svg
+                    className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
                   >
-
-                    <p className="font-mono text-sm font-semibold opacity-70">
-                      {item.number}
-                    </p>
-
-                    <h3 className="mt-3 text-xl font-bold">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-6 opacity-75">
-                      {item.text}
-                    </p>
-
-                  </div>
-
-                ))}
-
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 12h14m-6-6l6 6-6 6"
+                    />
+                  </svg>
+                </Link>
               </div>
-
             </div>
-
           </div>
+        </div>
+      </section>
 
-        </section>
-
-        {/* ======================================================
-            FINAL CTA
-        ====================================================== */}
-
-        <section className="relative overflow-hidden py-24 sm:py-32">
-
-          {/* Same subtle homepage CTA treatment */}
-
-          <div className="absolute inset-0 -z-10 bg-primary/[0.04]" />
-
-          <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
-
-          {/* Subtle grid */}
-
-          <div
-            className="absolute inset-0 -z-10 opacity-[0.025]"
-            style={{
-              backgroundImage:
-                "linear-gradient(45deg, currentColor 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-
-          <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-
-            {/* Icon */}
-
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
-
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                className="h-7 w-7"
-              >
-
-                <path
-                  d="M3 21h18"
-                  strokeLinecap="round"
-                />
-
-                <path d="M5 21V7l7-4 7 4v14" />
-
-                <path d="M9 21v-5h6v5" />
-
-                <path d="M9 9h1" />
-
-                <path d="M14 9h1" />
-
-                <path d="M9 12h1" />
-
-                <path d="M14 12h1" />
-
-              </svg>
-
-            </div>
-
-            <p className="mt-7 text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-              Start Your Project
-            </p>
-
-            <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Have an infrastructure project in mind?
-            </h2>
-
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Tell us what you need. Whether it involves roads,
-              water, sewer systems, structures, engineering,
-              project management, materials or equipment, we can
-              discuss the practical way forward.
-            </p>
-
-            <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                Request a Consultation
-
-                <span className="ml-2 text-lg">
-                  →
+      {/* PROCESS STRIP */}
+      <section className="border-y border-gray-200 bg-gray-100 py-16 dark:border-gray-800 dark:bg-gray-900">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-10 md:grid-cols-4">
+            {[
+              {
+                number: "01",
+                title: "Understand",
+                text: "We begin by understanding the project, requirements and expected outcomes.",
+              },
+              {
+                number: "02",
+                title: "Plan",
+                text: "We develop a practical approach around scope, resources, technical needs and timelines.",
+              },
+              {
+                number: "03",
+                title: "Deliver",
+                text: "Our teams coordinate the required construction activities with attention to quality and safety.",
+              },
+              {
+                number: "04",
+                title: "Complete",
+                text: "We focus on delivering functional results that provide lasting value to our clients.",
+              },
+            ].map((step) => (
+              <div key={step.number} className="relative">
+                <span className="text-5xl font-bold text-[#E8B49A]/60 dark:text-[#D98B5F]/20">
+                  {step.number}
                 </span>
 
-              </Link>
+                <h3 className="mt-3 text-xl font-bold text-gray-950 dark:text-white">
+                  {step.title}
+                </h3>
 
-              <a
-                href="tel:+254714544535"
-                className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-8 py-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:text-primary hover:shadow-lg"
-              >
-                Call +254 714 544 535
-              </a>
-
-            </div>
-
+                <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+                  {step.text}
+                </p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-        </section>
+      {/* FINAL CTA */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-gray-950 py-20 text-white dark:from-gray-900 dark:via-gray-950 dark:to-black lg:py-24">
+        <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-[#D98B5F]/10 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[#F3D9CC]/5 blur-3xl" />
 
-      </main>
+        <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E8B49A]">
+            Ready to Get Started?
+          </p>
 
-      {/* ========================================================
-          FOOTER
-      ======================================================== */}
+          <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+            Let&apos;s build something that lasts.
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-300">
+            Tell us about your construction, civil works, infrastructure or
+            supply requirements and let&apos;s discuss how ELFREYZZ Ltd. can
+            support your project.
+          </p>
+
+          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#C97F55] via-[#D98B5F] to-[#E8B49A] px-7 py-4 font-semibold text-white shadow-xl shadow-[#D98B5F]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            >
+              Request a Consultation
+              <svg
+                className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 12h14m-6-6l6 6-6 6"
+                />
+              </svg>
+            </Link>
+
+            <a
+              href="tel:+254714544535"
+              className="inline-flex items-center justify-center gap-3 rounded-xl border border-gray-600 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DFA080] hover:bg-white/10"
+            >
+              <svg
+                className="h-5 w-5 text-[#E8B49A]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 5.5A2.5 2.5 0 015.5 3H7l2 5-2 1.5A15 15 0 0014.5 17L16 15l5 2v1.5a2.5 2.5 0 01-2.5 2.5C10.94 21 3 13.06 3 5.5z"
+                />
+              </svg>
+              Call Us
+            </a>
+          </div>
+        </div>
+      </section>
 
       <Footer />
-
       <BackToTop />
 
-      {/* ========================================================
-          GLOBAL ANIMATIONS
-      ======================================================== */}
-
       <style>{`
+        html {
+          scroll-behavior: smooth;
+        }
+
         @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateY(18px);
           }
-
           to {
             opacity: 1;
             transform: translateY(0);
           }
         }
 
-        html {
-          scroll-behavior: smooth;
+        .animate-fade-in {
+          animation: fadeIn 0.7s ease-out both;
         }
 
         @media (prefers-reduced-motion: reduce) {
+          html {
+            scroll-behavior: auto;
+          }
+
           *,
           *::before,
           *::after {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
-            scroll-behavior: auto !important;
           }
         }
       `}</style>
-
     </div>
   );
 };
