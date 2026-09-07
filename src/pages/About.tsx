@@ -311,8 +311,9 @@ const About = () => {
         "--elfreyzz-orange-mid": "#C05A1E",
         "--elfreyzz-orange": "#ED932C",
         "--elfreyzz-orange-light": "#F0A34A",
-      } as React.CSSProperties
+      } as React.CSSProperties}
     >
+
 
       {/* =====================================================
           ACCESSIBILITY
