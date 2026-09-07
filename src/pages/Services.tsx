@@ -1,4 +1,3 @@
-```tsx
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
@@ -10,6 +9,7 @@ const Services = () => {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("elfreyzz-theme");
+
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ).matches;
@@ -40,112 +40,206 @@ const Services = () => {
   };
 
   /*
-   * PRIMARY SERVICES
+   * SERVICES
    *
-   * These intentionally match the homepage exactly.
+   * These are the only services displayed on this page.
+   * They correspond directly with the services shown
+   * on the provided design.
    */
   const services = [
     {
       number: "01",
-      title: "New Construction",
-      category: "Construction",
-      icon: "⌂",
+      title: "Access Roads",
       description:
-        "From the ground up, we deliver carefully planned construction projects with attention to structure, craftsmanship, and finish.",
-      details:
-        "Our new construction services cover projects from initial site preparation through construction and final completion. We focus on practical planning, quality workmanship, and a finished structure that meets the requirements of the project.",
-      includes: [
-        "Ground-up construction",
-        "Site preparation",
-        "Structural construction",
-        "Building works",
-        "Finishing works",
-        "Project coordination",
-      ],
+        "Design and construction of paved and unpaved access roads, earthworks, drainage and surfacing.",
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-7 w-7"
+        >
+          <path d="M8 21h8" />
+          <path d="M6 17l3-14h6l3 14" />
+          <path d="M9 13h6" />
+          <path d="M8 9h8" />
+        </svg>
+      ),
     },
     {
       number: "02",
-      title: "Residential Construction",
-      category: "Homes & Residential",
-      icon: "⌂",
+      title: "Piped Water",
       description:
-        "Thoughtfully built homes and residential spaces designed around your needs, lifestyle, and vision.",
-      details:
-        "We approach residential construction with attention to both the practical requirements of the project and the needs of the people who will use the space. From the structure to the finishing details, every stage is handled with care.",
-      includes: [
-        "Residential homes",
-        "House construction",
-        "Residential developments",
-        "Interior works",
-        "Exterior works",
-        "Residential finishing",
-      ],
+        "Potable water network design, mainlines, distribution networks and connection works.",
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-7 w-7"
+        >
+          <path d="M3 8c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2" />
+          <path d="M3 13c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2" />
+          <path d="M3 18c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2" />
+        </svg>
+      ),
     },
     {
       number: "03",
-      title: "Commercial Construction",
-      category: "Commercial Projects",
-      icon: "▦",
+      title: "Sewer Lines",
       description:
-        "Professional construction services for commercial spaces, developments, offices, and business premises.",
-      details:
-        "Commercial construction requires careful consideration of functionality, durability, coordination, and the needs of the people who will use the space. We provide construction services focused on practical and dependable results.",
-      includes: [
-        "Commercial buildings",
-        "Office spaces",
-        "Business premises",
-        "Commercial developments",
-        "Structural works",
-        "Finishing works",
-      ],
+        "Gravity sewers, manholes, pumping stations and full sanitation solutions.",
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-7 w-7"
+        >
+          <path d="M4 7h10" />
+          <path d="M4 17h10" />
+          <path d="M14 7c0 0 0 10 4 10" />
+          <path d="M18 5c2 0 3 2 3 4s-1 4-3 4" />
+          <path d="M18 5v8" />
+        </svg>
+      ),
     },
     {
       number: "04",
-      title: "Renovation & Remodeling",
-      category: "Property Improvement",
-      icon: "↗",
+      title: "Structures",
       description:
-        "Breathe new life into existing spaces through renovations, extensions, remodeling, and property improvements.",
-      details:
-        "We help transform existing properties to better suit changing needs, improve functionality, and create more useful spaces. Our renovation and remodeling work can cover individual areas or broader property improvements.",
-      includes: [
-        "Property renovations",
-        "Extensions",
-        "Space reconfiguration",
-        "Interior remodeling",
-        "Property improvements",
-        "Finishing improvements",
-      ],
+        "Foundations, retaining walls, reinforced concrete structures and structural repairs.",
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-7 w-7"
+        >
+          <rect x="4" y="3" width="16" height="18" rx="1" />
+          <path d="M8 7h2" />
+          <path d="M14 7h2" />
+          <path d="M8 11h2" />
+          <path d="M14 11h2" />
+          <path d="M8 15h2" />
+          <path d="M14 15h2" />
+          <path d="M10 21v-3h4v3" />
+        </svg>
+      ),
     },
-  ];
-
-  /*
-   * PROJECT EXPERIENCE
-   *
-   * These are capabilities and project types, not separate
-   * primary services. This mirrors the homepage structure.
-   */
-  const projectTypes = [
-    "New Builds",
-    "Residential Homes",
-    "Commercial Buildings",
-    "Renovations",
-    "Extensions",
-    "Remodeling",
-    "Property Improvements",
-    "General Construction",
-    "Material & Supplies",
-    "Engineering Surveys",
-    "Engineering Consultation",
-    "Equipment Hire",
-    "Access Roads",
-    "Sewer Lines",
-    "Piped Water",
+    {
+      number: "05",
+      title: "Engineering Survey",
+      description:
+        "Topographic surveys, setting out, and geotechnical coordination for accurate project delivery.",
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-7 w-7"
+        >
+          <path d="M4 19L19 4" />
+          <path d="M6 21l-3-3" />
+          <path d="M8 17l-2-2" />
+          <path d="M11 14l-2-2" />
+          <path d="M14 11l-2-2" />
+          <path d="M17 8l-2-2" />
+          <path d="M20 5l-2-2" />
+        </svg>
+      ),
+    },
+    {
+      number: "06",
+      title: "Project Management",
+      description:
+        "End-to-end project oversight, quality control, and stakeholder communication.",
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-7 w-7"
+        >
+          <path d="M6 9h12" />
+          <path d="M8 9V6h8v3" />
+          <path d="M4 9h16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Z" />
+          <path d="M7 14v5h10v-5" />
+          <path d="M10 17h4" />
+        </svg>
+      ),
+    },
+    {
+      number: "07",
+      title: "Materials Supply",
+      description:
+        "Supply of high-quality construction materials including aggregates, sand, and pre-cast concrete items.",
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-7 w-7"
+        >
+          <path d="M3 17h12" />
+          <path d="M5 17V9h7v8" />
+          <path d="M12 12h5l3 3v2h-8" />
+          <circle cx="7" cy="19" r="2" />
+          <circle cx="17" cy="19" r="2" />
+          <path d="M5 9l2-3h4l2 3" />
+        </svg>
+      ),
+    },
+    {
+      number: "08",
+      title: "Equipment Hire",
+      description:
+        "Flexible hire options for a wide range of heavy construction machinery and equipment.",
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-7 w-7"
+        >
+          <path d="M3 17h4" />
+          <path d="M17 17h4" />
+          <path d="M6 17V9h7l4 4v4" />
+          <path d="M13 9V5h3l2 4" />
+          <circle cx="7" cy="18" r="2.5" />
+          <circle cx="17" cy="18" r="2.5" />
+          <path d="M9 11h4" />
+        </svg>
+      ),
+    },
   ];
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-
       {/* Accessibility */}
       <a
         href="#main"
@@ -161,12 +255,11 @@ const Services = () => {
       />
 
       <main id="main" tabIndex={-1}>
-
         {/* =====================================================
             HERO
         ===================================================== */}
-        <section className="relative overflow-hidden border-b border-border pt-20">
-
+        <section className="relative overflow-hidden border-b border-border">
+          {/* Background grid */}
           <div
             className="absolute inset-0 opacity-[0.035]"
             aria-hidden="true"
@@ -177,479 +270,290 @@ const Services = () => {
             }}
           />
 
-          <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px]" />
+          {/* Decorative glow */}
+          <div
+            className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px]"
+            aria-hidden="true"
+          />
 
-          <div className="absolute -left-40 bottom-0 h-[350px] w-[350px] rounded-full bg-amber-500/5 blur-[100px]" />
+          <div
+            className="absolute -left-40 bottom-0 h-[350px] w-[350px] rounded-full bg-amber-500/5 blur-[100px]"
+            aria-hidden="true"
+          />
 
-          <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+          <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-28 lg:px-8 lg:pb-28 lg:pt-36">
+            <div className="max-w-4xl">
+              {/* Eyebrow */}
+              <div className="mb-7 flex items-center gap-4">
+                <span className="h-px w-12 bg-primary" />
 
-            <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-
-              <div>
-
-                <div className="mb-7 flex items-center gap-4">
-                  <span className="h-px w-12 bg-primary" />
-
-                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-                    Our Services
-                  </p>
-                </div>
-
-                <h1 className="max-w-5xl text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-                  We build more than{" "}
-                  <span className="text-primary">
-                    structures.
-                  </span>
-                </h1>
-
-                <p className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                  From new homes and commercial buildings to
-                  renovations, extensions, property improvements,
-                  infrastructure, engineering support, equipment,
-                  and materials, we provide construction services
-                  designed around the practical requirements of
-                  your project.
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
+                  Our Services
                 </p>
-
-                <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
-                  >
-                    Request a Consultation
-
-                    <span
-                      className="ml-2"
-                      aria-hidden="true"
-                    >
-                      →
-                    </span>
-                  </Link>
-
-                  <a
-                    href="#services"
-                    className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
-                  >
-                    Explore Our Services
-                  </a>
-
-                </div>
-
               </div>
 
-              {/* Hero Card */}
-              <div className="relative">
+              {/* Heading */}
+              <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+                Infrastructure built with{" "}
+                <span className="text-primary">
+                  precision.
+                </span>
+              </h1>
 
-                <div className="rounded-3xl border border-border bg-card/70 p-8 shadow-2xl shadow-primary/5 backdrop-blur-sm sm:p-10">
+              {/* Description */}
+              <p className="mt-8 max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl">
+                From roads and water networks to sewer systems,
+                structures, engineering surveys, project
+                management, materials supply and equipment hire,
+                we provide practical construction solutions for
+                demanding projects.
+              </p>
 
-                  <div className="flex items-center justify-between border-b border-border pb-6">
+              {/* CTA */}
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+                >
+                  Request a Consultation
 
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                        Primary Services
-                      </p>
+                  <span
+                    className="ml-2 text-lg"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </Link>
 
-                      <p className="mt-2 text-xl font-semibold">
-                        Four core ways we build.
-                      </p>
-                    </div>
-
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      ◆
-                    </div>
-
-                  </div>
-
-                  <div className="mt-8 space-y-5">
-
-                    {services.map((service) => (
-                      <div
-                        key={service.number}
-                        className="flex items-center gap-4"
-                      >
-
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-bold text-primary">
-                          {service.number}
-                        </div>
-
-                        <div>
-                          <p className="font-semibold">
-                            {service.title}
-                          </p>
-                        </div>
-
-                      </div>
-                    ))}
-
-                  </div>
-
-                </div>
-
-                <div className="absolute -bottom-3 -right-3 h-20 w-20 rounded-2xl border border-amber-500/20 bg-amber-500/5" />
-
+                <a
+                  href="#services"
+                  className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+                >
+                  Explore Services
+                </a>
               </div>
-
             </div>
-
           </div>
         </section>
 
-
         {/* =====================================================
-            INTRO
+            SERVICES INTRO
         ===================================================== */}
         <section className="border-b border-border bg-muted/30">
-
           <div className="mx-auto max-w-7xl px-6 py-14 lg:px-8">
-
             <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-
               <div>
-
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                  Built With Purpose
+                  What We Do
                 </p>
 
                 <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Construction done with care.
+                  Practical solutions for every stage of your project.
                 </h2>
-
               </div>
 
               <p className="max-w-3xl text-base leading-8 text-muted-foreground">
-                Every project is an opportunity to create something
-                lasting. We combine practical planning, skilled
-                workmanship, quality materials, technical support,
-                and close attention to detail to deliver buildings,
-                infrastructure, and improvements designed for lasting
-                value.
+                Our services are focused on essential construction
+                and infrastructure requirements. We combine
+                technical expertise, quality materials, equipment
+                and professional project coordination to help
+                deliver projects efficiently and reliably.
               </p>
-
             </div>
-
           </div>
-
         </section>
 
-
         {/* =====================================================
-            PRIMARY SERVICES
+            SERVICES GRID
         ===================================================== */}
         <section
           id="services"
           className="relative overflow-hidden py-24 sm:py-32"
         >
+          {/* Decorative background */}
+          <div
+            className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-primary/5 blur-3xl"
+            aria-hidden="true"
+          />
 
-          <div className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+          <div
+            className="absolute -left-40 bottom-20 h-80 w-80 rounded-full bg-amber-500/5 blur-3xl"
+            aria-hidden="true"
+          />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
-            <div className="max-w-3xl">
-
-              <div className="mb-5 flex items-center gap-4">
+            {/* Section heading */}
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="mb-5 flex items-center justify-center gap-4">
                 <span className="h-px w-10 bg-primary" />
 
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                  What We Offer
+                  Our Expertise
                 </p>
+
+                <span className="h-px w-10 bg-primary" />
               </div>
 
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                Comprehensive services for{" "}
+                Services designed around{" "}
                 <span className="text-primary">
                   real project needs.
                 </span>
               </h2>
 
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                Whether you're building from the ground up,
-                constructing a home or commercial space, or
-                transforming an existing property, our core
-                services provide the foundation for getting
-                your project built.
+                Explore our core construction, infrastructure,
+                engineering, supply and equipment services.
               </p>
-
             </div>
 
-
-            {/* Service cards */}
-            <div className="mt-16 space-y-6">
-
+            {/* =================================================
+                8 SERVICE CARDS
+            ================================================= */}
+            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {services.map((service) => (
                 <article
                   key={service.number}
-                  className="group relative overflow-hidden rounded-3xl border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5"
+                  className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
                 >
+                  {/* Top accent */}
+                  <div className="absolute left-0 right-0 top-0 h-1 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100" />
 
-                  <div className="absolute left-0 top-0 h-full w-1 bg-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                  <div className="grid lg:grid-cols-[90px_1fr_0.9fr]">
-
-                    {/* Number */}
-                    <div className="hidden border-r border-border p-8 lg:block">
-
-                      <span className="font-mono text-sm text-primary">
-                        {service.number}
-                      </span>
-
-                    </div>
-
-
-                    {/* Main content */}
-                    <div className="p-8 sm:p-10 lg:p-12">
-
-                      <div className="flex items-start justify-between gap-6">
-
-                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary">
-                          {service.icon}
-                        </div>
-
-                        <span className="font-mono text-xs text-muted-foreground lg:hidden">
-                          {service.number}
-                        </span>
-
-                      </div>
-
-                      <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-amber-600 dark:text-amber-400">
-                        {service.category}
-                      </p>
-
-                      <h3 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
-                        {service.title}
-                      </h3>
-
-                      <p className="mt-5 text-base leading-8 text-muted-foreground">
-                        {service.description}
-                      </p>
-
-                      <p className="mt-5 text-sm leading-7 text-muted-foreground/80">
-                        {service.details}
-                      </p>
-
-                    </div>
-
-
-                    {/* Included */}
-                    <div className="border-t border-border bg-muted/20 p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
-
-                      <p className="text-sm font-semibold uppercase tracking-[0.15em]">
-                        Service Includes
-                      </p>
-
-                      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-
-                        {service.includes.map((item) => (
-                          <div
-                            key={item}
-                            className="flex items-start gap-3"
-                          >
-
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-
-                            <span className="text-sm leading-6 text-muted-foreground">
-                              {item}
-                            </span>
-
-                          </div>
-                        ))}
-
-                      </div>
-
-                      <div className="mt-8 border-t border-border pt-6">
-
-                        <Link
-                          to="/contact"
-                          className="inline-flex items-center text-sm font-semibold text-primary transition-colors hover:text-primary/80"
-                        >
-                          Discuss this service
-
-                          <span
-                            className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
-                            aria-hidden="true"
-                          >
-                            →
-                          </span>
-                        </Link>
-
-                      </div>
-
-                    </div>
-
+                  {/* Number */}
+                  <div className="absolute right-6 top-6 font-mono text-xs font-semibold text-muted-foreground/40 transition-colors duration-300 group-hover:text-primary/50">
+                    {service.number}
                   </div>
 
+                  {/* Icon */}
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-500 group-hover:scale-105 group-hover:rotate-1">
+                    {service.icon}
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="mt-7 text-xl font-bold tracking-tight sm:text-2xl">
+                    {service.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                    {service.description}
+                  </p>
+
+                  {/* Bottom line */}
+                  <div className="mt-7 flex items-center gap-2 text-sm font-semibold text-primary">
+                    <span>Learn more</span>
+
+                    <span
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </div>
+
+                  {/* Decorative corner */}
+                  <div
+                    className="absolute -bottom-10 -right-10 h-24 w-24 rounded-full bg-primary/5 transition-all duration-500 group-hover:scale-150"
+                    aria-hidden="true"
+                  />
                 </article>
               ))}
-
             </div>
-
           </div>
-
         </section>
 
-
         {/* =====================================================
-            PROJECT EXPERIENCE
+            SERVICE HIGHLIGHT
         ===================================================== */}
-        <section
-          id="expertise"
-          className="border-y border-border bg-muted/30 py-24 sm:py-28"
-        >
-
+        <section className="border-y border-border bg-muted/30 py-20 sm:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-xl sm:p-12 lg:p-16">
+              {/* Background decoration */}
+              <div
+                className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl"
+                aria-hidden="true"
+              />
 
-            <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+              <div className="relative grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center">
+                <div className="max-w-3xl">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                    Complete Project Support
+                  </p>
 
-              <div className="lg:sticky lg:top-28">
+                  <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                    From the first survey to the final delivery.
+                  </h2>
 
-                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                  Project Experience
-                </p>
+                  <p className="mt-6 text-base leading-8 text-muted-foreground sm:text-lg">
+                    Our range of services allows us to support
+                    projects across multiple stages — from
+                    engineering surveys and infrastructure works
+                    to materials, equipment and professional
+                    project management.
+                  </p>
+                </div>
 
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                  Construction expertise{" "}
-                  <span className="text-primary">
-                    beyond the build.
-                  </span>
-                </h2>
-
-                <p className="mt-5 text-base leading-8 text-muted-foreground">
-                  Our experience extends across building construction,
-                  infrastructure, site works, engineering support,
-                  materials, and essential services that help bring
-                  complete projects together.
-                </p>
-
-              </div>
-
-
-              <div className="flex flex-wrap gap-3">
-
-                {projectTypes.map((type) => (
-                  <span
-                    key={type}
-                    className="rounded-full border border-border bg-background px-5 py-3 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-primary hover:shadow-sm"
-                  >
-                    {type}
-                  </span>
-                ))}
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =====================================================
-            QUALITY / COMMITMENT
-        ===================================================== */}
-        <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground sm:py-28">
-
-          <div
-            className="absolute inset-0 opacity-[0.04]"
-            aria-hidden="true"
-            style={{
-              backgroundImage:
-                "linear-gradient(45deg, currentColor 1px, transparent 1px)",
-              backgroundSize: "28px 28px",
-            }}
-          />
-
-          <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-primary-foreground/10 blur-[120px]" />
-
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
-            <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-
-              <div>
-
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-70">
-                  Our Commitment
-                </p>
-
-                <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-                  Built to be lived in.
-                  <br />
-                  Built to last.
-                </h2>
-
-                <p className="mt-6 max-w-xl text-base leading-8 opacity-80">
-                  We don't see construction as simply putting up
-                  walls and completing a checklist. The finished
-                  project becomes someone's home, workplace,
-                  investment, or community space. That responsibility
-                  shapes how we approach every job.
-                </p>
-
-              </div>
-
-
-              <div className="grid grid-cols-2 gap-4">
-
-                {[
-                  {
-                    title: "Quality",
-                    text: "Careful workmanship from foundations to finishing details.",
-                  },
-                  {
-                    title: "Safety",
-                    text: "Responsible construction practices throughout the project.",
-                  },
-                  {
-                    title: "Integrity",
-                    text: "Straightforward communication and professional project handling.",
-                  },
-                  {
-                    title: "Durability",
-                    text: "Construction focused on lasting value rather than shortcuts.",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm"
-                  >
-
-                    <p className="text-xl font-bold">
-                      {item.title}
-                    </p>
-
-                    <p className="mt-2 text-sm leading-6 opacity-70">
-                      {item.text}
-                    </p>
-
+                <div className="flex shrink-0 lg:justify-end">
+                  <div className="flex h-28 w-28 items-center justify-center rounded-3xl bg-primary/10 text-primary">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-14 w-14"
+                    >
+                      <path d="M3 21h18" />
+                      <path d="M5 21V7l7-4 7 4v14" />
+                      <path d="M9 21v-5h6v5" />
+                      <path d="M9 9h1" />
+                      <path d="M14 9h1" />
+                      <path d="M9 12h1" />
+                      <path d="M14 12h1" />
+                    </svg>
                   </div>
-                ))}
-
+                </div>
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* =====================================================
             FINAL CTA
         ===================================================== */}
-        <section
-          id="contact"
-          className="relative overflow-hidden py-24 sm:py-32"
-        >
+        <section className="relative overflow-hidden py-24 sm:py-32">
+          {/* Background */}
+          <div
+            className="absolute inset-0 -z-10 bg-primary/[0.04]"
+            aria-hidden="true"
+          />
 
-          <div className="absolute inset-0 -z-10 bg-primary/[0.04]" />
+          <div
+            className="absolute left-1/2 top-0 -z-10 h-[500px] w-[750px] -translate-x-1/2 rounded-full bg-primary/10 blur-[130px]"
+            aria-hidden="true"
+          />
 
-          <div className="absolute left-1/2 top-0 -z-10 h-[550px] w-[750px] -translate-x-1/2 rounded-full bg-primary/10 blur-[130px]" />
-
-          <div className="absolute bottom-0 right-0 -z-10 h-72 w-72 rounded-full bg-amber-500/5 blur-[100px]" />
+          <div
+            className="absolute bottom-0 right-0 -z-10 h-72 w-72 rounded-full bg-amber-500/5 blur-[100px]"
+            aria-hidden="true"
+          />
 
           <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-xl text-primary">
-              ◆
+            {/* Icon */}
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-xl shadow-primary/20">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-7 w-7"
+              >
+                <path d="M21 16v5H3v-5" />
+                <path d="M5 16V9l7-5 7 5v7" />
+                <path d="M9 16v-4h6v4" />
+              </svg>
             </div>
 
             <p className="mt-7 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
@@ -657,18 +561,19 @@ const Services = () => {
             </p>
 
             <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Have a project in mind?
+              Let&apos;s build something that works.
             </h2>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Whether you're planning a new build, constructing
-              a home or commercial space, renovating an existing
-              property, or looking for additional construction
-              support, we'd be glad to hear about your project.
+              Whether you need access roads, water infrastructure,
+              sewer lines, structural works, engineering surveys,
+              project management, construction materials or
+              equipment, our team is ready to discuss your
+              requirements.
             </p>
 
+            {/* CTA buttons */}
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-xl shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
@@ -676,7 +581,7 @@ const Services = () => {
                 Request a Consultation
 
                 <span
-                  className="ml-2"
+                  className="ml-2 text-lg"
                   aria-hidden="true"
                 >
                   →
@@ -689,27 +594,21 @@ const Services = () => {
               >
                 Call +254 714 544 535
               </a>
-
             </div>
 
             <p className="mt-6 text-xs text-muted-foreground">
-              Let's discuss your requirements and determine the most
-              practical way forward.
+              Professional construction and infrastructure
+              solutions tailored to your project requirements.
             </p>
-
           </div>
-
         </section>
-
       </main>
 
       <Footer />
 
       <BackToTop />
-
     </div>
   );
 };
 
 export default Services;
-```
