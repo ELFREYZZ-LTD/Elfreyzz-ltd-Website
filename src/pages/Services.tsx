@@ -264,7 +264,7 @@ const Services = () => {
         {
           "--elfreyzz-bg": "#2B2E33",
           "--elfreyzz-panel": "#34373B",
-          "--elfreyzz-panel-light": "#383838",
+          "--elfreyzz-panel-light": "#3B3D40",
           "--elfreyzz-border": "#55585C",
           "--elfreyzz-text": "#FFFFFF",
           "--elfreyzz-muted": "#B8B8B8",
@@ -413,7 +413,7 @@ const Services = () => {
                     className="h-[500px] w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B1B]/90 via-[#1B1B1B]/15 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#2B2E33]/90 via-[#2B2E33]/15 to-transparent" />
 
                   <div className="absolute bottom-0 left-0 right-0 p-7">
                     <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#F0A34A]">
@@ -434,7 +434,7 @@ const Services = () => {
       {/* =========================================================
           INTRODUCTION
       ========================================================== */}
-      <section className="bg-[#303030] py-20 lg:py-24">
+      <section className="bg-[#3B3D40] py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
@@ -518,7 +518,7 @@ const Services = () => {
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B1B]/90 via-[#1B1B1B]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#2B2E33]/90 via-[#2B2E33]/20 to-transparent" />
 
                     {/* Icon */}
                     <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-[#2B2E33]/60 text-[#F0A34A] shadow-lg backdrop-blur-md">
@@ -619,7 +619,7 @@ const Services = () => {
       {/* =========================================================
           FEATURE
       ========================================================== */}
-      <section className="bg-[#303030] py-20 lg:py-28">
+      <section className="bg-[#3B3D40] py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid overflow-hidden rounded-[2rem] border border-[#55585C] bg-[#34373B] shadow-2xl shadow-black/15 lg:grid-cols-2">
             {/* Image */}
@@ -630,7 +630,7 @@ const Services = () => {
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1B1B1B]/80 via-[#1B1B1B]/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#2B2E33]/80 via-[#2B2E33]/25 to-transparent" />
 
               <div className="absolute bottom-8 left-8">
                 <span className="inline-flex rounded-full border border-white/15 bg-[#2B2E33]/60 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-md">
@@ -763,7 +763,7 @@ const Services = () => {
       {/* =========================================================
           FINAL CTA
       ========================================================== */}
-      <section className="relative overflow-hidden bg-[#202020] py-20 text-white lg:py-24">
+      <section className="relative overflow-hidden bg-[#2B2E33] py-20 text-white lg:py-24">
         {/* CTA glow */}
         <div className="pointer-events-none absolute left-[-160px] top-[-160px] h-[430px] w-[430px] rounded-full bg-[#A33615]/12 blur-[120px]" />
 
@@ -892,4 +892,3 @@ const Services = () => {
 };
 
 export default Services;
-
