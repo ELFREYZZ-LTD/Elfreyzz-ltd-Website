@@ -1,4 +1,4 @@
-```tsx
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
@@ -264,14 +264,14 @@ const Services = () => {
         {
           "--elfreyzz-bg": "#222A35",
           "--elfreyzz-panel": "#2A3441",
-          "--elfreyzz-panel-light": "#303B49",
-          "--elfreyzz-border": "#3E464D",
+          "--elfreyzz-panel-light": "#383838",
+          "--elfreyzz-border": "#4A4A4A",
           "--elfreyzz-text": "#FFFFFF",
-          "--elfreyzz-muted": "#AAB7C8",
-          "--elfreyzz-orange-dark": "#9A643B",
-          "--elfreyzz-orange-mid": "#B97148",
-          "--elfreyzz-orange": "#D58D43",
-          "--elfreyzz-orange-light": "#E2A15F",
+          "--elfreyzz-muted": "#B8B8B8",
+          "--elfreyzz-orange-dark": "#A33615",
+          "--elfreyzz-orange-mid": "#C05A1E",
+          "--elfreyzz-orange": "#ED932C",
+          "--elfreyzz-orange-light": "#F0A34A",
         } as React.CSSProperties
       }
     >
@@ -283,33 +283,33 @@ const Services = () => {
       <section className="relative isolate overflow-hidden bg-[#222A35]">
         {/* Background atmosphere */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-[#9A643B]/10 blur-[110px]" />
+          <div className="absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-[#A33615]/10 blur-[110px]" />
 
-          <div className="absolute right-[-160px] top-[-100px] h-[520px] w-[520px] rounded-full bg-[#3E464D]/45 blur-[120px]" />
+          <div className="absolute right-[-160px] top-[-100px] h-[520px] w-[520px] rounded-full bg-[#4A4A4A]/45 blur-[120px]" />
 
-          <div className="absolute bottom-[-180px] left-[35%] h-[420px] w-[420px] rounded-full bg-[#D58D43]/[0.06] blur-[120px]" />
+          <div className="absolute bottom-[-180px] left-[35%] h-[420px] w-[420px] rounded-full bg-[#ED932C]/[0.06] blur-[120px]" />
 
-          <div className="absolute inset-x-0 top-0 h-px bg-[#3E464D]/70" />
+          <div className="absolute inset-x-0 top-0 h-px bg-[#4A4A4A]/70" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-20 lg:px-8 lg:pb-32 lg:pt-28">
           <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
             {/* Hero copy */}
             <div className="max-w-3xl">
-              <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-[#3E464D] bg-[#2A3441]/80 px-4 py-2 text-sm font-medium text-[#AAB7C8] shadow-sm backdrop-blur-md">
-                <span className="h-2 w-2 rounded-full bg-[#D58D43] shadow-[0_0_12px_rgba(213,141,67,0.45)]" />
+              <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-[#4A4A4A] bg-[#2A3441]/80 px-4 py-2 text-sm font-medium text-[#B8B8B8] shadow-sm backdrop-blur-md">
+                <span className="h-2 w-2 rounded-full bg-[#ED932C] shadow-[0_0_12px_rgba(213,141,67,0.45)]" />
 
                 Professional Construction Solutions
               </div>
 
               <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
                 Building solutions
-                <span className="block bg-gradient-to-r from-[#B97148] via-[#D58D43] to-[#E2A15F] bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#C05A1E] via-[#ED932C] to-[#F0A34A] bg-clip-text text-transparent">
                   designed to last.
                 </span>
               </h1>
 
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-[#AAB7C8] sm:text-xl">
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-[#B8B8B8] sm:text-xl">
                 From roads and civil infrastructure to structures, water
                 systems, engineering surveys and construction supplies, we
                 deliver dependable solutions built around quality,
@@ -319,7 +319,7 @@ const Services = () => {
               <div className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#9A643B] via-[#B97148] to-[#D58D43] px-6 py-3.5 font-semibold text-white shadow-lg shadow-[#9A643B]/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#9A643B]/30"
+                  className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#A33615] via-[#C05A1E] to-[#ED932C] px-6 py-3.5 font-semibold text-white shadow-lg shadow-[#A33615]/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#A33615]/30"
                 >
                   <svg
                     className="h-5 w-5"
@@ -354,7 +354,7 @@ const Services = () => {
 
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#3E464D] bg-[#2A3441]/40 px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#D58D43]/60 hover:bg-[#2A3441] hover:text-[#E2A15F]"
+                  className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#4A4A4A] bg-[#2A3441]/40 px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/60 hover:bg-[#2A3441] hover:text-[#F0A34A]"
                 >
                   Explore Our Services
 
@@ -374,11 +374,11 @@ const Services = () => {
                 </a>
               </div>
 
-              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-6 border-t border-[#3E464D] pt-8 sm:grid-cols-3">
+              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-6 border-t border-[#4A4A4A] pt-8 sm:grid-cols-3">
                 <div>
                   <p className="text-2xl font-bold text-white">8+</p>
 
-                  <p className="mt-1 text-sm text-[#AAB7C8]">
+                  <p className="mt-1 text-sm text-[#B8B8B8]">
                     Core Services
                   </p>
                 </div>
@@ -386,7 +386,7 @@ const Services = () => {
                 <div>
                   <p className="text-2xl font-bold text-white">Quality</p>
 
-                  <p className="mt-1 text-sm text-[#AAB7C8]">
+                  <p className="mt-1 text-sm text-[#B8B8B8]">
                     Driven Delivery
                   </p>
                 </div>
@@ -394,7 +394,7 @@ const Services = () => {
                 <div className="hidden sm:block">
                   <p className="text-2xl font-bold text-white">Kenya</p>
 
-                  <p className="mt-1 text-sm text-[#AAB7C8]">
+                  <p className="mt-1 text-sm text-[#B8B8B8]">
                     & Beyond
                   </p>
                 </div>
@@ -403,9 +403,9 @@ const Services = () => {
 
             {/* Hero image */}
             <div className="relative">
-              <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#9A643B]/20 via-transparent to-[#3E464D]/40 blur-2xl" />
+              <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#A33615]/20 via-transparent to-[#4A4A4A]/40 blur-2xl" />
 
-              <div className="relative overflow-hidden rounded-[2rem] border border-[#3E464D] bg-[#2A3441] p-3 shadow-2xl shadow-black/25">
+              <div className="relative overflow-hidden rounded-[2rem] border border-[#4A4A4A] bg-[#2A3441] p-3 shadow-2xl shadow-black/25">
                 <div className="relative overflow-hidden rounded-[1.5rem]">
                   <img
                     src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85"
@@ -413,10 +413,10 @@ const Services = () => {
                     className="h-[500px] w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#18202A]/90 via-[#18202A]/15 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B1B]/90 via-[#1B1B1B]/15 to-transparent" />
 
                   <div className="absolute bottom-0 left-0 right-0 p-7">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#E2A15F]">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#F0A34A]">
                       ELFREYZZ LTD.
                     </p>
 
@@ -434,11 +434,11 @@ const Services = () => {
       {/* =========================================================
           INTRODUCTION
       ========================================================== */}
-      <section className="bg-[#28313D] py-20 lg:py-24">
+      <section className="bg-[#303030] py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D58D43]">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
                 What We Do
               </p>
 
@@ -448,7 +448,7 @@ const Services = () => {
             </div>
 
             <div className="max-w-3xl">
-              <p className="text-lg leading-8 text-[#AAB7C8]">
+              <p className="text-lg leading-8 text-[#B8B8B8]">
                 ELFREYZZ Ltd. provides professional construction services
                 across building, roads, civil works, infrastructure,
                 procurement and related construction solutions. We combine
@@ -457,7 +457,7 @@ const Services = () => {
                 completion.
               </p>
 
-              <p className="mt-5 text-lg leading-8 text-[#AAB7C8]">
+              <p className="mt-5 text-lg leading-8 text-[#B8B8B8]">
                 Our services are structured to support both individual project
                 requirements and broader construction programmes, giving
                 clients access to construction expertise, materials,
@@ -476,14 +476,14 @@ const Services = () => {
         className="relative overflow-hidden bg-[#222A35] py-20 lg:py-28"
       >
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-[-180px] top-[20%] h-[450px] w-[450px] rounded-full bg-[#D58D43]/[0.035] blur-[120px]" />
+          <div className="absolute left-[-180px] top-[20%] h-[450px] w-[450px] rounded-full bg-[#ED932C]/[0.035] blur-[120px]" />
 
-          <div className="absolute right-[-180px] bottom-[10%] h-[450px] w-[450px] rounded-full bg-[#3E464D]/30 blur-[120px]" />
+          <div className="absolute right-[-180px] bottom-[10%] h-[450px] w-[450px] rounded-full bg-[#4A4A4A]/30 blur-[120px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D58D43]">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
               Our Services
             </p>
 
@@ -491,7 +491,7 @@ const Services = () => {
               Complete solutions for construction and infrastructure.
             </h2>
 
-            <p className="mt-5 text-lg leading-8 text-[#AAB7C8]">
+            <p className="mt-5 text-lg leading-8 text-[#B8B8B8]">
               Explore our range of construction, civil works, engineering,
               supply and equipment services.
             </p>
@@ -506,8 +506,8 @@ const Services = () => {
                   key={service.number}
                   className={`group relative overflow-hidden rounded-2xl border bg-[#2A3441] transition-all duration-500 ${
                     isOpen
-                      ? "border-[#D58D43]/70 shadow-xl shadow-[#9A643B]/15"
-                      : "border-[#3E464D] shadow-lg shadow-black/10 hover:-translate-y-2 hover:border-[#B97148]/70 hover:shadow-xl hover:shadow-black/20"
+                      ? "border-[#ED932C]/70 shadow-xl shadow-[#A33615]/15"
+                      : "border-[#4A4A4A] shadow-lg shadow-black/10 hover:-translate-y-2 hover:border-[#C05A1E]/70 hover:shadow-xl hover:shadow-black/20"
                   }`}
                 >
                   {/* Image */}
@@ -518,10 +518,10 @@ const Services = () => {
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#18202A]/90 via-[#18202A]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B1B]/90 via-[#1B1B1B]/20 to-transparent" />
 
                     {/* Icon */}
-                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-[#222A35]/60 text-[#E2A15F] shadow-lg backdrop-blur-md">
+                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-[#222A35]/60 text-[#F0A34A] shadow-lg backdrop-blur-md">
                       {service.icon}
                     </div>
 
@@ -533,7 +533,7 @@ const Services = () => {
 
                   {/* Content */}
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#D58D43]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#ED932C]">
                       {service.category}
                     </p>
 
@@ -541,7 +541,7 @@ const Services = () => {
                       {service.title}
                     </h3>
 
-                    <p className="mt-3 text-sm leading-6 text-[#AAB7C8]">
+                    <p className="mt-3 text-sm leading-6 text-[#B8B8B8]">
                       {service.short}
                     </p>
 
@@ -554,8 +554,8 @@ const Services = () => {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="border-t border-[#3E464D] pt-4">
-                          <p className="text-sm leading-6 text-[#AAB7C8]">
+                        <div className="border-t border-[#4A4A4A] pt-4">
+                          <p className="text-sm leading-6 text-[#B8B8B8]">
                             {service.details}
                           </p>
                         </div>
@@ -567,7 +567,7 @@ const Services = () => {
                       <button
                         type="button"
                         onClick={() => toggleService(index)}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[#E2A15F]"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[#F0A34A]"
                       >
                         {isOpen ? "Show Less" : "Learn More"}
 
@@ -590,7 +590,7 @@ const Services = () => {
 
                       <Link
                         to="/contact"
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#3E464D] bg-[#222A35] text-[#D58D43] transition-all duration-300 hover:border-[#D58D43]/70 hover:bg-gradient-to-br hover:from-[#9A643B] hover:to-[#D58D43] hover:text-white"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#4A4A4A] bg-[#222A35] text-[#ED932C] transition-all duration-300 hover:border-[#ED932C]/70 hover:bg-gradient-to-br hover:from-[#A33615] hover:to-[#ED932C] hover:text-white"
                         aria-label={`Contact us about ${service.title}`}
                       >
                         <svg
@@ -619,9 +619,9 @@ const Services = () => {
       {/* =========================================================
           FEATURE
       ========================================================== */}
-      <section className="bg-[#28313D] py-20 lg:py-28">
+      <section className="bg-[#303030] py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid overflow-hidden rounded-[2rem] border border-[#3E464D] bg-[#2A3441] shadow-2xl shadow-black/15 lg:grid-cols-2">
+          <div className="grid overflow-hidden rounded-[2rem] border border-[#4A4A4A] bg-[#2A3441] shadow-2xl shadow-black/15 lg:grid-cols-2">
             {/* Image */}
             <div className="relative min-h-[420px] overflow-hidden">
               <img
@@ -630,7 +630,7 @@ const Services = () => {
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#18202A]/80 via-[#18202A]/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1B1B1B]/80 via-[#1B1B1B]/25 to-transparent" />
 
               <div className="absolute bottom-8 left-8">
                 <span className="inline-flex rounded-full border border-white/15 bg-[#222A35]/60 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-md">
@@ -641,7 +641,7 @@ const Services = () => {
 
             {/* Content */}
             <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D58D43]">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
                 One Construction Partner
               </p>
 
@@ -650,7 +650,7 @@ const Services = () => {
                 construction journey.
               </h2>
 
-              <p className="mt-5 text-lg leading-8 text-[#AAB7C8]">
+              <p className="mt-5 text-lg leading-8 text-[#B8B8B8]">
                 Our combination of construction expertise, engineering support,
                 procurement capability and equipment solutions enables us to
                 provide practical services around the needs of each project.
@@ -664,7 +664,7 @@ const Services = () => {
                   "Project-focused coordination",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#D58D43]/30 bg-[#222A35] text-[#D58D43]">
+                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#ED932C]/30 bg-[#222A35] text-[#ED932C]">
                       <svg
                         className="h-3 w-3"
                         fill="none"
@@ -680,7 +680,7 @@ const Services = () => {
                       </svg>
                     </span>
 
-                    <span className="text-sm font-medium text-[#AAB7C8]">
+                    <span className="text-sm font-medium text-[#B8B8B8]">
                       {item}
                     </span>
                   </div>
@@ -690,7 +690,7 @@ const Services = () => {
               <div className="mt-9">
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#9A643B] via-[#B97148] to-[#D58D43] px-6 py-3.5 font-semibold text-white shadow-lg shadow-[#9A643B]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#9A643B]/25"
+                  className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#A33615] via-[#C05A1E] to-[#ED932C] px-6 py-3.5 font-semibold text-white shadow-lg shadow-[#A33615]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#A33615]/25"
                 >
                   Discuss Your Project
 
@@ -717,7 +717,7 @@ const Services = () => {
       {/* =========================================================
           PROCESS STRIP
       ========================================================== */}
-      <section className="border-y border-[#3E464D] bg-[#222A35] py-16">
+      <section className="border-y border-[#4A4A4A] bg-[#222A35] py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-10 md:grid-cols-4">
             {[
@@ -743,7 +743,7 @@ const Services = () => {
               },
             ].map((step) => (
               <div key={step.number} className="relative">
-                <span className="text-5xl font-bold text-[#D58D43]/20">
+                <span className="text-5xl font-bold text-[#ED932C]/20">
                   {step.number}
                 </span>
 
@@ -751,7 +751,7 @@ const Services = () => {
                   {step.title}
                 </h3>
 
-                <p className="mt-2 text-sm leading-6 text-[#AAB7C8]">
+                <p className="mt-2 text-sm leading-6 text-[#B8B8B8]">
                   {step.text}
                 </p>
               </div>
@@ -763,14 +763,14 @@ const Services = () => {
       {/* =========================================================
           FINAL CTA
       ========================================================== */}
-      <section className="relative overflow-hidden bg-[#1D252F] py-20 text-white lg:py-24">
+      <section className="relative overflow-hidden bg-[#202020] py-20 text-white lg:py-24">
         {/* CTA glow */}
-        <div className="pointer-events-none absolute left-[-160px] top-[-160px] h-[430px] w-[430px] rounded-full bg-[#9A643B]/12 blur-[120px]" />
+        <div className="pointer-events-none absolute left-[-160px] top-[-160px] h-[430px] w-[430px] rounded-full bg-[#A33615]/12 blur-[120px]" />
 
-        <div className="pointer-events-none absolute bottom-[-220px] right-[-120px] h-[520px] w-[520px] rounded-full bg-[#D58D43]/[0.07] blur-[140px]" />
+        <div className="pointer-events-none absolute bottom-[-220px] right-[-120px] h-[520px] w-[520px] rounded-full bg-[#ED932C]/[0.07] blur-[140px]" />
 
         <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E2A15F]">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F0A34A]">
             Ready to Get Started?
           </p>
 
@@ -778,7 +778,7 @@ const Services = () => {
             Let&apos;s build something that lasts.
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[#AAB7C8]">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[#B8B8B8]">
             Tell us about your construction, civil works, infrastructure or
             supply requirements and let&apos;s discuss how ELFREYZZ Ltd. can
             support your project.
@@ -787,7 +787,7 @@ const Services = () => {
           <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               to="/contact"
-              className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#9A643B] via-[#B97148] to-[#D58D43] px-7 py-4 font-semibold text-white shadow-xl shadow-[#9A643B]/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#9A643B]/30"
+              className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#A33615] via-[#C05A1E] to-[#ED932C] px-7 py-4 font-semibold text-white shadow-xl shadow-[#A33615]/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#A33615]/30"
             >
               Request a Consultation
 
@@ -808,10 +808,10 @@ const Services = () => {
 
             <a
               href="tel:+254714544535"
-              className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#3E464D] bg-[#2A3441]/50 px-7 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#D58D43]/60 hover:bg-[#2A3441]"
+              className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#4A4A4A] bg-[#2A3441]/50 px-7 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/60 hover:bg-[#2A3441]"
             >
               <svg
-                className="h-5 w-5 text-[#D58D43]"
+                className="h-5 w-5 text-[#ED932C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -892,4 +892,4 @@ const Services = () => {
 };
 
 export default Services;
-```
+
