@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,6 +7,32 @@ import { BackToTop } from "@/components/BackToTop";
 
 const Services = () => {
   const [openService, setOpenService] = useState<number | null>(null);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("elfreyzz-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+
+    if (initialTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      setIsDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setIsDark(false);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = isDark ? "light" : "dark";
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    setIsDark(!isDark);
+    localStorage.setItem("elfreyzz-theme", newTheme);
+  };
 
   const toggleService = (index: number) => {
     setOpenService(openService === index ? null : index);
@@ -256,7 +282,7 @@ const Services = () => {
         } as Record<string, string>
       }
     >
-      <Header />
+      <Header onThemeToggle={toggleTheme} isDark={isDark} />
 
       {/* =========================================================
           HERO
