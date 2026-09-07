@@ -259,13 +259,13 @@ const Services = () => {
 
   return (
     <div
-      className="min-h-screen overflow-hidden bg-[#222A35] text-white"
+      className="min-h-screen overflow-hidden bg-[#2B2E33] text-white"
       style={
         {
-          "--elfreyzz-bg": "#222A35",
-          "--elfreyzz-panel": "#2A3441",
+          "--elfreyzz-bg": "#2B2E33",
+          "--elfreyzz-panel": "#34373B",
           "--elfreyzz-panel-light": "#383838",
-          "--elfreyzz-border": "#4A4A4A",
+          "--elfreyzz-border": "#55585C",
           "--elfreyzz-text": "#FFFFFF",
           "--elfreyzz-muted": "#B8B8B8",
           "--elfreyzz-orange-dark": "#A33615",
@@ -280,24 +280,24 @@ const Services = () => {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative isolate overflow-hidden bg-[#222A35]">
+      <section className="relative isolate overflow-hidden bg-[#2B2E33]">
         {/* Background atmosphere */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-[#A33615]/10 blur-[110px]" />
 
-          <div className="absolute right-[-160px] top-[-100px] h-[520px] w-[520px] rounded-full bg-[#4A4A4A]/45 blur-[120px]" />
+          <div className="absolute right-[-160px] top-[-100px] h-[520px] w-[520px] rounded-full bg-[#55585C]/45 blur-[120px]" />
 
           <div className="absolute bottom-[-180px] left-[35%] h-[420px] w-[420px] rounded-full bg-[#ED932C]/[0.06] blur-[120px]" />
 
-          <div className="absolute inset-x-0 top-0 h-px bg-[#4A4A4A]/70" />
+          <div className="absolute inset-x-0 top-0 h-px bg-[#55585C]/70" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-20 lg:px-8 lg:pb-32 lg:pt-28">
           <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
             {/* Hero copy */}
             <div className="max-w-3xl">
-              <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-[#4A4A4A] bg-[#2A3441]/80 px-4 py-2 text-sm font-medium text-[#B8B8B8] shadow-sm backdrop-blur-md">
-                <span className="h-2 w-2 rounded-full bg-[#ED932C] shadow-[0_0_12px_rgba(213,141,67,0.45)]" />
+              <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-[#55585C] bg-[#34373B]/80 px-4 py-2 text-sm font-medium text-[#B8B8B8] shadow-sm backdrop-blur-md">
+                <span className="h-2 w-2 rounded-full bg-[#ED932C] shadow-[0_0_12px_rgba(237,147,44,0.45)]" />
 
                 Professional Construction Solutions
               </div>
@@ -354,7 +354,7 @@ const Services = () => {
 
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#4A4A4A] bg-[#2A3441]/40 px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/60 hover:bg-[#2A3441] hover:text-[#F0A34A]"
+                  className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#55585C] bg-[#34373B]/40 px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/60 hover:bg-[#34373B] hover:text-[#F0A34A]"
                 >
                   Explore Our Services
 
@@ -374,7 +374,7 @@ const Services = () => {
                 </a>
               </div>
 
-              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-6 border-t border-[#4A4A4A] pt-8 sm:grid-cols-3">
+              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-6 border-t border-[#55585C] pt-8 sm:grid-cols-3">
                 <div>
                   <p className="text-2xl font-bold text-white">8+</p>
 
@@ -403,9 +403,9 @@ const Services = () => {
 
             {/* Hero image */}
             <div className="relative">
-              <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#A33615]/20 via-transparent to-[#4A4A4A]/40 blur-2xl" />
+              <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#A33615]/20 via-transparent to-[#55585C]/40 blur-2xl" />
 
-              <div className="relative overflow-hidden rounded-[2rem] border border-[#4A4A4A] bg-[#2A3441] p-3 shadow-2xl shadow-black/25">
+              <div className="relative overflow-hidden rounded-[2rem] border border-[#55585C] bg-[#34373B] p-3 shadow-2xl shadow-black/25">
                 <div className="relative overflow-hidden rounded-[1.5rem]">
                   <img
                     src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85"
@@ -473,12 +473,12 @@ const Services = () => {
       ========================================================== */}
       <section
         id="services"
-        className="relative overflow-hidden bg-[#222A35] py-20 lg:py-28"
+        className="relative overflow-hidden bg-[#2B2E33] py-20 lg:py-28"
       >
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-[-180px] top-[20%] h-[450px] w-[450px] rounded-full bg-[#ED932C]/[0.035] blur-[120px]" />
 
-          <div className="absolute right-[-180px] bottom-[10%] h-[450px] w-[450px] rounded-full bg-[#4A4A4A]/30 blur-[120px]" />
+          <div className="absolute right-[-180px] bottom-[10%] h-[450px] w-[450px] rounded-full bg-[#55585C]/30 blur-[120px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -504,10 +504,10 @@ const Services = () => {
               return (
                 <div
                   key={service.number}
-                  className={`group relative overflow-hidden rounded-2xl border bg-[#2A3441] transition-all duration-500 ${
+                  className={`group relative overflow-hidden rounded-2xl border bg-[#34373B] transition-all duration-500 ${
                     isOpen
                       ? "border-[#ED932C]/70 shadow-xl shadow-[#A33615]/15"
-                      : "border-[#4A4A4A] shadow-lg shadow-black/10 hover:-translate-y-2 hover:border-[#C05A1E]/70 hover:shadow-xl hover:shadow-black/20"
+                      : "border-[#55585C] shadow-lg shadow-black/10 hover:-translate-y-2 hover:border-[#C05A1E]/70 hover:shadow-xl hover:shadow-black/20"
                   }`}
                 >
                   {/* Image */}
@@ -521,12 +521,12 @@ const Services = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B1B]/90 via-[#1B1B1B]/20 to-transparent" />
 
                     {/* Icon */}
-                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-[#222A35]/60 text-[#F0A34A] shadow-lg backdrop-blur-md">
+                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-[#2B2E33]/60 text-[#F0A34A] shadow-lg backdrop-blur-md">
                       {service.icon}
                     </div>
 
                     {/* Number */}
-                    <span className="absolute bottom-5 right-5 rounded-full border border-white/10 bg-[#222A35]/65 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+                    <span className="absolute bottom-5 right-5 rounded-full border border-white/10 bg-[#2B2E33]/65 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
                       {service.number}
                     </span>
                   </div>
@@ -554,7 +554,7 @@ const Services = () => {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="border-t border-[#4A4A4A] pt-4">
+                        <div className="border-t border-[#55585C] pt-4">
                           <p className="text-sm leading-6 text-[#B8B8B8]">
                             {service.details}
                           </p>
@@ -590,7 +590,7 @@ const Services = () => {
 
                       <Link
                         to="/contact"
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#4A4A4A] bg-[#222A35] text-[#ED932C] transition-all duration-300 hover:border-[#ED932C]/70 hover:bg-gradient-to-br hover:from-[#A33615] hover:to-[#ED932C] hover:text-white"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#55585C] bg-[#2B2E33] text-[#ED932C] transition-all duration-300 hover:border-[#ED932C]/70 hover:bg-gradient-to-br hover:from-[#A33615] hover:to-[#ED932C] hover:text-white"
                         aria-label={`Contact us about ${service.title}`}
                       >
                         <svg
@@ -621,7 +621,7 @@ const Services = () => {
       ========================================================== */}
       <section className="bg-[#303030] py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid overflow-hidden rounded-[2rem] border border-[#4A4A4A] bg-[#2A3441] shadow-2xl shadow-black/15 lg:grid-cols-2">
+          <div className="grid overflow-hidden rounded-[2rem] border border-[#55585C] bg-[#34373B] shadow-2xl shadow-black/15 lg:grid-cols-2">
             {/* Image */}
             <div className="relative min-h-[420px] overflow-hidden">
               <img
@@ -633,7 +633,7 @@ const Services = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#1B1B1B]/80 via-[#1B1B1B]/25 to-transparent" />
 
               <div className="absolute bottom-8 left-8">
-                <span className="inline-flex rounded-full border border-white/15 bg-[#222A35]/60 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-md">
+                <span className="inline-flex rounded-full border border-white/15 bg-[#2B2E33]/60 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-md">
                   Built for Performance
                 </span>
               </div>
@@ -664,7 +664,7 @@ const Services = () => {
                   "Project-focused coordination",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#ED932C]/30 bg-[#222A35] text-[#ED932C]">
+                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#ED932C]/30 bg-[#2B2E33] text-[#ED932C]">
                       <svg
                         className="h-3 w-3"
                         fill="none"
@@ -717,7 +717,7 @@ const Services = () => {
       {/* =========================================================
           PROCESS STRIP
       ========================================================== */}
-      <section className="border-y border-[#4A4A4A] bg-[#222A35] py-16">
+      <section className="border-y border-[#55585C] bg-[#2B2E33] py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-10 md:grid-cols-4">
             {[
@@ -808,7 +808,7 @@ const Services = () => {
 
             <a
               href="tel:+254714544535"
-              className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#4A4A4A] bg-[#2A3441]/50 px-7 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/60 hover:bg-[#2A3441]"
+              className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#55585C] bg-[#34373B]/50 px-7 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/60 hover:bg-[#34373B]"
             >
               <svg
                 className="h-5 w-5 text-[#ED932C]"
