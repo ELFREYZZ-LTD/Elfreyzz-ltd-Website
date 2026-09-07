@@ -1,15 +1,41 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
 
-const Services = () => {
-  const [openService, setOpenService] = useState<number | null>(null);
+const About = () => {
+  const [isDark, setIsDark] = useState(false);
 
-  const toggleService = (index: number) => {
-    setOpenService(openService === index ? null : index);
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("elfreyzz-theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    const initialTheme =
+      savedTheme || (prefersDark ? "dark" : "light");
+
+    if (initialTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      setIsDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setIsDark(false);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = isDark ? "light" : "dark";
+
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+    setIsDark(!isDark);
+    localStorage.setItem("elfreyzz-theme", newTheme);
   };
 
   const services = [
@@ -238,638 +264,934 @@ const Services = () => {
     },
   ];
 
+  const values = [
+    {
+      title: "Teamwork",
+      description:
+        "We believe strong results come from people working together toward a shared objective.",
+    },
+    {
+      title: "Integrity",
+      description:
+        "We conduct our business with honesty, fairness, dignity, and respect while keeping our commitments.",
+    },
+    {
+      title: "Initiative",
+      description:
+        "We encourage proactive thinking and responsible action in addressing project and client needs.",
+    },
+    {
+      title: "Innovativeness",
+      description:
+        "We embrace new technology and continuously seek better ways to deliver products, services, and construction solutions.",
+    },
+    {
+      title: "Professionalism",
+      description:
+        "We approach our work with the competence, discipline, responsibility, and standards expected of a professional service provider.",
+    },
+    {
+      title: "Passion",
+      description:
+        "We are committed to the work we do and to delivering construction solutions that create value for our clients.",
+    },
+  ];
+
   return (
     <div
-      className="min-h-screen overflow-hidden bg-[#2B2E33] text-white"
-      style={
-        {
-          "--elfreyzz-bg": "#2B2E33",
-          "--elfreyzz-panel": "#34373B",
-          "--elfreyzz-panel-light": "#3B3D40",
-          "--elfreyzz-border": "#55585C",
-          "--elfreyzz-text": "#FFFFFF",
-          "--elfreyzz-muted": "#B8B8B8",
-          "--elfreyzz-orange-dark": "#A33615",
-          "--elfreyzz-orange-mid": "#C05A1E",
-          "--elfreyzz-orange": "#ED932C",
-          "--elfreyzz-orange-light": "#F0A34A",
-        } as React.CSSProperties
-      }
+      className="min-h-screen bg-[#2B2E33] text-white transition-colors duration-300"
+      style={{
+        "--elfreyzz-bg": "#2B2E33",
+        "--elfreyzz-panel": "#34373B",
+        "--elfreyzz-panel-light": "#3B3D40",
+        "--elfreyzz-border": "#55585C",
+        "--elfreyzz-text": "#FFFFFF",
+        "--elfreyzz-muted": "#B8B8B8",
+        "--elfreyzz-orange-dark": "#A33615",
+        "--elfreyzz-orange-mid": "#C05A1E",
+        "--elfreyzz-orange": "#ED932C",
+        "--elfreyzz-orange-light": "#F0A34A",
+      } as React.CSSProperties
     >
-      <Header />
 
-      {/* =========================================================
-          HERO
-      ========================================================== */}
-      <section className="relative isolate overflow-hidden bg-[#2B2E33]">
-        {/* Background atmosphere */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-[#A33615]/10 blur-[110px]" />
-
-          <div className="absolute right-[-160px] top-[-100px] h-[520px] w-[520px] rounded-full bg-[#55585C]/45 blur-[120px]" />
-
-          <div className="absolute bottom-[-180px] left-[35%] h-[420px] w-[420px] rounded-full bg-[#ED932C]/[0.06] blur-[120px]" />
-
-          <div className="absolute inset-x-0 top-0 h-px bg-[#55585C]/70" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-20 lg:px-8 lg:pb-32 lg:pt-28">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
-            {/* Hero copy */}
-            <div className="max-w-3xl">
-              <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-[#55585C] bg-[#34373B]/80 px-4 py-2 text-sm font-medium text-[#B8B8B8] shadow-sm backdrop-blur-md">
-                <span className="h-2 w-2 rounded-full bg-[#ED932C] shadow-[0_0_12px_rgba(237,147,44,0.45)]" />
-
-                Professional Construction Solutions
-              </div>
-
-              <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-                Building solutions
-                <span className="block bg-gradient-to-r from-[#C05A1E] via-[#ED932C] to-[#F0A34A] bg-clip-text text-transparent">
-                  designed to last.
-                </span>
-              </h1>
-
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-[#B8B8B8] sm:text-xl">
-                From roads and civil infrastructure to structures, water
-                systems, engineering surveys and construction supplies, we
-                deliver dependable solutions built around quality,
-                functionality and long-term value.
-              </p>
-
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-                <Link
-                  to="/contact"
-                  className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#A33615] via-[#C05A1E] to-[#ED932C] px-6 py-3.5 font-semibold text-white shadow-lg shadow-[#A33615]/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#A33615]/30"
-                >
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 5.5A2.5 2.5 0 015.5 3H7l2 5-2 1.5A15 15 0 0014.5 17L16 15l5 2v1.5a2.5 2.5 0 01-2.5 2.5C10.94 21 3 13.06 3 5.5z"
-                    />
-                  </svg>
-
-                  Request a Consultation
-
-                  <svg
-                    className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 12h14m-6-6l6 6-6 6"
-                    />
-                  </svg>
-                </Link>
-
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#55585C] bg-[#34373B]/40 px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/60 hover:bg-[#34373B] hover:text-[#F0A34A]"
-                >
-                  Explore Our Services
-
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 12h14m-6-6l6 6-6 6"
-                    />
-                  </svg>
-                </a>
-              </div>
-
-              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-6 border-t border-[#55585C] pt-8 sm:grid-cols-3">
-                <div>
-                  <p className="text-2xl font-bold text-white">8+</p>
-
-                  <p className="mt-1 text-sm text-[#B8B8B8]">
-                    Core Services
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-2xl font-bold text-white">Quality</p>
-
-                  <p className="mt-1 text-sm text-[#B8B8B8]">
-                    Driven Delivery
-                  </p>
-                </div>
-
-                <div className="hidden sm:block">
-                  <p className="text-2xl font-bold text-white">Kenya</p>
-
-                  <p className="mt-1 text-sm text-[#B8B8B8]">
-                    & Beyond
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero image */}
-            <div className="relative">
-              <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#A33615]/20 via-transparent to-[#55585C]/40 blur-2xl" />
-
-              <div className="relative overflow-hidden rounded-[2rem] border border-[#55585C] bg-[#34373B] p-3 shadow-2xl shadow-black/25">
-                <div className="relative overflow-hidden rounded-[1.5rem]">
-                  <img
-                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85"
-                    alt="Construction project"
-                    className="h-[500px] w-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2B2E33]/90 via-[#2B2E33]/15 to-transparent" />
-
-                  <div className="absolute bottom-0 left-0 right-0 p-7">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#F0A34A]">
-                      ELFREYZZ LTD.
-                    </p>
-
-                    <h2 className="mt-2 text-2xl font-bold text-white">
-                      Quality construction. Practical solutions.
-                    </h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          INTRODUCTION
-      ========================================================== */}
-      <section className="bg-[#3B3D40] py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
-                What We Do
-              </p>
-
-              <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                Construction expertise with a practical approach.
-              </h2>
-            </div>
-
-            <div className="max-w-3xl">
-              <p className="text-lg leading-8 text-[#B8B8B8]">
-                ELFREYZZ Ltd. provides professional construction services
-                across building, roads, civil works, infrastructure,
-                procurement and related construction solutions. We combine
-                technical knowledge, practical experience and dependable
-                coordination to help clients move projects from concept to
-                completion.
-              </p>
-
-              <p className="mt-5 text-lg leading-8 text-[#B8B8B8]">
-                Our services are structured to support both individual project
-                requirements and broader construction programmes, giving
-                clients access to construction expertise, materials,
-                equipment and project support through one dependable partner.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          SERVICES
-      ========================================================== */}
-      <section
-        id="services"
-        className="relative overflow-hidden bg-[#2B2E33] py-20 lg:py-28"
+      {/* =====================================================
+          ACCESSIBILITY
+      ===================================================== */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[#ED932C] focus:px-4 focus:py-2 focus:text-white"
       >
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-[-180px] top-[20%] h-[450px] w-[450px] rounded-full bg-[#ED932C]/[0.035] blur-[120px]" />
+        Skip to content
+      </a>
 
-          <div className="absolute right-[-180px] bottom-[10%] h-[450px] w-[450px] rounded-full bg-[#55585C]/30 blur-[120px]" />
-        </div>
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
+      <Header
+        onThemeToggle={toggleTheme}
+        isDark={isDark}
+      />
 
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
-              Our Services
-            </p>
+      <main id="main" tabIndex={-1}>
 
-            <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Complete solutions for construction and infrastructure.
-            </h2>
+        {/* =====================================================
+            HERO
+        ===================================================== */}
+        <section className="relative overflow-hidden border-b border-[#55585C] pt-20">
 
-            <p className="mt-5 text-lg leading-8 text-[#B8B8B8]">
-              Explore our range of construction, civil works, engineering,
-              supply and equipment services.
-            </p>
-          </div>
+          {/* Architectural grid */}
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            aria-hidden="true"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
+              backgroundSize: "70px 70px",
+            }}
+          />
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {services.map((service, index) => {
-              const isOpen = openService === index;
+          {/* Primary glow */}
+          <div className="absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-[#ED932C]/10 blur-[120px]" />
 
-              return (
-                <div
-                  key={service.number}
-                  className={`group relative overflow-hidden rounded-2xl border bg-[#34373B] transition-all duration-500 ${
-                    isOpen
-                      ? "border-[#ED932C]/70 shadow-xl shadow-[#A33615]/15"
-                      : "border-[#55585C] shadow-lg shadow-black/10 hover:-translate-y-2 hover:border-[#C05A1E]/70 hover:shadow-xl hover:shadow-black/20"
-                  }`}
-                >
-                  {/* Image */}
-                  <div className="relative h-52 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+          {/* Secondary accent */}
+          <div className="absolute -bottom-32 -left-32 h-[420px] w-[420px] rounded-full bg-[#ED932C]/5 blur-[110px]" />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2B2E33]/90 via-[#2B2E33]/20 to-transparent" />
+          <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
 
-                    {/* Icon */}
-                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-[#2B2E33]/60 text-[#F0A34A] shadow-lg backdrop-blur-md">
-                      {service.icon}
+            <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+
+              {/* Hero copy */}
+              <div>
+
+                <div className="mb-7 flex items-center gap-4">
+
+                  <span className="h-px w-12 bg-[#ED932C]" />
+
+                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#ED932C]">
+                    About Elfreyzz
+                  </p>
+
+                </div>
+
+                <h1 className="max-w-5xl text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+                  Building quality
+                  <br />
+                  <span className="text-[#ED932C]">
+                    construction solutions.
+                  </span>
+                </h1>
+
+                <p className="mt-8 max-w-2xl text-lg leading-8 text-[#B8B8B8] sm:text-xl">
+                  Elfreyzz Ltd is a professional construction service
+                  provider established to deliver quality construction
+                  solutions in Kenya and beyond. Our work spans
+                  buildings, roads, civil works, engineering surveys,
+                  structural consultancy, and the supply of construction
+                  materials and equipment.
+                </p>
+
+                <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center rounded-xl bg-[#ED932C] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#ED932C]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+                  >
+                    Talk to Us
+
+                    <span
+                      className="ml-2"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </Link>
+
+                  <a
+                    href="#company"
+                    className="inline-flex items-center justify-center rounded-xl border border-[#55585C] bg-[#2B2E33] px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#ED932C] hover:text-[#ED932C]"
+                  >
+                    Discover Elfreyzz
+                  </a>
+
+                </div>
+
+              </div>
+
+              {/* Company snapshot */}
+              <div className="relative">
+
+                <div className="rounded-3xl border border-[#55585C] bg-[#34373B]/80 p-8 shadow-2xl shadow-[#ED932C]/5 backdrop-blur-sm sm:p-10">
+
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#B8B8B8]">
+                    Company Snapshot
+                  </p>
+
+                  <div className="mt-8 divide-y divide-[#55585C]">
+
+                    <div className="flex items-center justify-between gap-6 py-5 first:pt-0">
+                      <span className="text-sm text-[#B8B8B8]">
+                        Established
+                      </span>
+
+                      <span className="text-right font-semibold">
+                        30 October 2018
+                      </span>
                     </div>
 
-                    {/* Number */}
-                    <span className="absolute bottom-5 right-5 rounded-full border border-white/10 bg-[#2B2E33]/65 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-                      {service.number}
-                    </span>
+                    <div className="flex items-center justify-between gap-6 py-5">
+                      <span className="text-sm text-[#B8B8B8]">
+                        Company Type
+                      </span>
+
+                      <span className="text-right font-semibold">
+                        Private Limited Company
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-6 py-5">
+                      <span className="text-sm text-[#B8B8B8]">
+                        Registration
+                      </span>
+
+                      <span className="text-right font-semibold">
+                        Companies Act 2015
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-6 py-5 last:pb-0">
+                      <span className="text-sm text-[#B8B8B8]">
+                        Sector
+                      </span>
+
+                      <span className="text-right font-semibold">
+                        Construction &amp; Civil Works
+                      </span>
+                    </div>
+
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#ED932C]">
+                </div>
+
+                <div className="absolute -bottom-4 -right-4 h-20 w-20 rounded-2xl border border-[#ED932C]/20 bg-[#ED932C]/5" />
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            COMPANY STORY
+        ===================================================== */}
+        <section
+          id="company"
+          className="scroll-mt-20 py-24 sm:py-32"
+        >
+
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div className="grid gap-16 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+
+              {/* Section heading */}
+              <div className="lg:sticky lg:top-28">
+
+                <div className="flex items-center gap-4">
+
+                  <span className="h-px w-10 bg-[#ED932C]" />
+
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
+                    Who We Are
+                  </p>
+
+                </div>
+
+                <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+                  A construction company built around{" "}
+                  <span className="text-[#ED932C]">
+                    quality.
+                  </span>
+                </h2>
+
+              </div>
+
+              {/* Story */}
+              <div className="max-w-3xl">
+
+                <p className="text-xl leading-9 text-white">
+                  Elfreyzz Ltd was fully registered under the Companies
+                  Act 2015 on 30th October 2018 as a private limited
+                  company and established as a professional service
+                  provider on construction matters.
+                </p>
+
+                <p className="mt-7 text-base leading-8 text-[#B8B8B8]">
+                  The company was established to provide quality
+                  construction solutions in Kenya and beyond. Since
+                  its inception, Elfreyzz has grown through undertaking
+                  projects within Kenya, providing employment, and
+                  delivering construction services to its clients.
+                </p>
+
+                <p className="mt-6 text-base leading-8 text-[#B8B8B8]">
+                  Our areas of work include the construction of
+                  buildings, roads, and civil works, together with
+                  the supply of general construction items across
+                  categories such as hardware materials, construction
+                  materials, and road survey equipment.
+                </p>
+
+                <p className="mt-6 text-base leading-8 text-[#B8B8B8]">
+                  Elfreyzz is also registered with the National
+                  Construction Authority (NCA) and duly licensed.
+                  The company has pursued a comprehensive brand
+                  strategy centered on continuous innovation and
+                  staying responsive to developments within the
+                  construction industry.
+                </p>
+
+                <div className="mt-10 rounded-2xl border border-[#55585C] bg-[#3B3D40]/30 p-7">
+
+                  <div className="flex gap-4">
+
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                      ◆
+                    </div>
+
+                    <div>
+
+                      <p className="font-semibold">
+                        Value-driven solutions
+                      </p>
+
+                      <p className="mt-2 text-sm leading-7 text-[#B8B8B8]">
+                        Through our networking capabilities, we seek
+                        to procure and supply product solutions that
+                        provide clients with value for money and
+                        access to quality construction resources.
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            WHAT WE DO
+        ===================================================== */}
+        <section className="border-y border-[#55585C] bg-[#3B3D40]/30 py-24 sm:py-32">
+
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div className="max-w-3xl">
+
+              <div className="mb-5 flex items-center gap-4">
+
+                <span className="h-px w-10 bg-[#ED932C]" />
+
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
+                  What We Do
+                </p>
+
+              </div>
+
+              <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                Construction expertise across{" "}
+                <span className="text-[#ED932C]">
+                  multiple disciplines.
+                </span>
+              </h2>
+
+              <p className="mt-6 text-lg leading-8 text-[#B8B8B8]">
+                Our services bring together construction, civil works,
+                engineering, surveying, consultancy, and supply
+                capabilities to address different requirements across
+                the construction and development process.
+              </p>
+
+            </div>
+
+            {/* Main services — kept in sync with the Services page */}
+            <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {services.map((service) => (
+                <article
+                  key={service.number}
+                  className="group relative overflow-hidden rounded-3xl border border-[#55585C] bg-[#34373B] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[#ED932C]/50 hover:shadow-xl hover:shadow-[#ED932C]/5 sm:p-7"
+                >
+                  <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-[#ED932C]/5 blur-3xl transition-all duration-500 group-hover:bg-[#ED932C]/10" />
+
+                  <div className="relative">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ED932C]/10 text-[#ED932C]">
+                        {service.icon}
+                      </div>
+
+                      <span className="font-mono text-sm text-[#ED932C]">
+                        {service.number}
+                      </span>
+                    </div>
+
+                    <p className="mt-7 text-xs font-semibold uppercase tracking-[0.15em] text-[#ED932C]">
                       {service.category}
                     </p>
 
-                    <h3 className="mt-2 text-xl font-bold text-white">
+                    <h3 className="mt-2 text-xl font-bold tracking-tight text-white">
                       {service.title}
                     </h3>
 
-                    <p className="mt-3 text-sm leading-6 text-[#B8B8B8]">
+                    <p className="mt-4 text-sm leading-6 text-[#B8B8B8]">
                       {service.short}
                     </p>
 
-                    {/* Expandable details */}
-                    <div
-                      className={`grid transition-all duration-500 ${
-                        isOpen
-                          ? "mt-4 grid-rows-[1fr] opacity-100"
-                          : "grid-rows-[0fr] opacity-0"
-                      }`}
+                    <div className="mt-6 h-px w-full bg-[#55585C]" />
+
+                    <Link
+                      to="/services"
+                      className="mt-5 inline-flex items-center text-sm font-semibold text-[#ED932C] transition-colors hover:text-[#F0A34A]"
                     >
-                      <div className="overflow-hidden">
-                        <div className="border-t border-[#55585C] pt-4">
-                          <p className="text-sm leading-6 text-[#B8B8B8]">
-                            {service.details}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div className="mt-5 flex items-center justify-between gap-3">
-                      <button
-                        type="button"
-                        onClick={() => toggleService(index)}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[#F0A34A]"
+                      Explore our services
+                      <span
+                        className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
+                        aria-hidden="true"
                       >
-                        {isOpen ? "Show Less" : "Learn More"}
-
-                        <svg
-                          className={`h-4 w-4 transition-transform duration-300 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-
-                      <Link
-                        to="/contact"
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#55585C] bg-[#2B2E33] text-[#ED932C] transition-all duration-300 hover:border-[#ED932C]/70 hover:bg-gradient-to-br hover:from-[#A33615] hover:to-[#ED932C] hover:text-white"
-                        aria-label={`Contact us about ${service.title}`}
-                      >
-                        <svg
-                          className="h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14m-6-6l6 6-6 6"
-                          />
-                        </svg>
-                      </Link>
-                    </div>
+                        →
+                      </span>
+                    </Link>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          FEATURE
-      ========================================================== */}
-      <section className="bg-[#3B3D40] py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid overflow-hidden rounded-[2rem] border border-[#55585C] bg-[#34373B] shadow-2xl shadow-black/15 lg:grid-cols-2">
-            {/* Image */}
-            <div className="relative min-h-[420px] overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1590479773265-7464e5d48118?auto=format&fit=crop&w=1400&q=85"
-                alt="Civil engineering and construction work"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-r from-[#2B2E33]/80 via-[#2B2E33]/25 to-transparent" />
-
-              <div className="absolute bottom-8 left-8">
-                <span className="inline-flex rounded-full border border-white/15 bg-[#2B2E33]/60 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-md">
-                  Built for Performance
-                </span>
-              </div>
+                </article>
+              ))}
             </div>
 
-            {/* Content */}
-            <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+          </div>
+
+        </section>
+
+        {/* =====================================================
+            WHY ELFREYZZ
+        ===================================================== */}
+        <section className="border-y border-[#55585C] bg-[#3B3D40]/30 py-24 sm:py-32">
+
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr]">
+
+              <div>
+
+                <div className="flex items-center gap-4">
+
+                  <span className="h-px w-10 bg-[#ED932C]" />
+
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
+                    Why Elfreyzz
+                  </p>
+
+                </div>
+
+                <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+                  The principles behind our work.
+                </h2>
+
+                <p className="mt-6 text-base leading-8 text-[#B8B8B8]">
+                  Our approach is shaped by a commitment to clients,
+                  employees, suppliers, shareholders, and the wider
+                  society we operate within.
+                </p>
+
+              </div>
+
+              <div className="space-y-4">
+
+                <div className="rounded-3xl border border-[#55585C] bg-[#34373B] p-8 sm:p-10">
+
+                  <div className="flex items-start gap-5">
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                      ✓
+                    </div>
+
+                    <div>
+
+                      <h3 className="text-xl font-bold">
+                        Client Satisfaction
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-7 text-[#B8B8B8]">
+                        Client satisfaction is central to our existence.
+                        We seek to exceed customer expectations through
+                        continuous improvement of our services and quality.
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div className="rounded-3xl border border-[#55585C] bg-[#34373B] p-8 sm:p-10">
+
+                  <div className="flex items-start gap-5">
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                      ◆
+                    </div>
+
+                    <div>
+
+                      <h3 className="text-xl font-bold">
+                        Integrity
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-7 text-[#B8B8B8]">
+                        We aim to conduct business with honesty,
+                        fairness, dignity, and respect and to keep
+                        our promises while operating according to
+                        established ethical principles.
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div className="rounded-3xl border border-[#55585C] bg-[#34373B] p-8 sm:p-10">
+
+                  <div className="flex items-start gap-5">
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                      ↗
+                    </div>
+
+                    <div>
+
+                      <h3 className="text-xl font-bold">
+                        People &amp; Professionalism
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-7 text-[#B8B8B8]">
+                        Our staff are a foundation of the company's
+                        excellence and strength. We value experienced,
+                        dedicated, and committed professionals and
+                        support their development through training,
+                        tools, and support.
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div className="rounded-3xl border border-[#55585C] bg-[#34373B] p-8 sm:p-10">
+
+                  <div className="flex items-start gap-5">
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                      ✦
+                    </div>
+
+                    <div>
+
+                      <h3 className="text-xl font-bold">
+                        Innovation
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-7 text-[#B8B8B8]">
+                        We are committed to embracing new technology
+                        in the products, services, processes, and
+                        value-chain systems we use to provide quality
+                        solutions.
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            VISION & MISSION
+        ===================================================== */}
+        <section className="relative overflow-hidden py-24 sm:py-32">
+
+          <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-[#ED932C]/5 blur-[120px]" />
+
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div className="grid gap-6 lg:grid-cols-2">
+
+              {/* Vision */}
+              <div className="relative overflow-hidden rounded-3xl bg-[#ED932C] p-9 text-white shadow-2xl shadow-[#ED932C]/20 sm:p-12">
+
+                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
+
+                <div className="relative">
+
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-70">
+                    Our Vision
+                  </p>
+
+                  <h2 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+                    To be a leading world-class construction company in East Africa.
+                  </h2>
+
+                </div>
+
+              </div>
+
+              {/* Mission */}
+              <div className="rounded-3xl border border-[#55585C] bg-[#34373B] p-9 sm:p-12">
+
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
+                  Our Mission
+                </p>
+
+                <h2 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+                  Modern solutions.
+                  <br />
+                  Affordable construction.
+                </h2>
+
+                <p className="mt-6 text-base leading-8 text-[#B8B8B8]">
+                  To provide modern and affordable construction
+                  solutions that integrate with today's needs and
+                  upcoming technologies.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            CORE VALUES
+        ===================================================== */}
+        <section className="border-y border-[#55585C] bg-[#3B3D40]/30 py-24 sm:py-32">
+
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div className="mx-auto max-w-3xl text-center">
+
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
-                One Construction Partner
+                What We Value
               </p>
 
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                From infrastructure to materials, we support the entire
-                construction journey.
+              <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+                Principles that guide how we work.
               </h2>
 
-              <p className="mt-5 text-lg leading-8 text-[#B8B8B8]">
-                Our combination of construction expertise, engineering support,
-                procurement capability and equipment solutions enables us to
-                provide practical services around the needs of each project.
+              <p className="mt-6 text-lg leading-8 text-[#B8B8B8]">
+                Our core values influence how we approach our clients,
+                our people, our projects, and the wider relationships
+                that support our business.
               </p>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {[
-                  "Quality-focused execution",
-                  "Practical engineering solutions",
-                  "Reliable procurement",
-                  "Project-focused coordination",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#ED932C]/30 bg-[#2B2E33] text-[#ED932C]">
-                      <svg
-                        className="h-3 w-3"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5 12l4 4L19 6"
-                        />
-                      </svg>
-                    </span>
-
-                    <span className="text-sm font-medium text-[#B8B8B8]">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-9">
-                <Link
-                  to="/contact"
-                  className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#A33615] via-[#C05A1E] to-[#ED932C] px-6 py-3.5 font-semibold text-white shadow-lg shadow-[#A33615]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#A33615]/25"
-                >
-                  Discuss Your Project
-
-                  <svg
-                    className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 12h14m-6-6l6 6-6 6"
-                    />
-                  </svg>
-                </Link>
-              </div>
             </div>
+
+            <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+              {values.map((value, index) => (
+
+                <article
+                  key={value.title}
+                  className="group rounded-3xl border border-[#55585C] bg-[#34373B] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/30 hover:shadow-lg"
+                >
+
+                  <div className="flex items-center justify-between">
+
+                    <span className="font-mono text-xs text-[#ED932C]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <span className="h-2 w-2 rounded-full bg-[#ED932C]/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-[#ED932C]" />
+
+                  </div>
+
+                  <h3 className="mt-8 text-xl font-bold">
+                    {value.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-7 text-[#B8B8B8]">
+                    {value.description}
+                  </p>
+
+                </article>
+
+              ))}
+
+            </div>
+
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* =========================================================
-          PROCESS STRIP
-      ========================================================== */}
-      <section className="border-y border-[#55585C] bg-[#2B2E33] py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-10 md:grid-cols-4">
-            {[
-              {
-                number: "01",
-                title: "Understand",
-                text: "We begin by understanding the project, requirements and expected outcomes.",
-              },
-              {
-                number: "02",
-                title: "Plan",
-                text: "We develop a practical approach around scope, resources, technical needs and timelines.",
-              },
-              {
-                number: "03",
-                title: "Deliver",
-                text: "Our teams coordinate the required construction activities with attention to quality and safety.",
-              },
-              {
-                number: "04",
-                title: "Complete",
-                text: "We focus on delivering functional results that provide lasting value to our clients.",
-              },
-            ].map((step) => (
-              <div key={step.number} className="relative">
-                <span className="text-5xl font-bold text-[#ED932C]/20">
-                  {step.number}
-                </span>
+        {/* =====================================================
+            QUALITY & STANDARDS
+        ===================================================== */}
+        <section className="py-24 sm:py-32">
 
-                <h3 className="mt-3 text-xl font-bold text-white">
-                  {step.title}
-                </h3>
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
-                <p className="mt-2 text-sm leading-6 text-[#B8B8B8]">
-                  {step.text}
+            <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center">
+
+              <div>
+
+                <div className="flex items-center gap-4">
+
+                  <span className="h-px w-10 bg-[#ED932C]" />
+
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
+                    Quality &amp; Standards
+                  </p>
+
+                </div>
+
+                <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+                  Quality is part of the solution.
+                </h2>
+
+                <p className="mt-6 text-base leading-8 text-[#B8B8B8]">
+                  We recognize that quality construction and quality
+                  products are fundamental to delivering value. Our
+                  product ranges are described by the company as
+                  quality products approved by the Kenya Bureau of
+                  Standards (KEBS).
                 </p>
+
+                <p className="mt-5 text-base leading-8 text-[#B8B8B8]">
+                  We also focus on competitive pricing for the goods
+                  we stock, with the objective of helping customers
+                  reduce acquisition costs and improve their savings
+                  and profitability.
+                </p>
+
               </div>
-            ))}
+
+              <div className="relative">
+
+                <div className="rounded-3xl border border-[#55585C] bg-[#34373B] p-8 shadow-xl sm:p-10">
+
+                  <div className="grid gap-8 sm:grid-cols-2">
+
+                    <div>
+
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                        ✓
+                      </div>
+
+                      <h3 className="mt-5 font-bold">
+                        Quality Focus
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-[#B8B8B8]">
+                        A commitment to quality products and services.
+                      </p>
+
+                    </div>
+
+                    <div>
+
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                        ◆
+                      </div>
+
+                      <h3 className="mt-5 font-bold">
+                        Competitive Pricing
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-[#B8B8B8]">
+                        Competitive pricing designed to support customer value.
+                      </p>
+
+                    </div>
+
+                    <div>
+
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                        ✦
+                      </div>
+
+                      <h3 className="mt-5 font-bold">
+                        Innovation
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-[#B8B8B8]">
+                        Openness to technology and continuous improvement.
+                      </p>
+
+                    </div>
+
+                    <div>
+
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                        ↗
+                      </div>
+
+                      <h3 className="mt-5 font-bold">
+                        Client Value
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-[#B8B8B8]">
+                        Solutions focused on delivering value for money.
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* =========================================================
-          FINAL CTA
-      ========================================================== */}
-      <section className="relative overflow-hidden bg-[#2B2E33] py-20 text-white lg:py-24">
-        {/* CTA glow */}
-        <div className="pointer-events-none absolute left-[-160px] top-[-160px] h-[430px] w-[430px] rounded-full bg-[#A33615]/12 blur-[120px]" />
+        {/* =====================================================
+            LOCATION
+        ===================================================== */}
+        <section className="border-y border-[#55585C] bg-[#3B3D40]/30 py-16">
 
-        <div className="pointer-events-none absolute bottom-[-220px] right-[-120px] h-[520px] w-[520px] rounded-full bg-[#ED932C]/[0.07] blur-[140px]" />
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
-        <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F0A34A]">
-            Ready to Get Started?
-          </p>
+            <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
 
-          <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Let&apos;s build something that lasts.
-          </h2>
+              <div className="flex items-start gap-5">
 
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[#B8B8B8]">
-            Tell us about your construction, civil works, infrastructure or
-            supply requirements and let&apos;s discuss how ELFREYZZ Ltd. can
-            support your project.
-          </p>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#ED932C]/10 text-[#ED932C]">
+                  ⌖
+                </div>
 
-          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              to="/contact"
-              className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#A33615] via-[#C05A1E] to-[#ED932C] px-7 py-4 font-semibold text-white shadow-xl shadow-[#A33615]/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#A33615]/30"
-            >
-              Request a Consultation
+                <div>
 
-              <svg
-                className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
+                    Our Location
+                  </p>
+
+                  <h2 className="mt-2 text-xl font-bold">
+                    Kiambu Township
+                  </h2>
+
+                  <p className="mt-1 text-sm text-[#B8B8B8]">
+                    Along Kiambu Road · Plot No. 589/1
+                  </p>
+
+                </div>
+
+              </div>
+
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-xl border border-[#55585C] bg-[#2B2E33] px-6 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#ED932C] hover:text-[#ED932C]"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 12h14m-6-6l6 6-6 6"
-                />
-              </svg>
-            </Link>
+                Contact Elfreyzz
 
-            <a
-              href="tel:+254714544535"
-              className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#55585C] bg-[#34373B]/50 px-7 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C]/60 hover:bg-[#34373B]"
-            >
-              <svg
-                className="h-5 w-5 text-[#ED932C]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 5.5A2.5 2.5 0 015.5 3H7l2 5-2 1.5A15 15 0 0014.5 17L16 15l5 2v1.5a2.5 2.5 0 01-2.5 2.5C10.94 21 3 13.06 3 5.5z"
-                />
-              </svg>
+                <span
+                  className="ml-2"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </Link>
 
-              Call Us
-            </a>
+            </div>
+
           </div>
-        </div>
-      </section>
 
+        </section>
+
+        {/* =====================================================
+            FINAL CTA
+        ===================================================== */}
+        <section className="relative overflow-hidden py-24 sm:py-32">
+
+          <div className="absolute inset-0 -z-10 bg-[#ED932C]/[0.04]" />
+
+          <div className="absolute left-1/2 top-0 -z-10 h-[550px] w-[750px] -translate-x-1/2 rounded-full bg-[#ED932C]/10 blur-[130px]" />
+
+          <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ED932C]/10 text-xl text-[#ED932C]">
+              ◆
+            </div>
+
+            <p className="mt-7 text-sm font-semibold uppercase tracking-[0.2em] text-[#ED932C]">
+              Let's Build
+            </p>
+
+            <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              Have a construction
+              <br className="hidden sm:block" />
+              project in mind?
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#B8B8B8]">
+              Whether you are planning a building, road, civil works,
+              structural project, survey, renovation, or require
+              construction materials and related services, we would
+              be glad to discuss your requirements.
+            </p>
+
+            <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-xl bg-[#ED932C] px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-[#ED932C]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              >
+                Request a Consultation
+
+                <span
+                  className="ml-2"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </Link>
+
+              <a
+                href="tel:+254714544535"
+                className="inline-flex items-center justify-center rounded-xl border border-[#55585C] bg-[#2B2E33] px-8 py-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:border-[#ED932C] hover:text-[#ED932C]"
+              >
+                Call +254 714 544 535
+              </a>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
       <Footer />
 
+      {/* =====================================================
+          BACK TO TOP
+      ===================================================== */}
       <BackToTop />
 
-      {/* =========================================================
-          ANIMATIONS
-      ========================================================== */}
-      <style>{`
-        html {
-          scroll-behavior: smooth;
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(18px);
-          }
-
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.7s ease-out both;
-        }
-
-        @keyframes softGlow {
-          0%,
-          100% {
-            opacity: 0.5;
-          }
-
-          50% {
-            opacity: 0.8;
-          }
-        }
-
-        .soft-glow {
-          animation: softGlow 5s ease-in-out infinite;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          html {
-            scroll-behavior: auto;
-          }
-
-          *,
-          *::before,
-          *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };
 
-export default Services;
+export default About;
