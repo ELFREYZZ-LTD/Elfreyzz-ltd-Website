@@ -282,7 +282,7 @@ const Services = () => {
         } as Record<string, string>
       }
     >
-      <Header />
+      <Header onThemeToggle={toggleTheme} isDark={isDark} />
 
       {/* =========================================================
           HERO
