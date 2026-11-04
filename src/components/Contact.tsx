@@ -203,6 +203,10 @@ export const Contact = () => {
             <Button type="submit" disabled={isSubmitting} className="bg-gradient-primary w-full sm:w-auto min-h-[44px]">
               {isSubmitting ? "Sending..." : "Send message"}
             </Button>
+
+            <p className="text-xs text-muted-foreground">
+              Your details are validated and handled securely. We only use them to respond to your enquiry.
+            </p>
           </form>
 
           {/* Calendly & Office Info */}
