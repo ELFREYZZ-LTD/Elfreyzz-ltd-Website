@@ -205,7 +205,7 @@ export const Contact = () => {
             </Button>
 
             <p className="text-xs text-muted-foreground">
-              Your details are validated and handled securely. We only use them to respond to your enquiry.
+              Your details are validated and handled securely. We only use them to respond to your enquiry. <a href="/privacy" className="underline underline-offset-4 hover:text-primary">Privacy Policy</a>
             </p>
           </form>
 

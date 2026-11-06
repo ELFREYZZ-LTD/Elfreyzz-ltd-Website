@@ -93,6 +93,13 @@ export const Footer = () => {
               >
                 Contact Us
               </button>
+
+              <button
+                onClick={() => navigate("/privacy")}
+                className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors text-left"
+              >
+                Privacy Policy
+              </button>
             </nav>
           </div>
 
