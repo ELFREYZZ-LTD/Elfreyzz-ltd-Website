@@ -55,7 +55,8 @@ const sections = [
     body: [
       "We keep enquiry details only for as long as necessary to respond to you and follow up on your project, and no longer than 24 months after our last contact unless you become a client.",
       "Where an enquiry leads to a contract, related records may be kept for up to 7 years to meet legal, tax, and accounting obligations.",
-      "When information is no longer needed, we delete or anonymise it. You can ask us to delete it sooner.",
+      "These retention periods are maximum limits. ELFREYZZ LTD may, at its sole discretion, securely delete or anonymise enquiries and submitted information at any time without prior notice (for example, during routine maintenance or once an enquiry is resolved), subject to any record-keeping requirements under applicable Kenyan law.",
+      "When information is no longer needed, we delete or anonymise it. You can also ask us to delete it sooner.",
     ],
   },
   {
