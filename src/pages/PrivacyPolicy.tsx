@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
+import { PrivacyRequestForm } from "@/components/PrivacyRequestForm";
 
 const sections = [
   {
@@ -149,6 +150,14 @@ const PrivacyPolicy = () => {
                 </a>{" "}
                 or use our <Link to="/contact" className="text-primary underline underline-offset-4">contact page</Link>.
               </p>
+            </section>
+
+            <section id="privacy-request" className="rounded-xl border border-border bg-card p-6">
+              <h2 className="text-xl font-semibold mb-3 text-primary">Submit a privacy request</h2>
+              <p className="text-muted-foreground mb-5">
+                Prefer a form? Use it to ask us to access, correct, or delete your data. Your request goes straight to our team.
+              </p>
+              <PrivacyRequestForm />
             </section>
           </div>
         </article>
